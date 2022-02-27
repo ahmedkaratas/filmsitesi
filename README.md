@@ -20,16 +20,6 @@
         Final gösteriminde neler yapacağınızı yazacaksınız
 
 
-# İlişkisel Veritabanı Tasarımı
+# Veritabanı ER Diyagramı
 
 ![Veri Tabanı Tasarımı](./docs/er_diagram.png)
-
-# Netbeans github entegrasyonunda "Incorrect credentials" hatasının çözümü:
-
-- Github hesabında sağ tarafta profile -> settings tıklayınız
-- Sol taraftaki menüden "Developer settings" tıklayınız
-- Menüden "Personel Access Tokens" tıklayınız
-- Token geçerlilik süresini girdikten sonra "scope" başlığı altında "repo" işaretleyiniz
-- "Generate Token" düğmesine tıklayınız
-- Üretilen token bilgisini kopyalayıp netbeans deki parola kısmına yapıştırınız
-

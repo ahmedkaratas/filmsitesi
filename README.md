@@ -1,25 +1,22 @@
-# FİLM SİTESİ
+Film Sitesi
 
-    Kullanıcılar film izleyebilir, filme yorum yapabilir ve filme puan verebilir.
+Film sitesinde kullanıcılar üye olabilecek, üyeliğine giriş yapıp filmi izleyebilecek bunun yanı sıra filme dair set görüntülerini görüntüleyebilecek ve fragmanı izleyebilecekler. İzledikleri filme puan verip yorum yapabilecekler. Kullanıcılara rehber olması için sıkça sorulan sorular (SSS) sayfası ve kullanıcıların yöneticiyle irtibata geçebilmesi için iletişim sayfası yer alacaktır.
 
-# PROJE AŞAMALARI (AŞAĞIDAKİ TARİHLER SADECE ÖRNEKTİR. KENDİ TAKVİMİZİ KENDİNİZ OLUŞTURACAKSINIZ.)
-- 06.03.2022 - 1.Ara Gösterim
-
-        1. ara gösterimde neler yapacağınızı yazacaksınız
+Proje Takvimi
 
 - Vize Gösterimi
 
         Vize gösteriminde neler yapacağınızı yazacaksınız
 
-- 13.04.2022 - 2.Ara Gösterim
+- 20.05.2022 - Ara Gösterim
 
-        2. ara gösterimde neler yapacağınızı yazacaksınız
+        Eksiklerin belirlenmesi ve giderilmesi
 
 - Final Gösterimi
 
         Final gösteriminde neler yapacağınızı yazacaksınız
 
 
-# Veritabanı ER Diyagramı
+Veritabanı ER Diyagramı
 
-![Veri Tabanı Tasarımı](./docs/er_diagram.png)
+![Veri Tabanı Tasarımı](./docs/er.png)

@@ -19,4 +19,4 @@ Film sitesinde kullanıcılar üye olabilecek, üyeliğine giriş yapıp filmi i
 
 <h2>Veritabanı ER Diyagramı</h2>
 
-![Veri Tabanı Tasarımı](/er.png)
+![Veri Tabanı Tasarımı](/ER.jpg)

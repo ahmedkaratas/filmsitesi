@@ -11,15 +11,18 @@ public class Loglar {
     private String hareket;
     public String ip;
     public String tarih;
-    public String getHareket;
-    public String getIp;
-    public String getTarih;
-    public String getKullaniciadi;
 
-
-    public Loglar(int aInt, String string, String string0, String string1) {
-       
+    public Loglar(int id, String kullaniciadi, String hareket, String ip, String tarih) {
+        this.id = id;
+        this.kullaniciadi = kullaniciadi;
+        this.hareket = hareket;
+        this.ip = ip;
+        this.tarih = tarih;
     }
+   
+    
+
+   
 
     public Loglar() {
         

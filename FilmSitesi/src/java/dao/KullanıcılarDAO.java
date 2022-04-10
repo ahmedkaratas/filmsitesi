@@ -57,7 +57,7 @@ public class KullanıcılarDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
             
             while (rs.next()){
-                list.add(new Kullanıcılar(rs.getInt("id"), rs.getString("hareket"), rs.getString("ip"), rs.getString("tarih")));
+                list.add(new Kullanıcılar(rs.getInt("id"), rs.getString("kullaniciadi"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("sifre")));
             }
             
         } catch(Exception e){

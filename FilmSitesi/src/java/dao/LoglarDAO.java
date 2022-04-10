@@ -65,4 +65,6 @@ public class LoglarDAO extends DBConnection {
         }
         return list;
     }
+
+
 }

@@ -17,12 +17,36 @@ public class sssDAO extends DBConnection{
             Connection c = this.connect();
             Statement st = c.createStatement();
 
-            String q = "insert into post (title,context) values ('" + s.getSoru() + "','" + s.getCevap() + "')";
+            String q = "insert into sss (soru,cevap) values ('" + s.getSoru() + "','" + s.getCevap() + "')";
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
+    }
+    public void delete(sss s) {
+        try {
+
+            Connection c = this.connect();
+            Statement st = c.createStatement();
+
+            String q = "delete from sss where id = " + s.getId();
+            st.executeUpdate(q);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void update(sss s) {                
+        try {
+
+            Connection c = this.connect();
+            Statement st = c.createStatement();
+
+            String q = "update sss set soru = '" + s.getSoru()  + "',cevap = '" + s.getCevap() + "' where id =" +s.getId() ;
+            st.executeUpdate(q);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
      public List<sss> getList() {
         List<sss> list = new ArrayList<>();

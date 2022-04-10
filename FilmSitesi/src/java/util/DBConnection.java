@@ -8,23 +8,17 @@ import java.sql.DriverManager;
 public class DBConnection {
     
     
-     private Connection connection;
-
-    public Connection getConnection() {
-        if(this.connection==null){
-           try{
+    public Connection connect() {
+        Connection c = null;
+        try {
             Class.forName("org.postgresql.Driver");
-            this.connection = DriverManager.getConnection("jdbs:postgresql://localhost:5432/blog", "postgres", "12345");
-        }catch(Exception e){
-            
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/test", "postgres", "12345");
+
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        }
-        return connection;
-    }
+        return c;
 
-    public void setConnection(Connection connection) {
-        this.connection = connection;
     }
     
     

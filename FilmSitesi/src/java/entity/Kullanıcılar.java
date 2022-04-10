@@ -12,11 +12,15 @@ public class Kullanıcılar {
     public String getSoyad;
 
     public Kullanıcılar(int aInt, String string, String string0, String string1) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
     }
 
     public Kullanıcılar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+    }
+
+    public Kullanıcılar(int aInt, String string, String string0, String string1, String string2, String string3) {
+      
     }
 
     public String getGetAd() {

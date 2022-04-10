@@ -45,7 +45,7 @@ public class IletisimDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
             
             while (rs.next()){
-                list.add(new Iletisim(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"),, rs.getString("baslik"),, rs.getString("mesaj")));
+                list.add(new Iletisim(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("baslik"), rs.getString("mesaj")));
             }
             
         } catch(Exception e){

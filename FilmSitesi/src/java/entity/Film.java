@@ -116,4 +116,7 @@ public class Film {
         this.görsel = görsel;
     }
 
+    public Film() {
+    }
+
 }

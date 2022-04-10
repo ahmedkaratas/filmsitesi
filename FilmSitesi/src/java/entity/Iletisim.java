@@ -19,6 +19,10 @@ public class Iletisim {
        
     }
 
+    public Iletisim(int aInt, String string, String string0, String string1, String string2, String string3) {
+      
+    }
+
     public String getGetAd() {
         return getAd;
     }

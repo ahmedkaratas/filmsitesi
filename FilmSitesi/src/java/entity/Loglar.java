@@ -12,9 +12,16 @@ public class Loglar {
     public String ip;
     public String tarih;
     public String getHareket;
+    public String getIp;
+    public String getTarih;
+    public String getKullaniciadi;
 
     public Loglar(int aInt, String string, String string0, String string1) {
         
+    }
+
+    public Loglar() {
+       
     }
 
     public int getId() {

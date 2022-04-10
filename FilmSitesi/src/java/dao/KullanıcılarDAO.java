@@ -14,7 +14,7 @@ public class KullanıcılarDAO extends DBConnection {
     public void create(Kullanıcılar s){
         try{
             Statement st = this.connect().createStatement();
-            String query = "insert into kullanıcılar (kullaniciadi) values ('"+s.getKullaniciadi+"','"+s.getAd+"','"+s.getSoyad+"','"+s.getEposta+"','"+s.getSifre+"')";
+            String query = "insert into kullanıcılar (kullaniciadi,ad,soyad,eposta,sifre) values ('"+s.getKullaniciadi+"','"+s.getAd+"','"+s.getSoyad+"','"+s.getEposta+"','"+s.getSifre+"')";
             
             st.executeUpdate(query);
             
@@ -52,7 +52,7 @@ public class KullanıcılarDAO extends DBConnection {
         List<Kullanıcılar> list = new ArrayList<>();
         try{
             Statement st = this.connect().createStatement();
-            String query = "select * from sss";
+            String query = "select * from kullanıcılar";
             
             ResultSet rs = st.executeQuery(query);
             

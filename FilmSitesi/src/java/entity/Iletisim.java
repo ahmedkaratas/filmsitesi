@@ -47,10 +47,5 @@ public class Iletisim {
         return null;
     }
 
-    public String getKullaniciadi() {
-       
-        return null;
-       
-    }
     
 }

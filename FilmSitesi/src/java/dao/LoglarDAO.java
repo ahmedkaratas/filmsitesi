@@ -27,7 +27,7 @@ public class LoglarDAO extends DBConnection {
     public void update(Loglar s){
         try{
             Statement st = this.connect().createStatement();
-            String query = "update loglar set soru='"+s.getHareket()+"' where id="+s.getId();
+            String query = "update loglar set hareket='"+s.getHareket()+"' where id="+s.getId();
             
             st.executeUpdate(query);
             
@@ -52,7 +52,7 @@ public class LoglarDAO extends DBConnection {
         List<Loglar> list = new ArrayList<>();
         try{
             Statement st = this.connect().createStatement();
-            String query = "select * from sss";
+            String query = "select * from loglar";
             
             ResultSet rs = st.executeQuery(query);
             

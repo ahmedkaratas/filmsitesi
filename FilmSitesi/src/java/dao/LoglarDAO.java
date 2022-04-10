@@ -14,7 +14,7 @@ public class LoglarDAO extends DBConnection {
     public void create(Loglar s){
         try{
             Statement st = this.connect().createStatement();
-            String query = "insert into loglar (kullaniciadi,hareket,ip,tarih) values ('"+s.getKullaniciadi+"','"+s.getHareket+"','"+s.getIp+"','"+s.getTarih+"')";
+            String query = "insert into loglar (kullaniciadi,hareket,ip,tarih) values ('"+s.getKullaniciadi()+"','"+s.getHareket()+"','"+s.getIp()+"','"+s.getTarih()+"')";
             
             st.executeUpdate(query);
             
@@ -57,7 +57,7 @@ public class LoglarDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
             
             while (rs.next()){
-                list.add(new Loglar(rs.getInt("id"), rs.getString("hareket"), rs.getString("ip"), rs.getString("tarih")));
+                list.add(new Loglar(rs.getInt("id"),rs.getString("kullaniciadi"), rs.getString("hareket"), rs.getString("ip"), rs.getString("tarih")));
             }
             
         } catch(Exception e){

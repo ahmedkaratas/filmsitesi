@@ -5,39 +5,37 @@
 package controller;
 
 import dao.YorumlarDAO;
-import dao.sssDAO;
 import entity.Yorumlar;
-import entity.sss;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- *
- * @author celal
- */
 @Named(value = "yorumlarBean")
 @SessionScoped
 public class YorumlarBean implements Serializable {
-     private Yorumlar entity;
+
+    private Yorumlar entity;
     private YorumlarDAO dao;
-     private List<Yorumlar> list;
-     
-     public String create() {
+    private List<Yorumlar> list;
+
+    public String create() {
         this.getDao().create(entity);
         entity = new Yorumlar();
-        
+
         return "index";
     }
-     public void delete(Yorumlar y){
-       this.getDao().delete(y);
+
+    public void delete(Yorumlar y) {
+        this.getDao().delete(y);
     }
-     public void update(){
+
+    public void update() {
         this.getDao().update(this.entity);
-         this.entity = new Yorumlar();
+        this.entity = new Yorumlar();
     }
-     public Yorumlar getEntity() {
+
+    public Yorumlar getEntity() {
         if (this.entity == null) {
             this.entity = new Yorumlar();
         }
@@ -63,9 +61,9 @@ public class YorumlarBean implements Serializable {
     public void setList(List<Yorumlar> list) {
         this.list = list;
     }
-    
+
     public YorumlarBean() {
-        
+
     }
-    
+
 }

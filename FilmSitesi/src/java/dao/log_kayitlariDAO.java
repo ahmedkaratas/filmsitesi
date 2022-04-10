@@ -4,6 +4,6 @@ package dao;
 import util.DBConnection;
 
 
-public class FaqDAO extends DBConnection{
+public class LoglarDAO extends DBConnection{
     
 }

@@ -14,7 +14,7 @@ public class LoglarDAO extends DBConnection {
     public void create(Loglar s){
         try{
             Statement st = this.connect().createStatement();
-            String query = "insert into loglar (log) values ('"+s.getHareket+"')";
+            String query = "insert into loglar (hareket) values ('"+s.getHareket+"')";
             
             st.executeUpdate(query);
             

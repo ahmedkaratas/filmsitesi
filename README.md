@@ -6,17 +6,12 @@ Film sitesinde kullanıcılar üye olabilecek, üyeliğine giriş yapıp filmi i
 
 - Vize Gösterimi
 
-        Vize gösteriminde neler yapacağınızı yazacaksınız
-
 - 20.05.2022 - Ara Gösterim
 
         Eksiklerin belirlenmesi ve giderilmesi
 
 - Final Gösterimi
 
-        Final gösteriminde neler yapacağınızı yazacaksınız
-
-
 <h2>Veritabanı ER Diyagramı</h2>
 
-![Veri Tabanı Tasarımı](/ER.jpg)
+![Veri Tabanı Tasarımı](/docs/er_diagram.jpg)

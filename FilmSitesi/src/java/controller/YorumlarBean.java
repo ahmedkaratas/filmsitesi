@@ -47,6 +47,9 @@ public class YorumlarBean implements Serializable {
     }
 
     public YorumlarDAO getDao() {
+        if (this.dao == null) {
+            this.dao = new YorumlarDAO();
+        }
         return dao;
     }
 

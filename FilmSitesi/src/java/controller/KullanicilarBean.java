@@ -11,28 +11,33 @@ import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-
-@Named(value = "kullanicilar")
+/**
+ *
+ * @author Eren Can
+ */
+@Named(value = "kullanicilarBean")
 @SessionScoped
 public class KullanicilarBean implements Serializable {
+
     private Kullanicilar entity;
     private KullanicilarDAO dao;
     private List<Kullanicilar> list;
 
+    /**
+     * Creates a new instance of KullanicilarBean
+     */
     public KullanicilarBean() {
     }
-    
-    public void create(){
         
-        this.getDao().create(entity);
+    public void create(){
+        this.getDao().createKullanicilar(entity);
     }
-
+    
     public Kullanicilar getEntity() {
-        if (this.entity == null){
+        if (this.entity == null) {
             this.entity = new Kullanicilar();
         }
         return entity;
-        
     }
 
     public void setEntity(Kullanicilar entity) {
@@ -40,7 +45,7 @@ public class KullanicilarBean implements Serializable {
     }
 
     public KullanicilarDAO getDao() {
-        if (this.dao == null){
+        if (this.dao == null) {
             this.dao = new KullanicilarDAO();
         }
         return dao;
@@ -51,13 +56,12 @@ public class KullanicilarBean implements Serializable {
     }
 
     public List<Kullanicilar> getList() {
-         this.list = this.getDao().getKullanicilarList();
+        this.list = this.getDao().getKullanicilarList();
         return list;
     }
 
     public void setList(List<Kullanicilar> list) {
         this.list = list;
     }
-    
-    
+
 }

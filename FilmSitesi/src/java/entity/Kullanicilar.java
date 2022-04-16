@@ -15,17 +15,21 @@ public class Kullanicilar {
 
     public Kullanicilar() {
     }
-    
+
     
 
-    public Kullanicilar(Long id, String ad, String soyad, String eposta, String sifre ) {
+    public Kullanicilar(Long id, String kullaniciadi,  String ad, String soyad, String eposta, String sifre ) {
         this.id = id;
+        this.kullaniciadi=kullaniciadi;
         this.ad = ad;
         this.soyad = soyad;
         this.eposta = eposta;
         this.sifre = sifre;
 
     }
+
+
+    
 
     public Long getId() {
         return id;
@@ -74,7 +78,11 @@ public class Kullanicilar {
     public void setSifre(String sifre) {
         this.sifre = sifre;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Kullanicilar{" + "id=" + id + ", kullaniciadi=" + kullaniciadi + ", ad=" + ad + ", soyad=" + soyad + ", eposta=" + eposta + ", sifre=" + sifre + '}';
+    }
+
 
 }

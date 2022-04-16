@@ -57,7 +57,7 @@ public class LoglarDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
             
             while (rs.next()){
-                list.add(new Loglar(rs.getInt("id"),rs.getString("kullaniciadi"), rs.getString("hareket"), rs.getString("ip"), rs.getString("tarih")));
+                list.add(new Loglar(rs.getLong("id"),rs.getString("kullaniciadi"), rs.getString("hareket"), rs.getString("ip"), rs.getDate("tarih")));
             }
             
         } catch(Exception e){

@@ -15,7 +15,7 @@ public class FilmDAO extends DBConnection {
 
             Connection c = this.connect();
             Statement st = c.createStatement();
-            String q = "insert into film (adı,türü,vizyontarihi,filmsüresi,ülkesi,puanı,yassınırı,link,açılama,görsel) values ('" + f.getAdı() + ","+f.getTürü()+""+f.getVizyontarihi()+""+f.getFilmsüresi()+""+f.getÜlkesi()+""+f.getPuanı()+""+f.getYassınırı()+""+f.getLink()+""+f.getAçıklama()+""+f.getGörsel()+"')";
+            String q = "insert into film (ad,tur,vizyon,sure,ulke,puan,yassiniri,filmlinki,aciklama,gorsel) values ('" + f.getAd() + ","+f.getTur()+""+f.getVizyon()+""+f.getSure()+""+f.getUlke()+""+f.getPuan()+""+f.getYassiniri()+""+f.getFilmlinki()+""+f.getAciklama()+""+f.getGorsel()+"')";
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -38,7 +38,7 @@ public class FilmDAO extends DBConnection {
     public void update(Film f) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "update film set adı='" + f.getAdı() + "' where id=" + f.getFilmid();
+            String query = "update film set ad='" + f.getAd() + "' where id=" + f.getFilmid();
 
             st.executeUpdate(query);
 
@@ -53,10 +53,10 @@ public class FilmDAO extends DBConnection {
             Connection c = this.connect();
             Statement st = c.createStatement();
 
-            String q = "select * from Kategoriler";
+            String q = "select * from film";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
-                list.add(new Film(rs.getInt("filmid"), rs.getString("adı"), rs.getString("türü"),rs.getString("vizyontarihi"), rs.getString("filmsüresi"), rs.getString("ülkesi"), rs.getDouble("puanı"), rs.getString("yassınırı"), rs.getString("link"), rs.getString("açıklama"), rs.getString("görsel")));
+                list.add(new Film(rs.getInt("filmid"), rs.getString("ad"), rs.getString("tur"),rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getDouble("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel")));
 
             }
         } catch (Exception e) {

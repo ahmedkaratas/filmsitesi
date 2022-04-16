@@ -1,55 +1,76 @@
-
 package entity;
-
 
 public class Iletisim {
 
-    public String getId;
-    public String getAd;
-    public String getEposta;
-    public String getSoyad;
-    public String getBaslik;
-    public String getMesaj;
+    public Long id;
+    public String ad;
+    public String soyad;
+    public String eposta;
+    public String baslik;
+    public String mesaj;
 
-    public Iletisim(int aInt, String string, String string0, String string1) {
+    public Iletisim(Long id, String ad, String soyad, String eposta, String baslik, String mesaj) {
+        this.id = id;
+        this.ad = ad;
+        this.soyad = soyad;
+        this.eposta = eposta;
+        this.baslik = baslik;
+        this.mesaj = mesaj;  
         
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAd() {
+        return ad;
+    }
+
+    public void setAd(String ad) {
+        this.ad = ad;
+    }
+
+    public String getSoyad() {
+        return soyad;
+    }
+
+    public void setSoyad(String soyad) {
+        this.soyad = soyad;
+    }
+
+    public String getEposta() {
+        return eposta;
+    }
+
+    public void setEposta(String eposta) {
+        this.eposta = eposta;
+    }
+
+    public String getBaslik() {
+        return baslik;
+    }
+
+    public void setBaslik(String baslik) {
+        this.baslik = baslik;
+    }
+
+    public String getMesaj() {
+        return mesaj;
+    }
+
+    public void setMesaj(String mesaj) {
+        this.mesaj = mesaj;
+    }
+
+
+
     public Iletisim() {
-       
+
     }
 
-    public Iletisim(int aInt, String string, String string0, String string1, String string2, String string3) {
-      
-    }
-
-    public String getGetAd() {
-        return getAd;
-    }
-
-    public void setGetAd(String getAd) {
-        this.getAd = getAd;
-    }
-
-    public String getGetEposta() {
-        return getEposta;
-    }
-
-    public void setGetEposta(String getEposta) {
-        this.getEposta = getEposta;
-    }
-    
-    public String getGetSoyad() {
-        return getSoyad;
-    }
-
-    public void setGetSoyad(String getSoyad) {
-        this.getSoyad = getSoyad;
-    }
-
-    public String getId() {
-        return null;
-    }
-
-    
 }

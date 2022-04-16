@@ -56,7 +56,7 @@ public class FilmDAO extends DBConnection {
             String q = "select * from film";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
-                list.add(new Film(rs.getInt("filmid"), rs.getString("ad"), rs.getString("tur"),rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getDouble("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel")));
+                list.add(new Film(rs.getLong("filmid"), rs.getString("ad"), rs.getString("tur"),rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getDouble("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel")));
 
             }
         } catch (Exception e) {

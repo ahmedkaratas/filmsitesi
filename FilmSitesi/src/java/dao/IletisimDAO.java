@@ -12,7 +12,7 @@ public class IletisimDAO extends DBConnection {
     public void create(Iletisim s) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "insert into iletisim (ad,soyad,eposta,baslik,mesaj) values ('" + s.getGetAd() + "','" + s.getGetSoyad() + "','" + s.getGetEposta() + "')";
+            String query = "insert into iletisim (ad,soyad,eposta,baslik,mesaj) values ('" + s.getAd() + "','" + s.getSoyad() + "','" + s.getEposta() + "','" + s.getBaslik() + "','" + s.getMesaj() + "')";
 
             st.executeUpdate(query);
 
@@ -37,7 +37,7 @@ public class IletisimDAO extends DBConnection {
     public void update(Iletisim s) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "update iletisim set eposta='"+s.getGetEposta()+"' where id="+s.getId();
+            String query = "update iletisim set mesaj='"+s.getMesaj()+"' where id="+s.getId();
 
             st.executeUpdate(query);
 
@@ -55,7 +55,7 @@ public class IletisimDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Iletisim(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("baslik"), rs.getString("mesaj")));
+                list.add(new Iletisim(rs.getLong("id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("baslik"), rs.getString("mesaj")));
             }
 
         } catch (Exception e) {

@@ -14,6 +14,9 @@ public class Film {
     private String aciklama;
     private String gorsel;
 
+    public Film() {
+    }
+
     public Film(Long filmid, String ad, String tur, String vizyon, String sure, String ulke, double puan, String yassiniri, String filmlinki, String aciklama, String gorsel) {
         this.filmid = filmid;
         this.ad = ad;
@@ -114,9 +117,6 @@ public class Film {
 
     public void setGorsel(String gorsel) {
         this.gorsel = gorsel;
-    }
-
-    public Film() {
     }
 
 }

@@ -14,16 +14,16 @@ public class Loglar {
     public String ip;
     public Date tarih;
 
+    public Loglar() {
+
+    }
+
     public Loglar(Long id, String kullaniciadi, String hareket, String ip, Date tarih) {
         this.id = id;
         this.kullaniciadi = kullaniciadi;
         this.hareket = hareket;
         this.ip = ip;
         this.tarih = tarih;
-    }
-
-    public Loglar() {
-
     }
 
     public Long getId() {

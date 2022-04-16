@@ -28,7 +28,7 @@ public class CreateBean implements Serializable {
     public String create(){
         try{
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/filmsitesi","postgres","12345");
+            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/filmsitesi","postgres","323678");
             
             Statement st = c.createStatement();
             

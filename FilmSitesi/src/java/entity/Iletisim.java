@@ -9,14 +9,18 @@ public class Iletisim {
     public String baslik;
     public String mesaj;
 
+    public Iletisim() {
+
+    }
+
     public Iletisim(Long id, String ad, String soyad, String eposta, String baslik, String mesaj) {
         this.id = id;
         this.ad = ad;
         this.soyad = soyad;
         this.eposta = eposta;
         this.baslik = baslik;
-        this.mesaj = mesaj;  
-        
+        this.mesaj = mesaj;
+
     }
 
     public Long getId() {
@@ -65,12 +69,6 @@ public class Iletisim {
 
     public void setMesaj(String mesaj) {
         this.mesaj = mesaj;
-    }
-
-
-
-    public Iletisim() {
-
     }
 
 }

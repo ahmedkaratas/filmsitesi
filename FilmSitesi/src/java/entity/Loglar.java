@@ -4,35 +4,33 @@
  */
 package entity;
 
+import java.util.Date;
 
 public class Loglar {
-    private int id;
+
+    private Long id;
     private String kullaniciadi;
     private String hareket;
     public String ip;
-    public String tarih;
+    public Date tarih;
 
-    public Loglar(int id, String kullaniciadi, String hareket, String ip, String tarih) {
+    public Loglar(Long id, String kullaniciadi, String hareket, String ip, Date tarih) {
         this.id = id;
         this.kullaniciadi = kullaniciadi;
         this.hareket = hareket;
         this.ip = ip;
         this.tarih = tarih;
     }
-   
-    
-
-   
 
     public Loglar() {
-        
+
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,12 +58,12 @@ public class Loglar {
         this.ip = ip;
     }
 
-    public String getTarih() {
+    public Date getTarih() {
         return tarih;
     }
 
-    public void setTarih(String tarih) {
+    public void setTarih(Date tarih) {
         this.tarih = tarih;
     }
-    
+
 }

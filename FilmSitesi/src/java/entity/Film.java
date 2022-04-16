@@ -2,7 +2,7 @@ package entity;
 
 public class Film {
 
-    private int filmid;
+    private Long filmid;
     private String ad;
     private String tur;
     private String vizyon;
@@ -14,7 +14,7 @@ public class Film {
     private String aciklama;
     private String gorsel;
 
-    public Film(int filmid, String ad, String tur, String vizyon, String sure, String ulke, double puan, String yassiniri, String filmlinki, String aciklama, String gorsel) {
+    public Film(Long filmid, String ad, String tur, String vizyon, String sure, String ulke, double puan, String yassiniri, String filmlinki, String aciklama, String gorsel) {
         this.filmid = filmid;
         this.ad = ad;
         this.tur = tur;
@@ -28,11 +28,11 @@ public class Film {
         this.gorsel = gorsel;
     }
 
-    public int getFilmid() {
+    public Long getFilmid() {
         return filmid;
     }
 
-    public void setFilmid(int filmid) {
+    public void setFilmid(Long filmid) {
         this.filmid = filmid;
     }
 

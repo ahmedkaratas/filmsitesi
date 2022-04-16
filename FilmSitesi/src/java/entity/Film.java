@@ -3,29 +3,29 @@ package entity;
 public class Film {
 
     private int filmid;
-    private String adı;
-    private String türü;
-    private String vizyontarihi;
-    private String filmsüresi;
-    private String ülkesi;
-    private double puanı;
-    private String yassınırı;
-    private String link;
-    private String açıklama;
-    private String görsel;
+    private String ad;
+    private String tur;
+    private String vizyon;
+    private String sure;
+    private String ulke;
+    private double puan;
+    private String yassiniri;
+    private String filmlinki;
+    private String aciklama;
+    private String gorsel;
 
-    public Film(int filmid, String adı, String türü, String vizyontarihi, String filmsüresi, String ülkesi, double puanı, String yassınırı, String link, String açılama, String görsel) {
+    public Film(int filmid, String ad, String tur, String vizyon, String sure, String ulke, double puan, String yassiniri, String filmlinki, String aciklama, String gorsel) {
         this.filmid = filmid;
-        this.adı = adı;
-        this.türü = türü;
-        this.vizyontarihi = vizyontarihi;
-        this.filmsüresi = filmsüresi;
-        this.ülkesi = ülkesi;
-        this.puanı = puanı;
-        this.yassınırı = yassınırı;
-        this.link = link;
-        this.açıklama = açılama;
-        this.görsel = görsel;
+        this.ad = ad;
+        this.tur = tur;
+        this.vizyon = vizyon;
+        this.sure = sure;
+        this.ulke = ulke;
+        this.puan = puan;
+        this.yassiniri = yassiniri;
+        this.filmlinki = filmlinki;
+        this.aciklama = aciklama;
+        this.gorsel = gorsel;
     }
 
     public int getFilmid() {
@@ -36,84 +36,84 @@ public class Film {
         this.filmid = filmid;
     }
 
-    public String getAdı() {
-        return adı;
+    public String getAd() {
+        return ad;
     }
 
-    public void setAdı(String adı) {
-        this.adı = adı;
+    public void setAd(String ad) {
+        this.ad = ad;
     }
 
-    public String getTürü() {
-        return türü;
+    public String getTur() {
+        return tur;
     }
 
-    public void setTürü(String türü) {
-        this.türü = türü;
+    public void setTur(String tur) {
+        this.tur = tur;
     }
 
-    public String getVizyontarihi() {
-        return vizyontarihi;
+    public String getVizyon() {
+        return vizyon;
     }
 
-    public void setVizyontarihi(String vizyontarihi) {
-        this.vizyontarihi = vizyontarihi;
+    public void setVizyon(String vizyon) {
+        this.vizyon = vizyon;
     }
 
-    public String getFilmsüresi() {
-        return filmsüresi;
+    public String getSure() {
+        return sure;
     }
 
-    public void setFilmsüresi(String filmsüresi) {
-        this.filmsüresi = filmsüresi;
+    public void setSure(String sure) {
+        this.sure = sure;
     }
 
-    public String getÜlkesi() {
-        return ülkesi;
+    public String getulke() {
+        return ulke;
     }
 
-    public void setÜlkesi(String ülkesi) {
-        this.ülkesi = ülkesi;
+    public void setUlke(String ulke) {
+        this.ulke = ulke;
     }
 
-    public double getPuanı() {
-        return puanı;
+    public double getPuan() {
+        return puan;
     }
 
-    public void setPuanı(double puanı) {
-        this.puanı = puanı;
+    public void setPuan(double puan) {
+        this.puan = puan;
     }
 
-    public String getYassınırı() {
-        return yassınırı;
+    public String getYassiniri() {
+        return yassiniri;
     }
 
-    public void setYassınırı(String yassınırı) {
-        this.yassınırı = yassınırı;
+    public void setYassınırı(String yassiniri) {
+        this.yassiniri = yassiniri;
     }
 
-    public String getLink() {
-        return link;
+    public String getFilmlinki() {
+        return filmlinki;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setFilmlinki(String filmlinki) {
+        this.filmlinki = filmlinki;
     }
 
-    public String getAçıklama() {
-        return açıklama;
+    public String getAciklama() {
+        return aciklama;
     }
 
-    public void setAçıklama(String açılama) {
-        this.açıklama = açılama;
+    public void setAciklama(String aciklama) {
+        this.aciklama = aciklama;
     }
 
-    public String getGörsel() {
-        return görsel;
+    public String getGorsel() {
+        return gorsel;
     }
 
-    public void setGörsel(String görsel) {
-        this.görsel = görsel;
+    public void setGorsel(String gorsel) {
+        this.gorsel = gorsel;
     }
 
     public Film() {

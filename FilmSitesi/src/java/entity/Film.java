@@ -68,7 +68,7 @@ public class Film {
         this.sure = sure;
     }
 
-    public String getulke() {
+    public String getUlke() {
         return ulke;
     }
 

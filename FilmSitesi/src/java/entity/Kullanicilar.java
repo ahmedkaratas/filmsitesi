@@ -6,7 +6,7 @@ package entity;
 
 public class Kullanicilar {
 
-    private Long id;
+    private int id;
     private String kullaniciadi;
     private String ad;
     private String soyad;
@@ -18,7 +18,7 @@ public class Kullanicilar {
 
     
 
-    public Kullanicilar(Long id, String kullaniciadi,  String ad, String soyad, String eposta, String sifre ) {
+    public Kullanicilar(int id, String kullaniciadi,  String ad, String soyad, String eposta, String sifre ) {
         this.id = id;
         this.kullaniciadi=kullaniciadi;
         this.ad = ad;
@@ -28,14 +28,16 @@ public class Kullanicilar {
 
     }
 
+    public Kullanicilar(String ad) {
+        this.ad = ad;
+    }
+  
 
-    
-
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
- */
 package controller;
 
 import dao.KullanicilarDAO;
@@ -11,10 +7,6 @@ import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- *
- * @author Eren Can
- */
 @Named(value = "kullanicilarBean")
 @SessionScoped
 public class KullanicilarBean implements Serializable {
@@ -23,16 +15,24 @@ public class KullanicilarBean implements Serializable {
     private KullanicilarDAO dao;
     private List<Kullanicilar> list;
 
-    /**
-     * Creates a new instance of KullanicilarBean
-     */
     public KullanicilarBean() {
     }
-        
-    public void create(){
+
+    public void create() {
         this.getDao().createKullanicilar(entity);
+        this.entity = new Kullanicilar();
     }
-    
+
+    public void update() {
+        this.getDao().updateKullanicilar(entity);
+        this.entity = new Kullanicilar();
+        
+    }
+
+    public void delete(Kullanicilar k) {
+        this.getDao().deleteKullanicilar(k);
+    }
+
     public Kullanicilar getEntity() {
         if (this.entity == null) {
             this.entity = new Kullanicilar();

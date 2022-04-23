@@ -24,6 +24,30 @@ public class KullanicilarDAO extends DBConnection {
 
     }
 
+    public void deleteKullanicilar(Kullanicilar k) {
+        try {
+
+            Statement st = this.getDb().createStatement();
+            String q = "delete from kullanicilar where id =" + k.getId();
+            st.executeUpdate(q);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+    }
+
+    public void updateKullanicilar(Kullanicilar k) {
+        try {
+
+            Statement st = this.getDb().createStatement();
+            String q = "update kullanicilar set kullaniciadi ='" + k.getKullaniciadi() + "', ad='" + k.getAd() + "', soyad='" + k.getSoyad() + "', eposta='" + k.getEposta() + "', sifre='" + k.getSifre() +  "' where id =" + k.getId();
+            st.executeUpdate(q);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
     public List<Kullanicilar> getKullanicilarList() {
         List<Kullanicilar> KullanicilarList = new ArrayList<>();
 
@@ -33,7 +57,7 @@ public class KullanicilarDAO extends DBConnection {
             String q = "select * from kullanicilar";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
-                KullanicilarList.add(new Kullanicilar(rs.getLong("id"), rs.getString("kullaniciadi"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("sifre")));
+                KullanicilarList.add(new Kullanicilar(rs.getInt("id"), rs.getString("kullaniciadi"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("sifre")));
 
             }
 
@@ -56,7 +80,5 @@ public class KullanicilarDAO extends DBConnection {
     public void setDb(Connection db) {
         this.db = db;
     }
-    
-    
 
 }

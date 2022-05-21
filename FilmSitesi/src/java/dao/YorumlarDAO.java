@@ -1,7 +1,6 @@
 package dao;
 
-import entity.Kullanicilar;
-import entity.Loglar;
+
 import entity.Yorumlar;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -50,7 +49,7 @@ public class YorumlarDAO extends DBConnection {
 
     }
 
-    public List<Yorumlar> getLoglarList() {
+    public List<Yorumlar> getYorumlarList() {
         List<Yorumlar> YorumlarList = new ArrayList<>();
 
         try {

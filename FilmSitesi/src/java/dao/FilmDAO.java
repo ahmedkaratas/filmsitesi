@@ -4,15 +4,14 @@
  */
 package dao;
 
-import util.DBConnection;
-import entity.Film;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import entity.Film;
-import entity.Kullanicilar;
+
 
 import util.DBConnection;
 
@@ -40,7 +39,7 @@ public class FilmDAO extends DBConnection {
         try {
 
             Statement st = this.getDb().createStatement();
-            String q = "delete from film  where id =" + f.getFilmid();
+            String q = "delete from film  where filmid =" + f.getFilmid();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -52,7 +51,7 @@ public class FilmDAO extends DBConnection {
         try {
 
             Statement st = this.getDb().createStatement();
-            String q = "update film set ad ='" + f.getAd() + "', tur='" + f.getTur() + "', vizyon='" + f.getVizyon() + "', sure='" + f.getSure() + "', ulke='" + f.getUlke() + "', puan='" + f.getPuan() + "', yassiniri='" + f.getYassiniri() + "', filmlinki='" + f.getFilmlinki() + "', aciklama='" + f.getAciklama() + "', gorsel='" + f.getGorsel() + "' where id =" + f.getFilmid();
+            String q = "update film set ad ='" + f.getAd() + "', tur='" + f.getTur() + "', vizyon='" + f.getVizyon() + "', sure='" + f.getSure() + "', ulke='" + f.getUlke() + "', puan='" + f.getPuan() + "', yassiniri='" + f.getYassiniri() + "', filmlinki='" + f.getFilmlinki() + "', aciklama='" + f.getAciklama() + "', gorsel='" + f.getGorsel() + "' where filmid =" + f.getFilmid();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -66,7 +65,7 @@ public class FilmDAO extends DBConnection {
         try {
 
             Statement st = this.getDb().createStatement();
-            String q = "select * from Film";
+            String q = "select * from film";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
                 FilmList.add(new Film(rs.getInt("Filmid"), rs.getString("ad"), rs.getString("tur"), rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getInt("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel")));

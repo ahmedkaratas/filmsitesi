@@ -9,6 +9,7 @@ import entity.Yorumlar;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -23,6 +24,7 @@ public class YorumlarBean implements Serializable {
     public YorumlarBean() {
     }
     public void create() {
+        this.entity.setTarih(new Date(System.currentTimeMillis()));
         this.getDao().createYorumlar(entity);
         this.entity = new Yorumlar();
     }

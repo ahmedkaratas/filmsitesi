@@ -29,7 +29,7 @@ public class YorumlarDAO extends DBConnection {
         try {
 
             Statement st = this.getDb().createStatement();
-            String q = "delete from yorumlar where id =" + y.getYorumid();
+            String q = "delete from yorumlar where yorumid =" + y.getYorumid();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -41,7 +41,7 @@ public class YorumlarDAO extends DBConnection {
         try {
 
             Statement st = this.getDb().createStatement();
-            String q = "update yorumlar set kullaniciid ='" + y.getKullaniciid() + "', filmid='" + y.getFilmid() + "', yorum='" + y.getYorum() + "', tarih='" + y.getTarih() + "'where id =" + y.getYorumid();
+            String q = "update yorumlar set kullaniciid ='" + y.getKullaniciid() + "', filmid='" + y.getFilmid() + "', yorum='" + y.getYorum() + "', tarih='" + y.getTarih() + "'where yorumid =" + y.getYorumid();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -58,7 +58,7 @@ public class YorumlarDAO extends DBConnection {
             String q = "select * from yorumlar";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
-                YorumlarList.add(new Yorumlar(rs.getInt("yorumid"),rs.getInt("kullaniciid"), rs.getInt("filmid"), rs.getString("yorum"),  rs.getString("tarih")));
+                YorumlarList.add(new Yorumlar(rs.getInt("yorumid"),rs.getInt("kullaniciid"), rs.getInt("filmid"), rs.getString("yorum"),  rs.getDate("tarih")));
 
             }
 

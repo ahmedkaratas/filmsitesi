@@ -7,7 +7,7 @@ import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named(value = "kullanicilarBean")
+@Named(value = "kategoriBean")
 @SessionScoped
 public class KategoriBean implements Serializable {
 

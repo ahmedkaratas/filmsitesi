@@ -1,6 +1,6 @@
 package dao;
 
-import entity.Kullanicilar;
+
 import entity.Loglar;
 import java.sql.Connection;
 import java.sql.ResultSet;

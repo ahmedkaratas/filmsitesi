@@ -22,7 +22,6 @@
                     kullanici adi: <h:inputText value="#{loglarBean.entity.kullaniciadi}" />
                     hareket: <h:inputText value="#{loglarBean.entity.hareket}" />
                     ip: <h:inputText value="#{loglarBean.entity.ip}" />
-                    tarih: <h:inputText value="#{loglarBean.entity.tarih}" />
                     <h:commandButton rendered="#{loglarBean.entity.id==0}" action="#{loglarBean.create()}" value="Kaydet" /><br/>
                     <h:commandButton rendered="#{loglarBean.entity.id!=0}" action="#{loglarBean.update()}" value="Değiştir" /><br/>
 

@@ -9,6 +9,7 @@ import entity.Loglar;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -25,6 +26,7 @@ public class LoglarBean implements Serializable {
         
     }
      public void create() {
+        this.entity.setTarih(new Date(System.currentTimeMillis()));
         this.getDao().createLoglar(entity);
         this.entity = new Loglar();
     }

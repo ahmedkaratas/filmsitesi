@@ -58,7 +58,7 @@ public class LoglarDAO extends DBConnection {
             String q = "select * from loglar";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
-                LoglarList.add(new Loglar(rs.getInt("id"), rs.getString("kullaniciadi"), rs.getString("hareket"), rs.getString("ip"), rs.getString("tarih")));
+                LoglarList.add(new Loglar(rs.getInt("id"), rs.getString("kullaniciadi"), rs.getString("hareket"), rs.getString("ip"), rs.getDate("tarih")));
 
             }
 

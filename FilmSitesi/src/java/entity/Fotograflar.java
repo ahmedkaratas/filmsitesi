@@ -47,7 +47,7 @@ public class Fotograflar {
         return linki;
     }
 
-    public void setLinki(String ad) {
+    public void setLinki(String linki) {
         this.linki = linki;
     }
     

@@ -1,21 +1,25 @@
 
 package entity;
 
+import java.util.Date;
+
 
 public class Yorumlar {
-     private int yorumid;
+    private int yorumid;
     private int kullaniciid;
     private int filmid;
     private String yorum;
-    private String tarih;
+    private Date tarih;
 
-    public Yorumlar(int yorumid, int kullaniciid, int filmid, String yorum, String tarih) {
+    public Yorumlar(int yorumid, int kullaniciid, int filmid, String yorum, Date tarih) {
         this.yorumid = yorumid;
         this.kullaniciid = kullaniciid;
         this.filmid = filmid;
         this.yorum = yorum;
         this.tarih = tarih;
     }
+
+  
 
     public Yorumlar() {
     }
@@ -53,17 +57,21 @@ public class Yorumlar {
         this.yorum = yorum;
     }
 
-    public String getTarih() {
+    public Date getTarih() {
         return tarih;
     }
 
-    public void setTarih(String tarih) {
+    public void setTarih(Date tarih) {
         this.tarih = tarih;
     }
 
     @Override
     public String toString() {
-        return "yorumlar{" + "yorumid=" + yorumid + ", kullaniciid=" + kullaniciid + ", filmid=" + filmid + ", yorum=" + yorum + ", tarih=" + tarih + '}';
+        return "Yorumlar{" + "yorumid=" + yorumid + ", kullaniciid=" + kullaniciid + ", filmid=" + filmid + ", yorum=" + yorum + ", tarih=" + tarih + '}';
     }
+
+    
+
+   
     
 }

@@ -6,7 +6,7 @@
     <h:head>
         <meta charset="utf-8"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-        <title>Fotoğraflar | Admin Paneli</title>
+        <title>Filmler | Admin Paneli</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></link>
     </h:head>
 
@@ -17,8 +17,6 @@
 
                 </div>
                 <h:form class="form-inline">
-
-
                     
                     Film adı: <h:inputText value="#{filmBean.entity.ad}" />
                     Tür : <h:inputText value="#{filmBean.entity.tur}" />
@@ -34,9 +32,21 @@
                     
                     <h:commandButton rendered="#{filmBean.entity.filmid==0}" action="#{filmBean.create()}" value="Kaydet" /><br/>
                     <h:commandButton rendered="#{filmBean.entity.filmid!=0}" action="#{filmBean.update()}" value="Değiştir" /><br/>
-
+                </h:form>
+                
+                <h:form>
+                    <div>
+                        <h:commandButton action="#{filmBean.previous()}" value="Previous"/>
+                        <h:commandButton action="#{filmBean.next()}" value="Next"/>
+                        <pre>Page #{filmBean.page} of #{filmBean.pageCount}</pre>
+                    </div>
 
                     <h:dataTable value="#{filmBean.list}" var="f">
+                        <h:column>
+                            <f:facet name="header">Film ID </f:facet>
+                                #{f.filmid}
+
+                        </h:column>
                         <h:column>
                             <f:facet name="header">AD </f:facet>
                                 #{f.ad}

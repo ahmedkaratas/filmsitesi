@@ -54,13 +54,15 @@ public class FilmDAO extends DBConnection {
 
     }
 
-    public List<Film> getFilmList() {
+    public List<Film> getFilmList(int page, int pageSize) {
         List<Film> FilmList = new ArrayList<>();
+        
+        int start = (page-1)*pageSize;
 
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "select * from film";
+            String q = "select * from film where filmid between '" + start + "' and 30 order by filmid asc";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
                 FilmList.add(new Film(rs.getInt("Filmid"), rs.getString("ad"), rs.getString("tur"), rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getInt("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel")));
@@ -72,6 +74,25 @@ public class FilmDAO extends DBConnection {
         }
 
         return FilmList;
+    }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select count(filmid) as film_count from film";
+            ResultSet rs = st.executeQuery(q);
+            rs.next();
+            count = rs.getInt("film_count");
+            
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
     }
 
     public Film findByID(int filmid) {

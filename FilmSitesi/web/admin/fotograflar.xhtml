@@ -26,8 +26,9 @@
                                 <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
                             </h:selectOneMenu></div>
                         <div class="field"><label>Linki</label><h:inputText value="#{fotograflarBean.entity.linki}" a:placeholder="Fotoğrafın linkini giriniz" /></div>
-                        <h:commandButton rendered="#{fotograflarBean.entity.id==0}" action="#{fotograflarBean.create()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Kaydet" /><br/>
-                        <h:commandButton rendered="#{fotograflarBean.entity.id!=0}" action="#{fotograflarBean.update()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Değiştir" /><br/>
+                        <h:commandButton rendered="#{fotograflarBean.entity.id==0}" action="#{fotograflarBean.create()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Kaydet" /><br/>
+                        <h:commandButton rendered="#{fotograflarBean.entity.id!=0}" action="#{fotograflarBean.update()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Değiştir" /><br/>
+                    <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
                     </div>
                 </h:form>
 
@@ -58,8 +59,8 @@
 
                         <h:column>
                             <f:facet name="header">İşlem</f:facet>
-                            <h:commandButton action="#{fotograflarBean.delete(k)}" class="ui red button" value="Sil" />
-                            <h:commandButton action="#{fotograflarBean.setEntity(k)}" class="ui button" value="Değiştir" />
+                            <h:commandButton action="#{fotograflarBean.delete(k)}" class="ui red button" value="SİL" style="padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px 7px 0px 0px;" />
+                            <h:commandButton action="#{fotograflarBean.setEntity(k)}" class="ui button" value="GÜNCELLE" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
 
                         </h:column>
 

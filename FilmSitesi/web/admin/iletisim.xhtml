@@ -22,14 +22,14 @@
                     <div class="two fields">
 
 
-                        <div class="field"><label>AD</label><h:inputText value="#{iletisimBean.entity.ad}" a:placeholder="Adınızı Giriniz" /></div>    
-                        <div class="field"><label>SoyAD</label><h:inputText value="#{iletisimBean.entity.soyad}" a:placeholder="Soyadınızı Giriniz" /></div>
+                        <div class="field"><label>Ad</label><h:inputText value="#{iletisimBean.entity.ad}" a:placeholder="Adınızı Giriniz" /></div>    
+                        <div class="field"><label>Soyad</label><h:inputText value="#{iletisimBean.entity.soyad}" a:placeholder="Soyadınızı Giriniz" /></div>
                         <div class="field"><label>E-Posta</label><h:inputText value="#{iletisimBean.entity.eposta}" a:placeholder="Mail Adresinizi Giriniz" /></div>
                         <div class="field"><label>Başlık</label><h:inputText value="#{iletisimBean.entity.baslik}" a:placeholder="Başlığı Giriniz" /></div>
                         <div class="field"><label>Mesaj</label><h:inputText value="#{iletisimBean.entity.mesaj}" a:placeholder="Mesajınızı Giriniz" /></div>
-                        <h:commandButton rendered="#{iletisimBean.entity.id==0}" action="#{iletisimBean.create()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Kaydet" /><br/>
-                        <h:commandButton rendered="#{iletisimBean.entity.id!=0}" action="#{iletisimBean.update()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Değiştir" /><br/>
-
+                        <h:commandButton rendered="#{iletisimBean.entity.id==0}" action="#{iletisimBean.create()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Kaydet" /><br/>
+                        <h:commandButton rendered="#{iletisimBean.entity.id!=0}" action="#{iletisimBean.update()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Değiştir" /><br/>
+                     <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
                     </div>
                 </h:form>
                 <h:form>
@@ -72,9 +72,9 @@
 
 
                         <h:column>
-                            <f:facet name="header">Sil/Değiştir</f:facet>
-                            <h:commandButton action="#{iletisimBean.delete(i)}" class="ui red button" value="Sil" />
-                            <h:commandButton action="#{iletisimBean.setEntity(i)}" class="ui button" value="Değiştir" />
+                            <f:facet name="header">İşlem</f:facet>
+                            <h:commandButton action="#{iletisimBean.delete(i)}" class="ui red button" value="SİL" style="padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px 7px 0px 0px;" />
+                            <h:commandButton action="#{iletisimBean.setEntity(i)}" class="ui button" value="GÜNCELLE" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
 
                         </h:column>
 

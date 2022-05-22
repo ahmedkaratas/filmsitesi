@@ -26,8 +26,9 @@
 
                         </h:selectOneMenu></div>
                         <div class="field"><label>Yorum</label><h:inputText value="#{yorumlarBean.entity.yorum}" a:placeholder="Yorum giriniz.."  /></div>
-                        <h:commandButton rendered="#{yorumlarBean.entity.yorumid==0}" action="#{yorumlarBean.create()}" class="ui blue button" value="Kaydet" style="background: #2266eb;height: 36px;margin-top: 24px;" /><br/>
-                        <h:commandButton rendered="#{yorumlarBean.entity.yorumid!=0}" action="#{yorumlarBean.update()}" class="ui blue button" value="Değiştir" style="background: #2266eb;height: 36px;margin-top: 24px;" /><br/>
+                        <h:commandButton rendered="#{yorumlarBean.entity.yorumid==0}" action="#{yorumlarBean.create()}" class="ui blue button" value="Kaydet" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" /><br/>
+                        <h:commandButton rendered="#{yorumlarBean.entity.yorumid!=0}" action="#{yorumlarBean.update()}" class="ui blue button" value="Değiştir" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" /><br/>
+                     <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
                     </div>
                 </h:form> 
                 <h:form>
@@ -65,8 +66,8 @@
 
                         <h:column>
                             <f:facet name="header">İşlem</f:facet>
-                            <h:commandButton action="#{yorumlarBean.delete(y)}" class="ui red button" value="Sil" />
-                            <h:commandButton action="#{yorumlarBean.setEntity(y)}" class="ui button"  value="Değiştir" />
+                            <h:commandButton action="#{yorumlarBean.delete(y)}" class="ui red button" value="SİL" style="padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px 7px 0px 0px;" />
+                            <h:commandButton action="#{yorumlarBean.setEntity(y)}" class="ui button"  value="GÜNCELLE" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
 
                         </h:column>
 

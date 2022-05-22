@@ -18,12 +18,12 @@ import java.util.ArrayList;
  */
 public class SssDAO extends DBConnection {
 
-    private Connection db;
+    
 
     public void createSss(Sss s) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "insert into sss (soru,cevap) values ('" + s.getSoru() + "','" + s.getCevap() + "')";
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -35,7 +35,7 @@ public class SssDAO extends DBConnection {
     public void deleteSss(Sss s) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "delete from sss where soruid =" + s.getSoruid();
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -47,7 +47,7 @@ public class SssDAO extends DBConnection {
     public void updateSss(Sss s) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "update sss set soru ='" + s.getSoru() + "', cevap='" + s.getCevap() + "' where soruid =" + s.getSoruid();
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class SssDAO extends DBConnection {
 
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "select * from sss";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
@@ -76,16 +76,6 @@ public class SssDAO extends DBConnection {
         return SssList;
     }
 
-    public Connection getDb() {
-        if (this.db == null) {
-            this.db = this.connect();
-        }
-
-        return db;
-    }
-
-    public void setDb(Connection db) {
-        this.db = db;
-    }
+    
 
 }

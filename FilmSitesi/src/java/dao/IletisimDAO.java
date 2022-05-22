@@ -18,12 +18,12 @@ import java.util.ArrayList;
  */
 public class IletisimDAO extends DBConnection {
 
-    private Connection db;
+    
 
     public void createIletisim(Iletisim i) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "insert into iletisim (ad,soyad,eposta,baslik,mesaj) values ('" + i.getAd() + "','" + i.getSoyad() + "','" + i.getEposta() + "','" + i.getBaslik() + "','" + i.getMesaj() + "')";
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -35,7 +35,7 @@ public class IletisimDAO extends DBConnection {
     public void deleteIletisim(Iletisim i) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "delete from iletisim where id =" + i.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -47,7 +47,7 @@ public class IletisimDAO extends DBConnection {
     public void updateIletisim(Iletisim i) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "update iletisim set ad='" + i.getAd() + "', soyad='" + i.getSoyad() + "', eposta='" + i.getEposta() + "', baslik='" + i.getBaslik() + "' where id =" + i.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class IletisimDAO extends DBConnection {
 
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "select * from iletisim";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
@@ -76,17 +76,6 @@ public class IletisimDAO extends DBConnection {
         return IletisimList;
     }
 
-    public Connection getDb() {
-
-        if (this.db == null) {
-            this.db = this.connect();
-        }
-
-        return db;
-    }
-
-    public void setDb(Connection db) {
-        this.db = db;
-    }
+    
 
 }

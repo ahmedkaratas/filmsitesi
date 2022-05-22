@@ -10,12 +10,12 @@ import java.util.ArrayList;
 
 public class FilmKategoriDAO extends DBConnection {
 
-    private Connection db;
+   
 
     public void createFilmKategori(FilmKategori k) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "insert into filmkategori (kategoriid) values ('" + k.getKategoriid() + "')";
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -27,7 +27,7 @@ public class FilmKategoriDAO extends DBConnection {
     public void deleteFilmKategori(FilmKategori k) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "delete from filmkategori where filmid =" + k.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -39,7 +39,7 @@ public class FilmKategoriDAO extends DBConnection {
     public void updateKategori(FilmKategori k) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "update filmkategori set kategoriid ='" + k.getKategoriid() +  "' where filmid =" + k.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -53,7 +53,7 @@ public class FilmKategoriDAO extends DBConnection {
 
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "select * from filmkategori";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
@@ -68,17 +68,6 @@ public class FilmKategoriDAO extends DBConnection {
         return FilmKategoriList;
     }
 
-    public Connection getDb() {
-
-        if (this.db == null) {
-            this.db = this.connect();
-        }
-
-        return db;
-    }
-
-    public void setDb(Connection db) {
-        this.db = db;
-    }
+    
 
 }

@@ -11,12 +11,12 @@ import util.DBConnection;
 
 public class LoglarDAO extends DBConnection {
 
-    private Connection db;
+    
 
     public void createLoglar(Loglar l) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "insert into loglar (kullaniciadi,hareket,ip,tarih) values ('" + l.getKullaniciadi() + "','" + l.getHareket() + "','" + l.getIp() + "','" + l.getTarih() + "')";
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -28,7 +28,7 @@ public class LoglarDAO extends DBConnection {
     public void deleteLoglar(Loglar l) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "delete from loglar where id =" + l.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class LoglarDAO extends DBConnection {
     public void updateLoglar(Loglar l) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "update loglar set kullaniciadi ='" + l.getKullaniciadi() + "', hareket='" + l.getHareket() + "', ip='" + l.getIp() + "', tarih='" + l.getTarih() + "'where id =" + l.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -54,7 +54,7 @@ public class LoglarDAO extends DBConnection {
 
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "select * from loglar";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
@@ -69,17 +69,6 @@ public class LoglarDAO extends DBConnection {
         return LoglarList;
     }
 
-    public Connection getDb() {
-
-        if (this.db == null) {
-            this.db = this.connect();
-        }
-
-        return db;
-    }
-
-    public void setDb(Connection db) {
-        this.db = db;
-    }
+    
 
 }

@@ -1,5 +1,6 @@
 package dao;
 
+import entity.Film;
 import entity.Fotograflar;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -10,13 +11,15 @@ import java.util.ArrayList;
 
 public class FotograflarDAO extends DBConnection {
 
-    private Connection db;
+    
+
+    private FilmDAO filmDao;
 
     public void createFotograflar(Fotograflar k) {
         try {
 
-            Statement st = this.getDb().createStatement();
-            String q = "insert into fotograflar (filmid,linki) values ('" + k.getFilmid() + "','" + k.getLinki() + "')";
+            Statement st = this.getConnection().createStatement();
+            String q = "insert into fotograflar (filmid,linki) values ('" + k.getFilm_id().getFilmid() + "','" + k.getLinki() + "')";
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -27,20 +30,20 @@ public class FotograflarDAO extends DBConnection {
     public void deleteFotograflar(Fotograflar k) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "delete from fotograflar where id =" + k.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
     }
 
     public void updateFotograflar(Fotograflar k) {
         try {
 
-            Statement st = this.getDb().createStatement();
-            String q = "update fotograflar set filmid ='" + k.getFilmid() + "', linki='" + k.getLinki() +  "' where id =" + k.getId();
+            Statement st = this.getConnection().createStatement();
+            String q = "update fotograflar set filmid ='" + k.getFilm_id().getFilmid() + "', linki='" + k.getLinki() + "' where id =" + k.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -53,11 +56,12 @@ public class FotograflarDAO extends DBConnection {
 
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "select * from fotograflar";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
-                FotograflarList.add(new Fotograflar(rs.getInt("id"), rs.getInt("filmid"), rs.getString("linki")));
+                Film f = this.getFilmDao().findByID(rs.getInt("filmid"));
+                FotograflarList.add(new Fotograflar(rs.getInt("id"),f, rs.getString("linki")));
 
             }
 
@@ -68,17 +72,17 @@ public class FotograflarDAO extends DBConnection {
         return FotograflarList;
     }
 
-    public Connection getDb() {
-
-        if (this.db == null) {
-            this.db = this.connect();
+    public FilmDAO getFilmDao() {
+        if (filmDao == null) {
+            this.filmDao = new FilmDAO();
         }
-
-        return db;
+        return filmDao;
     }
 
-    public void setDb(Connection db) {
-        this.db = db;
+    public void setFilmDao(FilmDAO filmDao) {
+        this.filmDao = filmDao;
     }
+
+    
 
 }

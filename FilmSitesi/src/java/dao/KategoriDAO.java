@@ -10,12 +10,12 @@ import java.util.ArrayList;
 
 public class KategoriDAO extends DBConnection {
 
-    private Connection db;
+    
 
     public void createKategori(Kategori k) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "insert into kategori (adi) values ('" + k.getAdi() + "')";
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -27,7 +27,7 @@ public class KategoriDAO extends DBConnection {
     public void deleteKategori(Kategori k) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "delete from kategori where id =" + k.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -39,7 +39,7 @@ public class KategoriDAO extends DBConnection {
     public void updateKategori(Kategori k) {
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "update kategori set adi ='" + k.getAdi() +  "' where id =" + k.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
@@ -53,7 +53,7 @@ public class KategoriDAO extends DBConnection {
 
         try {
 
-            Statement st = this.getDb().createStatement();
+            Statement st = this.getConnection().createStatement();
             String q = "select * from kategori";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
@@ -68,17 +68,6 @@ public class KategoriDAO extends DBConnection {
         return KategoriList;
     }
 
-    public Connection getDb() {
-
-        if (this.db == null) {
-            this.db = this.connect();
-        }
-
-        return db;
-    }
-
-    public void setDb(Connection db) {
-        this.db = db;
-    }
+    
 
 }

@@ -1,9 +1,11 @@
 package controller;
 
+import Validator.ValidatorBean;
 import dao.KullanicilarDAO;
 import entity.Kullanicilar;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,10 +15,13 @@ public class KullanicilarBean implements Serializable {
 
     private Kullanicilar entity;
     private KullanicilarDAO dao;
+    private ValidatorBean vb;
     private List<Kullanicilar> list;
 
     public KullanicilarBean() {
     }
+
+    
 
     public void create() {
         this.getDao().createKullanicilar(entity);
@@ -26,7 +31,7 @@ public class KullanicilarBean implements Serializable {
     public void update() {
         this.getDao().updateKullanicilar(entity);
         this.entity = new Kullanicilar();
-        
+
     }
 
     public void delete(Kullanicilar k) {
@@ -38,6 +43,17 @@ public class KullanicilarBean implements Serializable {
             this.entity = new Kullanicilar();
         }
         return entity;
+    }
+
+    public ValidatorBean getVb() {
+         if (this.vb == null) {
+            this.vb = new ValidatorBean();
+        }
+        return vb;
+    }
+
+    public void setVb(ValidatorBean vb) {
+        this.vb = vb;
     }
 
     public void setEntity(Kullanicilar entity) {

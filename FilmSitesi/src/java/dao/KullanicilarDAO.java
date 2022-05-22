@@ -48,13 +48,15 @@ public class KullanicilarDAO extends DBConnection {
 
     }
 
-    public List<Kullanicilar> getKullanicilarList() {
+    public List<Kullanicilar> getKullanicilarList(int page, int pageSize) {
         List<Kullanicilar> KullanicilarList = new ArrayList<>();
+        
+        int start = (page-1)*pageSize;
 
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "select * from kullanicilar";
+            String q = "select * from kullanicilar order by id asc limit '" + pageSize + "' offset '" + start + "'";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
                 KullanicilarList.add(new Kullanicilar(rs.getInt("id"), rs.getString("kullaniciadi"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("sifre")));
@@ -66,6 +68,25 @@ public class KullanicilarDAO extends DBConnection {
         }
 
         return KullanicilarList;
+    }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select count(id) as kullanici_count from kullanicilar";
+            ResultSet rs = st.executeQuery(q);
+            rs.next();
+            count = rs.getInt("kullanici_count");
+            
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
     }
 
     

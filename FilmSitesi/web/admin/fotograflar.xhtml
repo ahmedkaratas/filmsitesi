@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" lang="tr"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
     <h:head>
         <meta charset="utf-8"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <title>Fotograflar</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></link>
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"/>
+        <script src="../assets/js/semantic-ui-react.min.js"></script>
+        <link rel="stylesheet" href="../assets/css/admincp.css"/>
     </h:head>
 
     <h:body>
@@ -17,61 +18,48 @@
                 <div class="intro">
 
                 </div>
+
+                <h:form class="ui form">
+                    <div class="two fields">
+                        <div class="field"><label>Film</label>
+                            <h:selectOneMenu value="#{fotograflarBean.entity.film_id}" converter="filmConverter">
+                                <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
+                            </h:selectOneMenu></div>
+                        <div class="field"><label>Linki</label><h:inputText value="#{fotograflarBean.entity.linki}" a:placeholder="Fotoğrafın linkini giriniz" /></div>
+                        <h:commandButton rendered="#{fotograflarBean.entity.id==0}" action="#{fotograflarBean.create()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Kaydet" /><br/>
+                        <h:commandButton rendered="#{fotograflarBean.entity.id!=0}" action="#{fotograflarBean.update()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Değiştir" /><br/>
+                    </div>
+                </h:form>
+
                 <h:form>
-                    <h:commandButton action="/deneme" value="Home" />
-
-                </h:form>
-                <hr/>
-
-                <h:form class="form-inline">
-                    Film:
-                    <h:selectOneMenu value="#{fotograflarBean.entity.film_id}" converter="filmConverter">
-                        <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
-
-                    </h:selectOneMenu>
-
-
-
-
-                    linki: <h:inputText value="#{fotograflarBean.entity.linki}" />
-
-                    <h:commandButton rendered="#{fotograflarBean.entity.id==0}" action="#{fotograflarBean.create()}" value="Kaydet" /><br/>
-                    <h:commandButton rendered="#{fotograflarBean.entity.id!=0}" action="#{fotograflarBean.update()}" value="Değiştir" /><br/>
-
-
-
-
-
-
-                </h:form>
-
-                <h:form >
-
-
-
-                    <h:dataTable value="#{fotograflarBean.list}" var="k">
+                    <div>
+                        <h:commandButton action="#{fotograflarBean.previous()}" value="" style="background: url(../assets/svg/left.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;"/>
+                        <h:commandButton action="#{fotograflarBean.next()}" value="" style="background: url(../assets/svg/right.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;margin-left: 20px;"/>
+                        <pre>Sayfa #{fotograflarBean.page} / #{fotograflarBean.pageCount}</pre>
+                    </div>
+                    <h:dataTable value="#{fotograflarBean.list}" class="ui celled table"  var="k">
                         <h:column>
-                            <f:facet name="header">ID </f:facet>
+                            <f:facet name="header">ID</f:facet>
                                 #{k.id}
 
                         </h:column>
-                        
+
                         <h:column>
-                            <f:facet name="header">ID </f:facet>
+                            <f:facet name="header">Film Adı </f:facet>
                                 #{k.film_id.ad}
 
                         </h:column>
 
                         <h:column>
-                            <f:facet name="header"> Linki </f:facet>
+                            <f:facet name="header">Link</f:facet>
                                 #{k.linki}
 
                         </h:column>
 
                         <h:column>
-                            <f:facet name="header">Sil/Değiştir</f:facet>
-                            <h:commandButton action="#{fotograflarBean.delete(k)}" value="Sil" />
-                            <h:commandButton action="#{fotograflarBean.setEntity(k)}" value="Değiştir" />
+                            <f:facet name="header">İşlem</f:facet>
+                            <h:commandButton action="#{fotograflarBean.delete(k)}" class="ui red button" value="Sil" />
+                            <h:commandButton action="#{fotograflarBean.setEntity(k)}" class="ui button" value="Değiştir" />
 
                         </h:column>
 

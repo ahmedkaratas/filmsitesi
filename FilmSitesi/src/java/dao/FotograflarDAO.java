@@ -51,13 +51,15 @@ public class FotograflarDAO extends DBConnection {
 
     }
 
-    public List<Fotograflar> getFotograflarList() {
+    public List<Fotograflar> getFotograflarList(int page, int pageSize) {
         List<Fotograflar> FotograflarList = new ArrayList<>();
+        
+        int start = (page-1)*pageSize;
 
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "select * from fotograflar";
+            String q = "select * from fotograflar order by id asc limit '" + pageSize + "' offset '" + start + "'";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
                 Film f = this.getFilmDao().findByID(rs.getInt("filmid"));
@@ -70,6 +72,25 @@ public class FotograflarDAO extends DBConnection {
         }
 
         return FotograflarList;
+    }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select count(id) as fotograf_count from fotograflar";
+            ResultSet rs = st.executeQuery(q);
+            rs.next();
+            count = rs.getInt("fotograf_count");
+            
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
     }
 
     public FilmDAO getFilmDao() {

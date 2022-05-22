@@ -6,15 +6,15 @@ import java.sql.Date;
 
 public class Yorumlar {
     private int yorumid;
+    private Film filmid;
     private int kullaniciid;
-    private int filmid;
     private String yorum;
     private Date tarih;
 
-    public Yorumlar(int yorumid, int kullaniciid, int filmid, String yorum, Date tarih) {
+    public Yorumlar(int yorumid, int kullaniciid, Film filmid, String yorum, Date tarih) {
         this.yorumid = yorumid;
-        this.kullaniciid = kullaniciid;
         this.filmid = filmid;
+        this.kullaniciid = kullaniciid;
         this.yorum = yorum;
         this.tarih = tarih;
     }
@@ -23,8 +23,7 @@ public class Yorumlar {
 
     public Yorumlar() {
     }
-    
-    
+
     public int getYorumid() {
         return yorumid;
     }
@@ -41,11 +40,11 @@ public class Yorumlar {
         this.kullaniciid = kullaniciid;
     }
 
-    public int getFilmid() {
+    public Film getFilmid() {
         return filmid;
     }
 
-    public void setFilmid(int filmid) {
+    public void setFilmid(Film filmid) {
         this.filmid = filmid;
     }
 

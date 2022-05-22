@@ -20,10 +20,10 @@
                 </div>
                 <h:form class="ui form">
                     <div class="two fields">
-                    <h:inputText value="#{sssBean.entity.soru}" a:placeholder="Soru" style="border-radius:100px;margin: 7px 2px;max-height: 36px;margin-left: 8px;" />
-                    <h:inputText value="#{sssBean.entity.cevap}" a:placeholder="Cevap" style="border-radius:100px;max-height: 36px;margin: 7px 2px;" />
-                    <h:commandButton rendered="#{sssBean.entity.soruid==0}" action="#{sssBean.create()}" class="ui blue button" style="background: #2266eb;" value="Kaydet" /><br/>
-                    <h:commandButton rendered="#{sssBean.entity.soruid!=0}" action="#{sssBean.update()}" class="ui blue button" style="background: #2266eb;" value="Değiştir" /><br/>
+                        <div class="field"><label>Soru</label><h:inputText value="#{sssBean.entity.soru}" a:placeholder="Bir soru giriniz.." /></div>
+                        <div class="field"><label>Cevap</label><h:inputText value="#{sssBean.entity.cevap}" a:placeholder="Sorunun cevabını giriniz.." /></div>
+                    <h:commandButton rendered="#{sssBean.entity.soruid==0}" action="#{sssBean.create()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Kaydet" /><br/>
+                    <h:commandButton rendered="#{sssBean.entity.soruid!=0}" action="#{sssBean.update()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Değiştir" /><br/>
                     </div>
 
                     <h:dataTable value="#{sssBean.list}" class="ui celled table" var="s">

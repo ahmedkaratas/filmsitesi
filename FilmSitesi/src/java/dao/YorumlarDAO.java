@@ -1,6 +1,6 @@
 package dao;
 
-
+import entity.Film;
 import entity.Yorumlar;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,12 +12,13 @@ import util.DBConnection;
 public class YorumlarDAO extends DBConnection {
 
     
+    private FilmDAO filmDao;
 
     public void createYorumlar(Yorumlar y) {
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "insert into yorumlar (kullaniciid,filmid,yorum,tarih) values ('" + y.getKullaniciid() + "','" + y.getFilmid() + "','" + y.getYorum() + "','" + y.getTarih() + "')";
+            String q = "insert into yorumlar (kullaniciid,filmid,yorum,tarih) values ('" + y.getKullaniciid() + "','" + y.getFilmid().getFilmid() + "','" + y.getYorum() + "','" + y.getTarih() + "')";
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -41,7 +42,7 @@ public class YorumlarDAO extends DBConnection {
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "update yorumlar set kullaniciid ='" + y.getKullaniciid() + "', filmid='" + y.getFilmid() + "', yorum='" + y.getYorum() + "', tarih='" + y.getTarih() + "'where yorumid =" + y.getYorumid();
+            String q = "update yorumlar set kullaniciid ='" + y.getKullaniciid() + "', filmid='" + y.getFilmid().getFilmid() + "', yorum='" + y.getYorum() + "', tarih='" + y.getTarih() + "'where yorumid =" + y.getYorumid();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -58,7 +59,8 @@ public class YorumlarDAO extends DBConnection {
             String q = "select * from yorumlar";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
-                YorumlarList.add(new Yorumlar(rs.getInt("yorumid"),rs.getInt("kullaniciid"), rs.getInt("filmid"), rs.getString("yorum"),  rs.getDate("tarih")));
+                Film f = this.getFilmDao().findByID(rs.getInt("filmid"));
+                YorumlarList.add(new Yorumlar(rs.getInt("yorumid"),rs.getInt("kullaniciid"),f, rs.getString("yorum"),  rs.getDate("tarih")));
 
             }
 
@@ -69,6 +71,16 @@ public class YorumlarDAO extends DBConnection {
         return YorumlarList;
     }
 
+      public FilmDAO getFilmDao() {
+        if (filmDao == null) {
+            this.filmDao = new FilmDAO();
+        }
+        return filmDao;
+    }
+
+    public void setFilmDao(FilmDAO filmDao) {
+        this.filmDao = filmDao;
+    }
     
 
 }

@@ -31,6 +31,11 @@
                     </div>
                 </h:form> 
                 <h:form>
+                    <div>
+                        <h:commandButton action="#{yorumlarBean.previous()}" value="" style="background: url(../assets/svg/left.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;"/>
+                        <h:commandButton action="#{yorumlarBean.next()}" value="" style="background: url(../assets/svg/right.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;margin-left: 20px;"/>
+                        <pre>Sayfa #{yorumlarBean.page} / #{yorumlarBean.pageCount}</pre>
+                    </div>
                     <h:dataTable value="#{yorumlarBean.list}" class="ui celled table" var="y">
                         <h:column>
                             <f:facet name="header">ID </f:facet>

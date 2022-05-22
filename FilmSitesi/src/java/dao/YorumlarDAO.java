@@ -50,13 +50,15 @@ public class YorumlarDAO extends DBConnection {
 
     }
 
-    public List<Yorumlar> getYorumlarList() {
+    public List<Yorumlar> getYorumlarList(int page, int pageSize) {
         List<Yorumlar> YorumlarList = new ArrayList<>();
+        
+        int start = (page-1)*pageSize;
 
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "select * from yorumlar";
+            String q = "select * from yorumlar order by yorumid asc limit '" + pageSize + "' offset '" + start + "'";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
                 Film f = this.getFilmDao().findByID(rs.getInt("filmid"));
@@ -69,6 +71,25 @@ public class YorumlarDAO extends DBConnection {
         }
 
         return YorumlarList;
+    }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select count(yorumid) as yorum_count from yorumlar";
+            ResultSet rs = st.executeQuery(q);
+            rs.next();
+            count = rs.getInt("yorum_count");
+            
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
     }
 
       public FilmDAO getFilmDao() {

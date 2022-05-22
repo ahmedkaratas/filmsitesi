@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <title>Admin Paneli</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"/>
-        <script src="https://cdn.jsdelivr.net/npm/semantic-ui-react/dist/umd/semantic-ui-react.min.js"></script>
+        <script src="../assets/js/semantic-ui-react.min.js"></script>
         <link rel="stylesheet" href="../assets/css/admincp.css"/>
         <script src="../assets/js/lottie-player.js"></script>
     </h:head>
@@ -18,9 +18,39 @@
         <lottie-player src="../assets/json/9573-analytics.json" background="transparent" style="margin-top: -30px;margin-bottom: -60px;height: 500px;" speed="1" loop="" autoplay=""></lottie-player>
         <div class="center" style="margin-top: 50px;font-size: 25px;font-weight:600;"><p>Yönetici Paneli</p></div>
         <p class="center">Ekleme, silme veya düzenleme yapmak istediğiniz alanı seçiniz..</p>
-        <div class="center"><a href="./filmler.admin" target="yonetimekrani" class="ui button">Filmler</a><a href="./fotograflar.admin" target="yonetimekrani" class="ui button">Fotoğraflar</a><a href="./iletisim.admin" target="yonetimekrani" class="ui button">İletişim</a><a href="./kategori.admin" target="yonetimekrani" class="ui button">Kategoriler</a><a href="./kullanicilar.admin" target="yonetimekrani" class="ui button">Kullanıcılar</a><a href="./loglar.admin" target="yonetimekrani" class="ui button">Loglar</a><a href="./sss.admin" target="yonetimekrani" class="ui button">Sıkça Sorulan Sorular</a><a href="./yorumlar.admin" target="yonetimekrani" class="ui button">Yorumlar</a></div>
-        <div class="center" style="margin-top: 20px;">© 2022 Film Sitesi | Tüm Hakları Saklıdır.</div>
-        <iframe name="yonetimekrani" title="Admin Paneli" style="width: 100%;border: 0px;min-height:100%;">
+       <div class="ui secondary pointing menu" id="menu" style="font-family: montserrat;margin: auto;width: 60%;margin-bottom: 15px;margin-top:10px;">
+  <a href="./filmler.admin" target="yonetimekrani" class="item">
+    Filmler
+  </a>
+  <a href="./fotograflar.admin" target="yonetimekrani" class="item">
+    Fotoğraflar
+  </a>
+  <a href="./iletisim.admin" target="yonetimekrani" class="item">
+    İletişim
+  </a>
+  <a href="./kategori.admin" target="yonetimekrani" class="item">
+    Kategoriler
+  </a>
+  <a href="./kullanicilar.admin" target="yonetimekrani" class="item">
+    Kullanıcılar
+  </a>
+  <a href="./loglar.admin" target="yonetimekrani" class="item">
+    Loglar
+  </a>
+  <a href="./sss.admin" target="yonetimekrani" class="item">
+    Sıkça Sorulan Sorular
+  </a>
+  <a href="./yorumlar.admin" target="yonetimekrani" class="item">
+    Yorumlar
+  </a>
+  <div class="right menu">
+    <a class="ui item active">
+      Logout
+    </a>
+  </div>
+</div>
+        <iframe name="yonetimekrani" title="Admin Paneli" style="border: 0px;min-height:110%;margin: auto;width: 60%;display: block;">
         </iframe>
+        <script src="../assets/js/menu.js"></script>
     </h:body>
 </html>

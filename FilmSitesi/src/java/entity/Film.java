@@ -1,8 +1,7 @@
-
 package entity;
 
-
 public class Film {
+
     private int filmid;
     private String ad;
     private String tur;
@@ -31,11 +30,6 @@ public class Film {
         this.aciklama = aciklama;
         this.gorsel = gorsel;
     }
-    
-    public Film(String ad) {
-        this.ad = ad;
-    }
-  
 
     public int getFilmid() {
         return filmid;
@@ -129,7 +123,27 @@ public class Film {
     public String toString() {
         return "Film{" + "filmid=" + filmid + ", ad=" + ad + ", tur=" + tur + ", vizyon=" + vizyon + ", sure=" + sure + ", ulke=" + ulke + ", puan=" + puan + ", yassiniri=" + yassiniri + ", filmlinki=" + filmlinki + ", aciklama=" + aciklama + ", gorsel=" + gorsel + '}';
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + this.filmid;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Film other = (Film) obj;
+        return this.filmid == other.filmid;
+    }
 
 }

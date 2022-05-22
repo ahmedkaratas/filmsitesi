@@ -7,25 +7,21 @@ package entity;
 public class Fotograflar {
 
     private int id;
-    private int filmid;
+    private Film film_id;
     private String linki;
 
     public Fotograflar() {
     }
 
-    
-
-    public Fotograflar(int id, int filmid,  String linki ) {
+    public Fotograflar(int id, Film film_id, String linki) {
         this.id = id;
-        this.filmid = filmid;
+        this.film_id = film_id;
         this.linki = linki;
-
     }
 
     public Fotograflar(String linki) {
         this.linki = linki;
     }
-  
 
     public int getId() {
         return id;
@@ -35,12 +31,12 @@ public class Fotograflar {
         this.id = id;
     }
 
-    public int getFilmid() {
-        return filmid;
+    public Film getFilm_id() {
+        return film_id;
     }
 
-    public void setFilmid(int filmid) {
-        this.filmid = filmid;
+    public void setFilm_id(Film film_id) {
+        this.film_id = film_id;
     }
 
     public String getLinki() {
@@ -50,12 +46,10 @@ public class Fotograflar {
     public void setLinki(String linki) {
         this.linki = linki;
     }
-    
 
     @Override
     public String toString() {
-        return "Fotograflar{" + "id=" + id + ", filmid=" + filmid + ", linki=" + linki + '}';
+        return "Fotograflar{" + "id=" + id + ", filmid=" + film_id + ", linki=" + linki + '}';
     }
-
 
 }

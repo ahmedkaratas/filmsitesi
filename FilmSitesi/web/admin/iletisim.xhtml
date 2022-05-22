@@ -1,13 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" lang="tr"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
     <h:head>
         <meta charset="utf-8"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <title>İletişim | Admin Paneli</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"/>
+        <script src="../assets/js/semantic-ui-react.min.js"></script>
+        <link rel="stylesheet" href="../assets/css/admincp.css"/>
     </h:head>
 
     <h:body>
@@ -16,19 +18,27 @@
                 <div class="intro">
 
                 </div>
-                <h:form class="form-inline">
+                <h:form class="ui form">
+                    <div class="two fields">
 
 
-                    ad: <h:inputText value="#{iletisimBean.entity.ad}" />
-                    soyad: <h:inputText value="#{iletisimBean.entity.soyad}" />
-                    eposta: <h:inputText value="#{iletisimBean.entity.eposta}" />
-                    baslik: <h:inputText value="#{iletisimBean.entity.baslik}" />
-                    mesaj: <h:inputText value="#{iletisimBean.entity.mesaj}" />
-                    <h:commandButton rendered="#{iletisimBean.entity.id==0}" action="#{iletisimBean.create()}" value="Kaydet" /><br/>
-                    <h:commandButton rendered="#{iletisimBean.entity.id!=0}" action="#{iletisimBean.update()}" value="Değiştir" /><br/>
+                        <div class="field"><label>AD</label><h:inputText value="#{iletisimBean.entity.ad}" a:placeholder="Adınızı Giriniz" /></div>    
+                        <div class="field"><label>SoyAD</label><h:inputText value="#{iletisimBean.entity.soyad}" a:placeholder="Soyadınızı Giriniz" /></div>
+                        <div class="field"><label>E-Posta</label><h:inputText value="#{iletisimBean.entity.eposta}" a:placeholder="Mail Adresinizi Giriniz" /></div>
+                        <div class="field"><label>Başlık</label><h:inputText value="#{iletisimBean.entity.baslik}" a:placeholder="Başlığı Giriniz" /></div>
+                        <div class="field"><label>Mesaj</label><h:inputText value="#{iletisimBean.entity.mesaj}" a:placeholder="Mesajınızı Giriniz" /></div>
+                        <h:commandButton rendered="#{iletisimBean.entity.id==0}" action="#{iletisimBean.create()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Kaydet" /><br/>
+                        <h:commandButton rendered="#{iletisimBean.entity.id!=0}" action="#{iletisimBean.update()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Değiştir" /><br/>
 
-
-                    <h:dataTable value="#{iletisimBean.list}" var="i">
+                    </div>
+                </h:form>
+                <h:form>
+                    <div>
+                        <h:commandButton action="#{iletisimBean.previous()}" value="" style="background: url(../assets/svg/left.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;"/>
+                        <h:commandButton action="#{iletisimBean.next()}" value="" style="background: url(../assets/svg/right.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;margin-left: 20px;"/>
+                        <pre>Sayfa #{iletisimBean.page} / #{iletisimBean.pageCount}</pre>
+                    </div>
+                    <h:dataTable value="#{iletisimBean.list}" class="ui celled table" var="i">
                         <h:column>
                             <f:facet name="header">ID </f:facet>
                                 #{i.id}
@@ -59,12 +69,12 @@
                                 #{i.mesaj}
 
                         </h:column>
-                        
-                        
+
+
                         <h:column>
                             <f:facet name="header">Sil/Değiştir</f:facet>
-                            <h:commandButton action="#{iletisimBean.delete(i)}" value="Sil" />
-                            <h:commandButton action="#{iletisimBean.setEntity(i)}" value="Değiştir" />
+                            <h:commandButton action="#{iletisimBean.delete(i)}" class="ui red button" value="Sil" />
+                            <h:commandButton action="#{iletisimBean.setEntity(i)}" class="ui button" value="Değiştir" />
 
                         </h:column>
 

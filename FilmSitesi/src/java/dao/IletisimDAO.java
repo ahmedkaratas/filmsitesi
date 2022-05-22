@@ -18,8 +18,6 @@ import java.util.ArrayList;
  */
 public class IletisimDAO extends DBConnection {
 
-    
-
     public void createIletisim(Iletisim i) {
         try {
 
@@ -56,16 +54,18 @@ public class IletisimDAO extends DBConnection {
 
     }
 
-    public List<Iletisim> getIletisimList() {
+    public List<Iletisim> getIletisimList(int page, int pageSize) {
         List<Iletisim> IletisimList = new ArrayList<>();
+
+        int start = (page - 1) * pageSize;
 
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "select * from iletisim";
+            String q = "select * from iletisim order by id asc limit '" + pageSize + "' offset '" + start + "'";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
-                IletisimList.add(new Iletisim(rs.getInt("id"),rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("baslik"),rs.getString("mesaj")));
+                IletisimList.add(new Iletisim(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("baslik"), rs.getString("mesaj")));
 
             }
 
@@ -76,6 +76,22 @@ public class IletisimDAO extends DBConnection {
         return IletisimList;
     }
 
-    
+    public int count() {
+        int count = 0;
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select count(id) as id_count from iletisim";
+            ResultSet rs = st.executeQuery(q);
+            rs.next();
+            count = rs.getInt("id_count");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+    }
 
 }

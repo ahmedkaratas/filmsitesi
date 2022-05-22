@@ -1,6 +1,5 @@
 package dao;
 
-
 import entity.Loglar;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,8 +9,6 @@ import java.util.List;
 import util.DBConnection;
 
 public class LoglarDAO extends DBConnection {
-
-    
 
     public void createLoglar(Loglar l) {
         try {
@@ -49,13 +46,15 @@ public class LoglarDAO extends DBConnection {
 
     }
 
-    public List<Loglar> getLoglarList() {
+    public List<Loglar> getLoglarList(int page, int pageSize) {
         List<Loglar> LoglarList = new ArrayList<>();
 
         try {
+            
+            int start = (page-1)*pageSize;
 
             Statement st = this.getConnection().createStatement();
-            String q = "select * from loglar";
+            String q = "select * from loglar order by id asc limit '" + pageSize + "' offset '" + start + "'";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
                 LoglarList.add(new Loglar(rs.getInt("id"), rs.getString("kullaniciadi"), rs.getString("hareket"), rs.getString("ip"), rs.getDate("tarih")));
@@ -69,6 +68,22 @@ public class LoglarDAO extends DBConnection {
         return LoglarList;
     }
 
-    
+    public int count() {
+        int count = 0;
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select count(id) as log_count from loglar";
+            ResultSet rs = st.executeQuery(q);
+            rs.next();
+            count = rs.getInt("log_count");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+    }
 
 }

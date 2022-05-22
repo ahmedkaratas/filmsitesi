@@ -14,9 +14,10 @@
     </h:head>
 
     <h:body>
-        <script src="like_button.js"></script>
-        <lottie-player src="../assets/json/9573-analytics.json" background="transparent" style="margin-top: -30px;margin-bottom: -60px;height: 500px;" speed="1" loop="" autoplay=""></lottie-player>
-        <div class="center" style="margin-top: 50px;font-size: 25px;font-weight:600;"><p>Yönetici Paneli</p></div>
+        <div class="tintro" id="tintro"><div class="txt turcoflixintro" contenteditable="true">
+  TURCOFLIX
+</div></div>
+        <div class="center" style="margin-top: 50px;font-size: 25px;font-weight:600;"><img src="../assets/logo.svg" style="height: 40px;margin-bottom: 50px;user-select:none;" draggable="false" oncontextmenu="return false"></img><p>Yönetici Paneli</p></div>
         <p class="center">Ekleme, silme veya düzenleme yapmak istediğiniz alanı seçiniz..</p>
        <div class="ui secondary pointing menu" id="menu" style="font-family: montserrat;margin: auto;width: 60%;margin-bottom: 15px;margin-top:10px;">
   <a href="./filmler.admin" target="yonetimekrani" class="item">
@@ -49,8 +50,9 @@
     </a>
   </div>
 </div>
-        <iframe name="yonetimekrani" title="Admin Paneli" style="border: 0px;min-height:110%;margin: auto;width: 60%;display: block;">
+        <iframe name="yonetimekrani" title="Admin Paneli" style="border: 0px;min-height:185%;margin: auto;width: 60%;display: block;">
         </iframe>
         <script src="../assets/js/menu.js"></script>
+        <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
     </h:body>
 </html>

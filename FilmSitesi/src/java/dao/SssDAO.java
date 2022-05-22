@@ -56,13 +56,15 @@ public class SssDAO extends DBConnection {
 
     }
 
-    public List<Sss> getSssList() {
+    public List<Sss> getSssList(int page, int pageSize) {
         List<Sss> SssList = new ArrayList<>();
+        
+        int start = (page-1)*pageSize;
 
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "select * from sss";
+            String q = "select * from sss order by soruid asc limit '" + pageSize + "' offset '" + start + "'";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
                 SssList.add(new Sss(rs.getInt("soruid"), rs.getString("soru"), rs.getString("cevap")));
@@ -74,6 +76,25 @@ public class SssDAO extends DBConnection {
         }
 
         return SssList;
+    }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select count(soruid) as soru_count from sss";
+            ResultSet rs = st.executeQuery(q);
+            rs.next();
+            count = rs.getInt("soru_count");
+            
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
     }
 
     

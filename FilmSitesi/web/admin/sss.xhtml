@@ -24,8 +24,14 @@
                         <div class="field"><label>Cevap</label><h:inputText value="#{sssBean.entity.cevap}" a:placeholder="Sorunun cevabını giriniz.." /></div>
                     <h:commandButton rendered="#{sssBean.entity.soruid==0}" action="#{sssBean.create()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Kaydet" /><br/>
                     <h:commandButton rendered="#{sssBean.entity.soruid!=0}" action="#{sssBean.update()}" class="ui blue button" style="background: #2266eb;height: 36px;margin-top: 24px;" value="Değiştir" /><br/>
+               
+                    </div> </h:form>
+                <h:form>
+                     <div>
+                        <h:commandButton action="#{sssBean.previous()}" value="" style="background: url(../assets/svg/left.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;"/>
+                        <h:commandButton action="#{sssBean.next()}" value="" style="background: url(../assets/svg/right.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;margin-left: 20px;"/>
+                        <pre>Sayfa #{sssBean.page} / #{sssBean.pageCount}</pre>
                     </div>
-
                     <h:dataTable value="#{sssBean.list}" class="ui celled table" var="s">
                         <h:column>
                             <f:facet name="header">ID </f:facet>

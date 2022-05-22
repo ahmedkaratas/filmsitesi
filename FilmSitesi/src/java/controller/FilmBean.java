@@ -4,14 +4,12 @@
  */
 package controller;
 
-
 import dao.FilmDAO;
 import entity.Film;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
-
 
 @Named(value = "filmBean")
 @SessionScoped
@@ -20,10 +18,11 @@ public class FilmBean implements Serializable {
     private Film entity;
     private FilmDAO dao;
     private List<Film> list;
+
     public FilmBean() {
     }
-    
-     public void create() {
+
+    public void create() {
         this.getDao().createFilm(entity);
         this.entity = new Film();
     }
@@ -31,12 +30,14 @@ public class FilmBean implements Serializable {
     public void update() {
         this.getDao().updateFilm(entity);
         this.entity = new Film();
-        
+
     }
 
     public void delete(Film f) {
         this.getDao().deleteFilm(f);
     }
+
+    
 
     public Film getEntity() {
         if (this.entity == null) {
@@ -68,5 +69,5 @@ public class FilmBean implements Serializable {
     public void setList(List<Film> list) {
         this.list = list;
     }
-    
+
 }

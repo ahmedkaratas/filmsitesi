@@ -8,10 +8,15 @@ body {
 .ui.button{
     font-family: Montserrat, sans-serif!important;
     margin: 7px;
+    border-radius: 100px;
 }
 
 .center {
   margin: auto;
   width: 60%;
   padding: 10px;
+}
+
+.ui.table {
+    font-family:Montserrat!important;
 }

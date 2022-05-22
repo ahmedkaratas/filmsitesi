@@ -25,8 +25,8 @@
 
                 <h:form class="form-inline">
                     Film:
-                    <h:selectOneMenu value="#{fotograflarBean.entity.filmid}">
-                        <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f.filmid}" itemLabel="#{f.ad}"></f:selectItems>
+                    <h:selectOneMenu value="#{fotograflarBean.entity.film_id}" converter="filmConverter">
+                        <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
 
                     </h:selectOneMenu>
 
@@ -58,7 +58,7 @@
                         
                         <h:column>
                             <f:facet name="header">ID </f:facet>
-                                #{k.film}
+                                #{k.film_id.ad}
 
                         </h:column>
 

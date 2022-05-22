@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" lang="tr"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="utf-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <title>Fotograflar</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></link>
+
+    </h:head>
+
+    <h:body>
+        <div class="newsletter-subscribe">
+            <div class="container">
+                <div class="intro">
+
+                </div>
+                <h:form>
+                    <h:commandButton action="/deneme" value="Home" />
+
+                </h:form>
+                <hr/>
+
+                <h:form class="form-inline">
+                    Film:
+                    <h:selectOneMenu value="#{fotograflarBean.entity.filmid}">
+                        <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f.filmid}" itemLabel="#{f.ad}"></f:selectItems>
+
+                    </h:selectOneMenu>
+
+
+
+
+                    linki: <h:inputText value="#{fotograflarBean.entity.linki}" />
+
+                    <h:commandButton rendered="#{fotograflarBean.entity.id==0}" action="#{fotograflarBean.create()}" value="Kaydet" /><br/>
+                    <h:commandButton rendered="#{fotograflarBean.entity.id!=0}" action="#{fotograflarBean.update()}" value="Değiştir" /><br/>
+
+
+
+
+
+
+                </h:form>
+
+                <h:form >
+
+
+
+                    <h:dataTable value="#{fotograflarBean.list}" var="k">
+                        <h:column>
+                            <f:facet name="header">ID </f:facet>
+                                #{k.id}
+
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">ID </f:facet>
+                                #{film}
+
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"> Linki </f:facet>
+                                #{k.linki}
+
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Sil/Değiştir</f:facet>
+                            <h:commandButton action="#{fotograflarBean.delete(k)}" value="Sil" />
+                            <h:commandButton action="#{fotograflarBean.setEntity(k)}" value="Değiştir" />
+
+                        </h:column>
+
+                    </h:dataTable>
+
+
+
+
+
+
+
+                </h:form>
+
+
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    </h:body>
+
+</html>

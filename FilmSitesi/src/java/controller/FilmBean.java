@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
- */
+
 package controller;
 
 import dao.FilmDAO;
@@ -9,7 +6,7 @@ import entity.Film;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.List;
+import java.util.List; 
 
 @Named(value = "filmBean")
 @SessionScoped

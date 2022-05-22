@@ -62,7 +62,7 @@ public class FilmDAO extends DBConnection {
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "select * from film where filmid between '" + start + "' and 30 order by filmid asc";
+            String q = "select * from film order by filmid asc limit '" + pageSize + "' offset '" + start + "'";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
                 FilmList.add(new Film(rs.getInt("Filmid"), rs.getString("ad"), rs.getString("tur"), rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getInt("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel")));

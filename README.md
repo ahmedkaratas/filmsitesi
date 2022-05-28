@@ -17,7 +17,7 @@ Film sitesinde kullanıcılar üye olabilecek, üyeliğine giriş yapıp filmi i
 
 <h2>Final Hazırlıkları</h2>
 
-- [x] Bütün tablolar için CRUD operasyonların tamamlanmas
+- [x] Bütün tablolar için CRUD operasyonların tamamlanması
 - [x] many-to-many ilişki Converter üzerinden oluşturulması
 - [x] one-to-many ilişki Converter üzerinden oluşturulması
 - [x] Create(C)

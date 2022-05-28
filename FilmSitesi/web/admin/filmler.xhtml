@@ -20,6 +20,9 @@
                 </div>
                 <h:form class="ui form">
                     <div class="two fields">
+                        <div class="field"><label>Kategori</label><h:selectManyMenu value="#{filmBean.entity.categories}" converter="kategoriConverter">
+                            <f:selectItems value="#{kategoriBean.list}" var="k" itemValue="#{k}" itemLabel="#{k.adi}"/>
+                            </h:selectManyMenu></div>
                     <div class="field"><label>Film Adı</label><h:inputText value="#{filmBean.entity.ad}" a:placeholder="Filmin adını giriniz" /></div>
                     <div class="field"><label>Tür</label><h:inputText value="#{filmBean.entity.tur}" a:placeholder="Filmin türünü giriniz" /></div>
                     <div class="field"><label>Vizyon</label><h:inputText value="#{filmBean.entity.vizyon}" a:placeholder="Vizyon tarihini giriniz" /></div>
@@ -49,6 +52,11 @@
                         <h:column>
                             <f:facet name="header">Film ID </f:facet>
                                 #{f.filmid}
+
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Kategoriler</f:facet>
+                                #{f.categories}
 
                         </h:column>
                         <h:column>

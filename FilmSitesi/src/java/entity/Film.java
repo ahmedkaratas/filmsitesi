@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.List;
+
 public class Film {
 
     private int filmid;
@@ -13,12 +15,15 @@ public class Film {
     private String filmlinki;
     private String aciklama;
     private String gorsel;
+    
+    private List<Kategori> categories;
 
     public Film() {
     }
 
-    public Film(int filmid, String ad, String tur, String vizyon, String sure, String ulke, double puan, String yassiniri, String filmlinki, String aciklama, String gorsel) {
+    public Film(int filmid, List<Kategori> cat, String ad, String tur, String vizyon, String sure, String ulke, double puan, String yassiniri, String filmlinki, String aciklama, String gorsel) {
         this.filmid = filmid;
+        this.categories = cat;
         this.ad = ad;
         this.tur = tur;
         this.vizyon = vizyon;
@@ -38,6 +43,15 @@ public class Film {
     public void setFilmid(int filmid) {
         this.filmid = filmid;
     }
+
+    public List<Kategori> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Kategori> categories) {
+        this.categories = categories;
+    }
+    
 
     public String getAd() {
         return ad;

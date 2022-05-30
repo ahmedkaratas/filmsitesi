@@ -31,7 +31,7 @@ Film sitesinde kullanıcılar üye olabilecek, üyeliğine giriş yapıp filmi i
 - [x] Java Bean Validator’lerini yazılması
 - [x] Minimum 1 adet Dosya işleminin yapılması
 - [x] Pagination işlemlerinin eklenmesi
-- [ ] Yetkilendirme
+- [x] Yetkilendirme
 
 <h2>Proje Takvimi</h2>
 

@@ -12,26 +12,27 @@ public class Kullanicilar {
     private String soyad;
     private String eposta;
     private String sifre;
+    private SystemGroup group;
 
     public Kullanicilar() {
     }
 
-    
-
-    public Kullanicilar(int id, String kullaniciadi,  String ad, String soyad, String eposta, String sifre ) {
+    public Kullanicilar(int id, String kullaniciadi, String ad, String soyad, String eposta, String sifre, SystemGroup group) {
         this.id = id;
-        this.kullaniciadi=kullaniciadi;
+        this.kullaniciadi = kullaniciadi;
         this.ad = ad;
         this.soyad = soyad;
         this.eposta = eposta;
         this.sifre = sifre;
-
+        this.group = group;
     }
 
-    public Kullanicilar(String ad) {
-        this.ad = ad;
+    public Kullanicilar(int id, String eposta, String sifre, SystemGroup group) {
+        this.id = id;
+        this.eposta = eposta;
+        this.sifre = sifre;
+        this.group = group;
     }
-  
 
     public int getId() {
         return id;
@@ -81,10 +82,17 @@ public class Kullanicilar {
         this.sifre = sifre;
     }
 
-    @Override
-    public String toString() {
-        return "Kullanicilar{" + "id=" + id + ", kullaniciadi=" + kullaniciadi + ", ad=" + ad + ", soyad=" + soyad + ", eposta=" + eposta + ", sifre=" + sifre + '}';
+    public SystemGroup getGroup() {
+        return group;
     }
 
+    public void setGroup(SystemGroup group) {
+        this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return "Kullanicilar{" + "id=" + id + ", kullaniciadi=" + kullaniciadi + ", ad=" + ad + ", soyad=" + soyad + ", eposta=" + eposta + ", sifre=" + sifre + ", group=" + group + '}';
+    }
 
 }

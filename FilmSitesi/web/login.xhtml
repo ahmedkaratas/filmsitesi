@@ -13,15 +13,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <div>Login page</div>
         <hr/>
         
-        <h:form rendered="#{validUser == null}">
-            Username: <h:inputText value="#{lc.user.username}" /><br/>
-            Password: <h:inputText value="#{lc.user.password}" /><br/>
-            <h:commandButton action="#{lc.login()}" value="Login" />
+        <h:form rendered="#{user == null}">
+            Username: <h:inputText value="#{sessionBean.eposta}" /><br/>
+            Password: <h:inputText value="#{sessionBean.sifre}" /><br/>
+            <h:commandButton action="#{sessionBean.login}" value="Login" />
         </h:form>
         
-        <h:panelGroup rendered="#{validUser != null}" layout="block">
-            Username: #{validUser.username}<br/>
-            Password: #{validUser.password}
+        <h:panelGroup rendered="#{user != null}" layout="block">
+            Username: #{user.eposta}<br/>
+            Password: #{user.sifre}
         </h:panelGroup>
         
         <hr/>

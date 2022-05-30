@@ -1,19 +1,24 @@
 package controller;
 
-import dao.KategoriDAO;
-import entity.Kategori;
+import dao.PrivilegesDAO;
+import entity.Privileges;
+import entity.SystemGroup;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named(value = "kategoriBean")
+@Named(value = "privilegesBean")
 @SessionScoped
-public class KategoriBean implements Serializable {
+public class PrivilegesBean implements Serializable {
 
-    private Kategori entity;
-    private KategoriDAO dao;
-    private List<Kategori> list;
+    private Privileges entity;
+    private PrivilegesDAO dao;
+    private List<Privileges> list;
+    
+    public Privileges getPrivilege(SystemGroup sg, String module) {
+        return this.getDao().getGroupPrivileges(sg,module);
+    }
 
     private int page = 1;
     private int pageSize = 10;
@@ -60,56 +65,56 @@ public class KategoriBean implements Serializable {
         this.pageCount = pageCount;
     }
 
-    public KategoriBean() {
+    public PrivilegesBean() {
     }
 
     public void clear() {
-        this.entity = new Kategori();
+        this.entity = new Privileges();
     }
 
     public void create() {
-        this.getDao().createKategori(entity);
-        this.entity = new Kategori();
+        this.getDao().createPrivileges(entity);
+        this.entity = new Privileges();
     }
 
     public void update() {
-        this.getDao().updateKategori(entity);
-        this.entity = new Kategori();
+        this.getDao().updatePrivileges(entity);
+        this.entity = new Privileges();
 
     }
 
-    public void delete(Kategori k) {
-        this.getDao().deleteKategori(k);
+    public void delete(Privileges k) {
+        this.getDao().deletePrivileges(k);
     }
 
-    public Kategori getEntity() {
+    public Privileges getEntity() {
         if (this.entity == null) {
-            this.entity = new Kategori();
+            this.entity = new Privileges();
         }
         return entity;
     }
 
-    public void setEntity(Kategori entity) {
+    public void setEntity(Privileges entity) {
         this.entity = entity;
     }
 
-    public KategoriDAO getDao() {
+    public PrivilegesDAO getDao() {
         if (this.dao == null) {
-            this.dao = new KategoriDAO();
+            this.dao = new PrivilegesDAO();
         }
         return dao;
     }
 
-    public void setDao(KategoriDAO dao) {
+    public void setDao(PrivilegesDAO dao) {
         this.dao = dao;
     }
 
-    public List<Kategori> getList() {
-        this.list = this.getDao().getKategoriList(page, pageSize);
+    public List<Privileges> getList() {
+        this.list = this.getDao().getPrivilegesList(page, pageSize);
         return list;
     }
 
-    public void setList(List<Kategori> list) {
+    public void setList(List<Privileges> list) {
         this.list = list;
     }
 

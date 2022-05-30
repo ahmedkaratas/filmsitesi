@@ -4,7 +4,7 @@
  */
 package filter;
 
-import entity.UserManager;
+import entity.Kullanicilar;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -21,43 +21,43 @@ import java.io.IOException;
  * @author Ahmed
  */
 @WebFilter("/*")
-public class LoginFilter implements Filter{
+public class LoginFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest sr, ServletResponse sr1, FilterChain fc) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) sr;
         HttpServletResponse response = (HttpServletResponse) sr1;
-        
+
         String url = request.getRequestURI();
-        
+
         HttpSession session = request.getSession();
-        
-        UserManager user = null;
-        
-        if ( session != null ){
-            user = (UserManager) session.getAttribute("validUser");
+
+        Kullanicilar user = null;
+
+        if (session != null) {
+            user = (Kullanicilar) session.getAttribute("user");
         }
-        
-        if ( user == null ){
-            if ( url.contains("logout") || url.contains("private")){
-                response.sendRedirect(request.getContextPath()+"/login.xhtml");
+
+        if (user == null) {
+            if (url.contains("logout") || url.contains("private")) {
+                response.sendRedirect(request.getContextPath() + "/login.xhtml");
             } else {
-                fc.doFilter(sr,sr1);
+                fc.doFilter(sr, sr1);
             }
-            
+
         } else {
-            
-            if ( url.contains("register") ){
-                response.sendRedirect(request.getContextPath()+"/index.xhtml");
-            } else if ( url.contains("logout") ) {
+
+            if (url.contains("register")) {
+                response.sendRedirect(request.getContextPath() + "/index.xhtml");
+            } else if (url.contains("logout")) {
                 session.invalidate();
-                response.sendRedirect(request.getContextPath()+"/login.xhtml");
+                response.sendRedirect(request.getContextPath() + "/login.xhtml");
             } else {
-                fc.doFilter(sr,sr1);
+                fc.doFilter(sr, sr1);
             }
-            
+
         }
-        
+
     }
-    
+
 }

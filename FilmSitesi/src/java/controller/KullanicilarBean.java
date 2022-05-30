@@ -17,23 +17,25 @@ public class KullanicilarBean implements Serializable {
     private KullanicilarDAO dao;
     private ValidatorBean vb;
     private List<Kullanicilar> list;
-    
-    private int page=1;
-    private int pageSize=10;
+
+    private int page = 1;
+    private int pageSize = 10;
     private int pageCount;
-    
-    public void next(){
-        if ( this.page == this.getPageCount())
+
+    public void next() {
+        if (this.page == this.getPageCount()) {
             this.page = 1;
-        else
+        } else {
             this.page++;
+        }
     }
-    
-    public void previous(){
-        if ( this.page == 1 )
+
+    public void previous() {
+        if (this.page == 1) {
             this.page = this.getPageCount();
-        else
+        } else {
             this.page--;
+        }
     }
 
     public int getPage() {
@@ -53,18 +55,16 @@ public class KullanicilarBean implements Serializable {
     }
 
     public int getPageCount() {
-        this.pageCount = (int) Math.ceil(this.getDao().count()/(double)pageSize);
+        this.pageCount = (int) Math.ceil(this.getDao().count() / (double) pageSize);
         return pageCount;
     }
 
     public void setPageCount(int pageCount) {
         this.pageCount = pageCount;
     }
-    
 
     public KullanicilarBean() {
     }
-    
 
     public void create() {
         this.getDao().createKullanicilar(entity);
@@ -73,6 +73,17 @@ public class KullanicilarBean implements Serializable {
 
     public void update() {
         this.getDao().updateKullanicilar(entity);
+        this.entity = new Kullanicilar();
+
+    }
+
+    public void create1() {
+        this.getDao().createKullanicilar1(entity);
+        this.entity = new Kullanicilar();
+    }
+
+    public void update1() {
+        this.getDao().updateKullanicilar1(entity);
         this.entity = new Kullanicilar();
 
     }
@@ -89,7 +100,7 @@ public class KullanicilarBean implements Serializable {
     }
 
     public ValidatorBean getVb() {
-         if (this.vb == null) {
+        if (this.vb == null) {
             this.vb = new ValidatorBean();
         }
         return vb;

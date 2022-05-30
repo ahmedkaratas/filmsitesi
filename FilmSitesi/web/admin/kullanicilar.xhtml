@@ -20,11 +20,16 @@
                 </div>
                 <h:form class="ui form">
                     <div class="two fields">
-                        <div class="field"><label>Kullanıcı Adı</label><h:inputText value="#{kullanicilarBean.entity.kullaniciadi}" a:placeholder="Kullanıcı adı giriniz" /></div>
-                        <div class="field"><label>Ad</label><h:inputText value="#{kullanicilarBean.entity.ad}" a:placeholder="Ad giriniz"/></div>
-                        <div class="field"><label>Soyad</label><h:inputText value="#{kullanicilarBean.entity.soyad}" a:placeholder="Soyad giriniz"/></div>
-                        <div class="field"><label>E-Posta</label><h:inputText value="#{kullanicilarBean.entity.eposta}" a:placeholder="E-posta adresi giriniz"/></div>
-                        <div class="field"><label>Şifre</label><h:inputText value="#{kullanicilarBean.entity.sifre}" a:placeholder="Bir şifre giriniz"/></div>
+                        <div class="field"><label>Kullanıcı Adı</label><h:inputText id="ka" value="#{kullanicilarBean.entity.kullaniciadi}" validator="#{kullanicilarBean.getVb().validateKullaniciAdi}" a:placeholder="Kullanıcı adı giriniz"/>
+                         <h:message for="ka" style="color: red; font-size: 10pt;" /> <br/></div>
+                        <div class="field"><label>Ad</label><h:inputText id="ad" value="#{kullanicilarBean.entity.ad}" validator="#{kullanicilarBean.getVb().validateAd}" a:placeholder="Ad giriniz"/>
+                         <h:message for="ad" style="color: red; font-size: 10pt;" /> <br/></div>
+                        <div class="field"><label>Soyad</label><h:inputText id="sd" value="#{kullanicilarBean.entity.soyad}" validator="#{kullanicilarBean.getVb().validateSoyad}" a:placeholder="Soyad giriniz"/>
+                         <h:message for="sd" style="color: red; font-size: 10pt;" /> <br/></div>
+                        <div class="field"><label>E-Posta</label><h:inputText id="ep" value="#{kullanicilarBean.entity.eposta}" validator="#{kullanicilarBean.getVb().validateEposta}" a:placeholder="E-posta adresi giriniz"/>
+                         <h:message for="ep" style="color: red; font-size: 10pt;" /> <br/></div>
+                        <div class="field"><label>Şifre</label><h:inputText id="pw" value="#{kullanicilarBean.entity.sifre}" validator="#{kullanicilarBean.getVb().validateSifre}" a:placeholder="Bir şifre giriniz"/>
+                         <h:message for="pw" style="color: red; font-size: 10pt;" /> <br/></div>
                         <h:commandButton rendered="#{kullanicilarBean.entity.id==0}" action="#{kullanicilarBean.create()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Kaydet" /><br/>
                         <h:commandButton rendered="#{kullanicilarBean.entity.id!=0}" action="#{kullanicilarBean.update()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Değiştir" /><br/>
                     <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>

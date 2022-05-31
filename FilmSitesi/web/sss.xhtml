@@ -10,7 +10,10 @@
         <link rel="stylesheet" href="./assets/css/faq.css"/>
     </h:head>
     <h:body>
-        <img src="./assets/img/mainlogo.svg" class="turcologo" onclick="javascript:location.href = './'"></img>
+        <a onclick="history.back()" role="button" style="position: relative;color: #0078ff;font-family: 'Montserrat';cursor: pointer;width: 1000px;margin: 0px auto;padding-top: 40px;display: block;">
+            <span class="sli   icon-arrow-left" style="vertical-align: -10%;"></span>
+            <img src="./assets/img/iletisimleft.svg" style="cursor: pointer;height: 15px;vertical-align: -2px;margin-right: 3px;"></img>Geri Dön</a>
+        <img src="./assets/img/mainlogo.svg" class="turcologo"></img>
         <h:dataTable value="#{sssBean.list}" var="s" class='faq'>
 
             <h:column>

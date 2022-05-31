@@ -18,6 +18,7 @@ public class FotograflarBean implements Serializable {
     private int page = 1;
     private int pageSize = 10;
     private int pageCount;
+    private List<Fotograflar> FotograflarList;
 
     public void next() {
         if (this.page == this.getPageCount()) {
@@ -111,6 +112,15 @@ public class FotograflarBean implements Serializable {
 
     public void setList(List<Fotograflar> list) {
         this.list = list;
+    }
+    
+    public List<Fotograflar> getFotograflarList(int filmid) {
+        this.FotograflarList = this.getDao().getFilmFotograf(filmid);
+        return FotograflarList;
+    }
+
+    public void setFotograflarList(List<Fotograflar> FotograflarList) {
+        this.FotograflarList = FotograflarList;
     }
 
 }

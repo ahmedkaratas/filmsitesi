@@ -22,7 +22,7 @@ public class DocumentBean implements Serializable {
 
     private Part doc;
     private Part doc2;
-    private final String uploadTo = "C:\\Users\\Eren Can\\Documents\\NetBeansProjeler\\filmsitesi\\FilmSitesi\\web\\assets\\img\\";
+    private final String uploadTo = "C:\\Users\\gaming_msi\\Documents\\NetBeansProjects\\filmsitesi\\FilmSitesi\\web\\assets\\img\\";
 
     public void upload() {
         try {

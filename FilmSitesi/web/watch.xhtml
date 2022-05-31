@@ -12,9 +12,11 @@
         <link rel="stylesheet" href="./assets/css/watch.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"/>
         <link rel="stylesheet" href="./assets/css/yorum.css"/>
+        <link rel="stylesheet" href="./assets/css/galeri.css"/>
+        <script type="text/javascript" src="./assets/js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="./assets/js/jquery-migrate-1.1.0.js"></script>
     </h:head>
     <h:body>
-
         <div id="app">
             <div data-reactid=".0">
                 <div class="Header" data-reactid=".0.0">
@@ -56,24 +58,30 @@
 
                 </div>
                 <div id="hero" class="Hero" data-reactid=".0.1">
-                     <h:dataTable value="#{filmBean.getTekFilm(1)}" var="f">
-                                <h:column>
-                                    #{f.filmlinki}
-                                </h:column>
-
-                            </h:dataTable>
-                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DiJzNNewpXA?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="width: 100%;height: 1000px;"></iframe>
+                    <h:dataTable value="#{filmBean.getTekFilm(param['i'])}" var="f">
+                        <h:column>
+                            <iframe data-value="#{f.filmlinki != null}" width="560" height="315" src="#{f.filmlinki}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="width: 100%;height: 1000px;"></iframe>
+                        </h:column>
+                    </h:dataTable>
 
                 </div>
-                <div class="fotograflar">
-                    
-                     <h:dataTable value="#{fotograflarBean.list}" var="k">
-                                <h:column>
-                                    <img src="./assets/img/#{k.linki}"></img>
-                                </h:column>
+                <p class="heading">Fotoğraflar</p>
+                <div class="gallery-image" id="galeri">
+                    <h:dataTable value="#{fotograflarBean.getFotograflarList(param['i'])}" var="k">
+                        <h:column>
+                            <div class="img-box">
+                                <img src="./assets/img/#{k.linki}" alt=""></img>
+                                <div class="transparent-box">
+                                    <div class="caption">
+                                        <p>Library</p>
+                                        <p class="opacity-low">Architect Design</p>
+                                    </div>
+                                </div> 
+                            </div>
+                        </h:column>
 
-                            </h:dataTable>
-                    
+                    </h:dataTable>
+
                 </div>
                 <div id="yorum">
                     <div class="comments">
@@ -154,6 +162,18 @@
                     Film sitesinde kullanıcılar üye olabilecek, üyeliğine giriş yapıp filmi izleyebilecek bunun yanı sıra filme dair set görüntülerini görüntüleyebilecek ve fragmanı izleyebilecekler. İzledikleri filme puan verip yorum yapabilecekler. Kullanıcılara rehber olması için sıkça sorulan sorular (SSS) sayfası ve kullanıcıların yöneticiyle irtibata geçebilmesi için iletişim sayfası yer alacaktır.</p>
             </div>
         </div>
+        <script>
+            var galeri = $("#galeri");
+            var contentss = galeri.find("td, th").contents().detach();
+            galeri.find("table").remove();
+            galeri.append(contentss);
+            
+            
+            var hero = $("#hero");
+var contentsss = hero.find("td, th").contents().detach();
+hero.find("table").remove();
+hero.append(contentsss);
+        </script>
         <script type="text/javascript" src="./assets/js/mini.js"></script>
 
     </h:body></html>

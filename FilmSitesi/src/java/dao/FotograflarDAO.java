@@ -74,6 +74,27 @@ public class FotograflarDAO extends DBConnection {
         return FotograflarList;
     }
     
+    public List<Fotograflar> getFilmFotograf(int filmid) {
+        List<Fotograflar> FotograflarList = new ArrayList<>();
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select * from fotograflar where filmid=" + filmid;
+            ResultSet rs = st.executeQuery(q);
+            while (rs.next()) {
+                Film f = this.getFilmDao().findByID(rs.getInt("filmid"));
+                FotograflarList.add(new Fotograflar(rs.getInt("id"),f, rs.getString("linki")));
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return FotograflarList;
+    }
+    
     public int count() {
         int count = 0;
 

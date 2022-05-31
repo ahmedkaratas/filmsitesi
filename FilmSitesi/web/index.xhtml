@@ -11,8 +11,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"/>
         <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico"/>
         <link rel="stylesheet" href="./assets/css/main.css"/>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+        <script type="text/javascript" src="./assets/js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="./assets/js/jquery-migrate-1.1.0.js"></script>
     </h:head>
     <h:body>
         <div id="container" style="position: fixed;z-index: 99999;">
@@ -269,7 +269,7 @@
                             <div id="wrapper">
                             <h:dataTable value="#{filmBean.listFull}" var="f">
                                 <h:column>
-                                    <div class="Item" style="background-image:url(#{f.gorsel});" data-reactid=".0.2.0.1.$52814">
+                                    <div class="Item" style="background-image:url(#{f.gorsel});" data-reactid=".0.2.0.1.$52814" onclick="javascript:location.href = './watch.xhtml?i=#{f.filmid}'">
                                         <div class="overlay" data-reactid=".0.2.0.1.$52814.0">
                                             <div class="title" data-reactid=".0.2.0.1.$52814.0.0">#{f.ad}</div>
                                             <div class="rating" data-reactid=".0.2.0.1.$52814.0.1"><span data-reactid=".0.2.0.1.$52814.0.1.0">#{f.puan}</span><span data-reactid=".0.2.0.1.$52814.0.1.1"> / 10</span></div>

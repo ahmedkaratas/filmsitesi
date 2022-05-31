@@ -297,6 +297,7 @@ p {
   overflow: hidden;
   margin-right: 10px;
   transition: background 1s ease;
+  cursor: pointer;
 }
 .Item:nth-child(n+6) {
   margin-top: 20px;

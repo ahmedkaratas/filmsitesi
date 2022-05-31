@@ -14,6 +14,7 @@ public class FilmBean implements Serializable {
     private Film entity;
     private FilmDAO dao;
     private List<Film> list;
+    private List<Film> listFull;
 
     private int page = 1;
     private int pageSize = 10;
@@ -112,5 +113,15 @@ public class FilmBean implements Serializable {
     public void setList(List<Film> list) {
         this.list = list;
     }
+    
+    public List<Film> getListFull() {
+        this.listFull = this.getDao().getFilmListFull();
+        return listFull;
+    }
+    
+    public void setListFull(List<Film> listFull) {
+        this.listFull = listFull;
+    }
+    
 
 }

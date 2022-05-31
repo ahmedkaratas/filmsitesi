@@ -92,3 +92,15 @@ var gallery = $("#wrapper");
 var contents = gallery.find("td, th").contents().detach();
 gallery.find("table").remove();
 gallery.append(contents);
+
+$(function(){
+    var numberOfSpans = $('#wrapper').children('div').length;
+    var selam = $('#wrapper').children('div')[4];
+    $('<h1 data-reactid=".0.4.0.0" style="width: 100%;margin-top: 64px;">Şu sıralar trend</h1>').insertAfter(selam);
+    var selam2 = $('#wrapper').children('div')[9];
+    $('<h1 data-reactid=".0.4.0.0" style="width: 100%;margin-top: 64px;">Bu sıralar trend değil</h1>').insertAfter(selam2);
+    var selam3 = $('#wrapper').children('div')[14];
+    $('<h1 data-reactid=".0.4.0.0" style="width: 100%;margin-top: 64px;">Yakında trend</h1>').insertAfter(selam3);
+    var selam4 = $('#wrapper').children('div')[19];
+    $('<h1 data-reactid=".0.4.0.0" style="width: 100%;margin-top: 64px;">Çok yakında trend değil</h1>').insertAfter(selam4);
+})();

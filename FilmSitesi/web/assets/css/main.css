@@ -272,6 +272,15 @@ p {
   justify-content: space-between;
 }
 
+#wrapper2{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  width: calc(100vw - 80px);
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
 .TitleList[data-loaded=true] {
   opacity: 1;
 }

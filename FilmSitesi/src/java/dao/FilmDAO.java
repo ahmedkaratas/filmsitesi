@@ -99,6 +99,27 @@ public class FilmDAO extends DBConnection {
         return FilmList;
     }
     
+    public List<Film> getFilmListFull() {
+        List<Film> FilmList = new ArrayList<>();
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select * from film";
+            ResultSet rs = st.executeQuery(q);
+            while (rs.next()) {
+                
+                FilmList.add(new Film(rs.getInt("Filmid"), this.getPostCategories(rs.getInt("filmid")), rs.getString("ad"), rs.getString("tur"), rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getDouble("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel")));
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return FilmList;
+    }
+    
     public List<Kategori> getPostCategories(int film_id){
         List<Kategori> KategoriList = new ArrayList<>();
         try {

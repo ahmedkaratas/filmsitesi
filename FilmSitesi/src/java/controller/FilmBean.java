@@ -15,10 +15,12 @@ public class FilmBean implements Serializable {
     private FilmDAO dao;
     private List<Film> list;
     private List<Film> listFull;
+    private List<Film> TekFilm;
 
     private int page = 1;
     private int pageSize = 10;
     private int pageCount;
+    private int filmid = 1;
 
     public void next() {
         if (this.page == this.getPageCount()) {
@@ -112,6 +114,15 @@ public class FilmBean implements Serializable {
 
     public void setList(List<Film> list) {
         this.list = list;
+    }
+    
+    public List<Film> getTekFilm(int filmid) {
+        this.TekFilm = this.getDao().getListTekFilm(filmid);
+        return TekFilm;
+    }
+
+    public void setTekFilm(List<Film> TekFilm) {
+        this.TekFilm = TekFilm;
     }
     
     public List<Film> getListFull() {

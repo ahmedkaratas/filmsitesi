@@ -19,7 +19,16 @@
 
                 </div>
 
+                <h:form enctype="multipart/form-data">
+
+                    <h:inputFile value="#{documentBean.doc}"/>             
+
+                    <h:commandButton action="#{documentBean.upload()}" value="Upload"/>
+                </h:form>
+
+
                 <h:form class="ui form">
+                    #{fotograflarBean.entity.linki = documentBean.doc.getSubmittedFileName()}
                     <div class="two fields">
                         <div class="field"><label>Film</label>
                             <h:selectOneMenu value="#{fotograflarBean.entity.film_id}" converter="filmConverter">
@@ -66,10 +75,6 @@
                         </h:column>
 
                     </h:dataTable>
-
-
-
-
 
 
 

@@ -33,7 +33,7 @@
                         <div data-value="#{user != null}" id="turcohello" class="Navigation" data-reactid=".0.0.1" style="float: left; margin-top: 3px; margin-right: -10px; display: block;opacity: 1!important;">
                             <nav data-reactid=".0.0.1.0">
                                 <ul style="font-family: montserrat;margin-left:20px;" data-reactid=".0.0.1.0.0">
-                                    <li data-reactid=".0.0.1.0.0.0" style="cursor: default;background: transparent!important;">İyi seyirler, Ahmed İhsan!</li>
+                                    <li data-reactid=".0.0.1.0.0.0" style="cursor: default;background: transparent!important;">İyi seyirler, #{user.ad}!</li>
                                 </ul>
                             </nav>
                         </div>
@@ -56,8 +56,24 @@
 
                 </div>
                 <div id="hero" class="Hero" data-reactid=".0.1">
+                     <h:dataTable value="#{filmBean.getTekFilm(1)}" var="f">
+                                <h:column>
+                                    #{f.filmlinki}
+                                </h:column>
+
+                            </h:dataTable>
                     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DiJzNNewpXA?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="width: 100%;height: 1000px;"></iframe>
 
+                </div>
+                <div class="fotograflar">
+                    
+                     <h:dataTable value="#{fotograflarBean.list}" var="k">
+                                <h:column>
+                                    <img src="./assets/img/#{k.linki}"></img>
+                                </h:column>
+
+                            </h:dataTable>
+                    
                 </div>
                 <div id="yorum">
                     <div class="comments">

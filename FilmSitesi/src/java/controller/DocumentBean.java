@@ -21,7 +21,8 @@ public class DocumentBean implements Serializable {
     private DocumentDAO documentDao;
 
     private Part doc;
-    private final String uploadTo = "/Users/gaming_msi/Documents/NetBeansProjects/filmsitesi/FilmSitesi/web/assets/img";
+    private Part doc2;
+    private final String uploadTo = "C:\\Users\\Eren Can\\Documents\\NetBeansProjeler\\filmsitesi\\FilmSitesi\\web\\assets\\img\\";
 
     public void upload() {
         try {
@@ -30,7 +31,7 @@ public class DocumentBean implements Serializable {
             Files.copy(input, f.toPath());
 
             document = this.getDocument();
-            document.setFilePath(f.getParent()+f.getName());
+            document.setFilePath(f.getParent() + f.getName());
             document.setFileName(f.getName());
             document.setFileType(doc.getContentType());
 

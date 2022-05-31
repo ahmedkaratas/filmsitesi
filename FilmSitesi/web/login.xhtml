@@ -4,36 +4,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <head>
-        <title>TODO supply a title</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" lang="tr"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Turcoflix</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>Login page</div>
-        <hr/>
+        <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico"/>
+        <link rel="stylesheet" href="./assets/css/giris.css"/>
+    </h:head>
+    <h:body>
+        <a href="./"><img src="./assets/img/girislogo.svg" class="logo"></img></a>
         
-        <h:form rendered="#{user == null}">
-            Username: <h:inputText value="#{sessionBean.eposta}" /><br/>
-            Password: <h:inputText value="#{sessionBean.sifre}" /><br/>
-            <h:commandButton action="#{sessionBean.login}" value="Login" />
+        <h:form rendered="#{user == null}" class="container" prependId="false">
+            <h1>Giriş Yap</h1>
+            <label style="color: #ff000099;margin-bottom: 10px;display: block;margin-top: -5px;"><h:messages></h:messages></label>
+            <div class="form-element">
+            <h:inputText value="#{sessionBean.eposta}" id="eposta" />
+            <label class="floating-label" for="eposta">E-posta adresi</label>
+            </div>
+            <div class="form-element">
+            <h:inputSecret value="#{sessionBean.sifre}" id="password" required="true" />
+            <label class="floating-label" for="password">Şifre</label>
+            </div>
+            <h:commandButton action="#{sessionBean.login}" class="btn" value="Giriş Yap" />
+            <div style="color: grey;margin-top: 35px;margin-bottom: 20px;">Turcoflix'e katılmak ister misiniz? <a target="_self" href="/" style="color: white;text-decoration: none;">Şimdi kaydolun</a></div>
         </h:form>
         
         <h:panelGroup rendered="#{user != null}" layout="block">
-            Username: #{user.eposta}<br/>
-            Password: #{user.sifre}
+        <meta http-equiv="refresh" content="0; url=./"/> 
+        <!--    Username: #{user.eposta}<br/>
+            Password: #{user.sifre} -->
         </h:panelGroup>
-        
-        <hr/>
-        <h:form>
-            <h:commandButton action="/index?faces-redirect=true" value="Public" />
-            <h:commandButton action="/login?faces-redirect=true" value="Login" />
-            <h:commandButton action="/logout?faces-redirect=true" value="Logout" />
-            <h:commandButton action="/private?faces-redirect=true" value="Private" />
-            <h:commandButton action="/register?faces-redirect=true" value="Register" />
-        </h:form>
-        
-        <hr />
-        <h:messages></h:messages>
-    </body>
+        <script>document.getElementById("eposta").required = true;document.getElementById("password").required = true;</script>
+    </h:body>
 </html>

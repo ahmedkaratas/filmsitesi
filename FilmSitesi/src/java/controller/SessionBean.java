@@ -35,12 +35,16 @@ public class SessionBean implements Serializable {
             
         } else {
             
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Username or Password is Wrong!"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Kullanıcı bilgileri geçersiz."));
             
         }
     }
 
     public Kullanicilar getUser() {
+        return user;
+    }
+    
+    public Kullanicilar updateUser() {
         return user;
     }
 

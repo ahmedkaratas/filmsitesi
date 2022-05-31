@@ -13,43 +13,49 @@
         <script src="../assets/js/lottie-player.js"></script>
     </h:head>
 
-    <h:body>
+    <h:body rendered="#{privilegesBean.getPrivilege(user.group,'Kategori').iupdate}">
         <div class="tintro" id="tintro"><div class="txt turcoflixintro" contenteditable="true">
-  TURCOFLIX
-</div></div>
-        <div class="center" style="margin-top: 50px;font-size: 25px;font-weight:600;"><img src="../assets/logo.svg" style="height: 40px;margin-bottom: 50px;user-select:none;" draggable="false" oncontextmenu="return false"></img><p>Yönetici Paneli</p></div>
+                TURCOFLIX
+            </div></div>
+        <div class="center" style="margin-top: 50px;font-size: 25px;font-weight:600;"><a href="../"><img src="../assets/logo.svg" style="height: 40px;margin-bottom: 50px;user-select:none;" draggable="false" oncontextmenu="return false"></img></a><p>Yönetici Paneli</p></div>
         <p class="center">Ekleme, silme veya düzenleme yapmak istediğiniz alanı seçiniz..</p>
-       <div class="ui secondary pointing menu" id="menu" style="font-family: montserrat;margin: auto;width: 60%;margin-bottom: 15px;margin-top:10px;">
-  <a href="./filmler.admin" target="yonetimekrani" class="item">
-    Filmler
-  </a>
-  <a href="./fotograflar.admin" target="yonetimekrani" class="item">
-    Fotoğraflar
-  </a>
-  <a href="./iletisim.admin" target="yonetimekrani" class="item">
-    İletişim
-  </a>
-  <a href="./kategori.admin" target="yonetimekrani" class="item">
-    Kategoriler
-  </a>
-  <a href="./kullanicilar.admin" target="yonetimekrani" class="item">
-    Kullanıcılar
-  </a>
-  <a href="./loglar.admin" target="yonetimekrani" class="item">
-    Loglar
-  </a>
-  <a href="./sss.admin" target="yonetimekrani" class="item">
-    Sıkça Sorulan Sorular
-  </a>
-  <a href="./yorumlar.admin" target="yonetimekrani" class="item">
-    Yorumlar
-  </a>
-  <div class="right menu">
-    <a class="ui item active">
-      Logout
-    </a>
-  </div>
-</div>
+        <div class="ui secondary pointing menu" id="menu" style="font-family: montserrat;margin: auto;width: 60%;margin-bottom: 15px;margin-top:10px;">
+            <a href="./filmler.admin" target="yonetimekrani" class="item">
+                Filmler
+            </a>
+            <a href="./fotograflar.admin" target="yonetimekrani" class="item">
+                Fotoğraflar
+            </a>
+            <a href="./iletisim.admin" target="yonetimekrani" class="item">
+                İletişim
+            </a>
+            <a href="./kategori.admin" target="yonetimekrani" class="item">
+                Kategoriler
+            </a>
+            <a href="./kullanicilar.admin" target="yonetimekrani" class="item">
+                Kullanıcılar
+            </a>
+            <a href="./loglar.admin" target="yonetimekrani" class="item">
+                Loglar
+            </a>
+            <a href="./sss.admin" target="yonetimekrani" class="item">
+                Sıkça Sorulan Sorular
+            </a>
+            <a href="./yorumlar.admin" target="yonetimekrani" class="item">
+                Yorumlar
+            </a>
+            <a href="./yetkiler.admin" target="yonetimekrani" class="item">
+                Yetkiler
+            </a>
+            <a href="./yetkilendirme.admin" target="yonetimekrani" class="item">
+                Yetkilendirme
+            </a>
+            <div class="right menu" style="visibility: hidden;">
+                <a class="ui item active" href="./logout.xhtml">
+                    Çıkış
+                </a>
+            </div>
+        </div>
         <iframe name="yonetimekrani" title="Admin Paneli" style="border: 0px;min-height:185%;margin: auto;width: 60%;display: block;">
         </iframe>
         <script src="../assets/js/menu.js"></script>

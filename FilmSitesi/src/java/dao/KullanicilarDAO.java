@@ -21,7 +21,7 @@ public class KullanicilarDAO extends DBConnection {
             ResultSet rs = st.executeQuery("select * from kullanicilar where eposta='" + eposta + "' and sifre='" + sifre + "'");
             rs.next();
             SystemGroup g = this.getSdao().getByID(rs.getInt("ugroup"));
-            u = new Kullanicilar(rs.getInt("id"), rs.getString("eposta"), rs.getString("sifre"), g);
+            u = new Kullanicilar(rs.getInt("id"), rs.getString("kullaniciadi"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("sifre"), g);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -88,6 +88,18 @@ public class KullanicilarDAO extends DBConnection {
         }
 
     }
+    
+    public void updateKullanicilar2(Kullanicilar k, int id) {
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "update kullanicilar set kullaniciadi ='" + k.getKullaniciadi() + "', ad='" + k.getAd() + "', soyad='" + k.getSoyad() + "', eposta='" + k.getEposta() + "', sifre='" + k.getSifre() + "', ugroup='" + k.getGroup().getId() + "'where id =" + id;
+            st.executeUpdate(q);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 
     public List<Kullanicilar> getKullanicilarList(int page, int pageSize) {
         List<Kullanicilar> KullanicilarList = new ArrayList<>();
@@ -111,6 +123,7 @@ public class KullanicilarDAO extends DBConnection {
 
         return KullanicilarList;
     }
+   
 
     public int count() {
         int count = 0;
@@ -140,5 +153,6 @@ public class KullanicilarDAO extends DBConnection {
     public void setSdao(GroupDAO sdao) {
         this.sdao = sdao;
     }
+
 
 }

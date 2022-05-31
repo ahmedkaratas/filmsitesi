@@ -50,7 +50,7 @@
                             <f:facet name="header">İşlem</f:facet>
                             <h:commandButton rendered="#{kategoriBean.entity.id!=0 or privilegesBean.getPrivilege(user.group,'Kategori').idelete}" action="#{kategoriBean.delete(k)}" class="ui red button" value="SİL" style="padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px 7px 0px 0px;"  />
                             <h:commandButton rendered="#{kategoriBean.entity.id!=0 or privilegesBean.getPrivilege(user.group,'Kategori').iupdate}" action="#{kategoriBean.setEntity(k)}" class="ui button" value="GÜNCELLE" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
-                            
+
 
                         </h:column>
 

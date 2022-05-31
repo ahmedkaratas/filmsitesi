@@ -28,27 +28,32 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 #{kullanicilarBean.entity.soyad = user.soyad}
                 #{kullanicilarBean.entity.eposta = user.eposta}
                 #{kullanicilarBean.entity.sifre = user.sifre}
-            <h:inputText value="#{kullanicilarBean.entity.id}" />
+            <h:inputText value="#{kullanicilarBean.entity.id}"  />
             <label class="floating-label" for="id">ID</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{kullanicilarBean.entity.kullaniciadi}" />
+            <h:inputText value="#{kullanicilarBean.entity.kullaniciadi}" validator="#{kullanicilarBean.getVb().validateKullaniciAdi}"/>
+            <h:message for="ka" style="color: red; font-size: 10pt;" /> 
             <label class="floating-label" for="kullaniciadi">Kullanıcı adı</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{kullanicilarBean.entity.ad}" />
+            <h:inputText value="#{kullanicilarBean.entity.ad}" validator="#{kullanicilarBean.getVb().validateAd}"/>
+            <h:message for="ka" style="color: red; font-size: 10pt;" /> 
             <label class="floating-label" for="ad">Ad</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{kullanicilarBean.entity.soyad}" />
+            <h:inputText value="#{kullanicilarBean.entity.soyad}" validator="#{kullanicilarBean.getVb().validateSoyad}"/>
+            <h:message for="ka" style="color: red; font-size: 10pt;" /> 
             <label class="floating-label" for="soyad">Soyad</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{kullanicilarBean.entity.eposta}" />
+            <h:inputText value="#{kullanicilarBean.entity.eposta}" validator="#{kullanicilarBean.getVb().validateEposta}"/>
+            <h:message for="ka" style="color: red; font-size: 10pt;" /> 
             <label class="floating-label" for="eposta">E-posta adresi</label>
             </div>
             <div class="form-element">
-            <h:inputSecret value="#{kullanicilarBean.entity.sifre}" />
+            <h:inputSecret value="#{kullanicilarBean.entity.sifre}" validator="#{kullanicilarBean.getVb().validateSifre}"/>
+            <h:message for="ka" style="color: red; font-size: 10pt;" /> 
             <label class="floating-label" for="password">Şifre</label>
             </div>
             <h:commandButton action="#{sessionBean.login}" actionListener="#{kullanicilarBean.update2()}" class="btn" style="margin-bottom: 12px;margin-top: 12px;" value="Güncelle" />

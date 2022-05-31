@@ -41,7 +41,7 @@ public class PrivilegesDAO extends DBConnection {
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "update privilege set mname ='" + g.getMname() + "',ugroup='" + g.getPgroup().getId() + "' where id =" + g.getId();
+            String q = "update privilege set mname ='" + g.getMname() + "',sgroup='" + g.getPgroup().getId() + "',icreate='" + g.isIcreate() + "',iupdate='" + g.isIupdate() + "',idelete='" + g.isIdelete() + "',ilist='" + g.isIlist() + "',ishow='" + g.isIshow() + "',iread='" + g.isIread() + "' where id =" + g.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());

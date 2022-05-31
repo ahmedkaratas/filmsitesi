@@ -86,3 +86,9 @@ window.onclick = function (event) {
          document.body.style.overflow = 'inherit';
     }
 }
+
+
+var gallery = $("#wrapper");
+var contents = gallery.find("td, th").contents().detach();
+gallery.find("table").remove();
+gallery.append(contents);

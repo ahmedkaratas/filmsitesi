@@ -88,7 +88,7 @@ public class FilmDAO extends DBConnection {
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
                 
-                FilmList.add(new Film(rs.getInt("Filmid"), this.getPostCategories(rs.getInt("filmid")), rs.getString("ad"), rs.getString("tur"), rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getInt("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel")));
+                FilmList.add(new Film(rs.getInt("Filmid"), this.getPostCategories(rs.getInt("filmid")), rs.getString("ad"), rs.getString("tur"), rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getDouble("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel")));
 
             }
 
@@ -146,7 +146,7 @@ public class FilmDAO extends DBConnection {
             String q = "select * from film where filmid="+filmid;
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
-                f = new Film(rs.getInt("filmid"), this.getPostCategories(rs.getInt("filmid")), rs.getString("ad"), rs.getString("tur"), rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getInt("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel"));
+                f = new Film(rs.getInt("filmid"), this.getPostCategories(rs.getInt("filmid")), rs.getString("ad"), rs.getString("tur"), rs.getString("vizyon"), rs.getString("sure"), rs.getString("ulke"), rs.getDouble("puan"), rs.getString("yassiniri"), rs.getString("filmlinki"), rs.getString("aciklama"), rs.getString("gorsel"));
 
             }
 

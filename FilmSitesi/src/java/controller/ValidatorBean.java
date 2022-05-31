@@ -1,5 +1,5 @@
 
-package Validator;
+package controller;
 
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.component.UIComponent;
@@ -23,12 +23,10 @@ public class ValidatorBean extends Validator {
     
     public boolean validateSifre(FacesContext fc, UIComponent uic, Object value) throws ValidatorException {
         String v = (String) value;
+       
         if (v.isEmpty()) {
             throw new ValidatorException(new FacesMessage("Şifre alanı boş bırakılamaz !"));
-        } else if (v.length() < 8) {
-            throw new ValidatorException(new FacesMessage("Şifre alanı 8 karakterden kısa olamaz!"));
-
-        }
+        } 
         return true;
 
     }
@@ -37,10 +35,7 @@ public class ValidatorBean extends Validator {
         String v = (String) value;
         if (v.isEmpty()) {
             throw new ValidatorException(new FacesMessage("Kullanıcı Adı alanı boş olamaz!"));
-        } else if (v.length() < 5) {
-            throw new ValidatorException(new FacesMessage("Kullanıcı Adı  alanı 5 karakterden kısa olamaz!"));
-
-        }
+        } 
         return true;
 
     }

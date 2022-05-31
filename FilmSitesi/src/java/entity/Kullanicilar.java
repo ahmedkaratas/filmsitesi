@@ -26,6 +26,15 @@ public class Kullanicilar {
         this.sifre = sifre;
         this.group = group;
     }
+    
+    public Kullanicilar(int id, String kullaniciadi, String ad, String soyad, String eposta, String sifre) {
+        this.id = id;
+        this.kullaniciadi = kullaniciadi;
+        this.ad = ad;
+        this.soyad = soyad;
+        this.eposta = eposta;
+        this.sifre = sifre;
+    }
 
     public Kullanicilar(int id, String eposta, String sifre, SystemGroup group) {
         this.id = id;

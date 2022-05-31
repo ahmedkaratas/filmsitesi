@@ -21,7 +21,6 @@ public class KullanicilarBean implements Serializable {
     private int page = 1;
     private int pageSize = 10;
     private int pageCount;
-    private int id = 0;
 
     public void next() {
         if (this.page == this.getPageCount()) {
@@ -79,7 +78,7 @@ public class KullanicilarBean implements Serializable {
     }
     
     public void update2() {
-        this.getDao().updateKullanicilar2(entity, id);
+        this.getDao().updateKullanicilar2(entity);
         this.entity = new Kullanicilar();
 
     }

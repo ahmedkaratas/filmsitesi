@@ -15,36 +15,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     <h:body>
         <a href="./"><img src="./assets/img/girislogo.svg" class="logo"></img></a>
         
-        <h:form rendered="#{user != null}" class="container">
-            <img src="./assets/img/user.webp" style="background: lightgrey;border-radius: 100%;height: 100px;margin-left: 170px;user-select: none;z-index: 2;position: sticky;" oncontextmenu="return false" draggable="false" ></img>
+        <h:form class="container">
+            <a onclick="history.back()" style="cursor:pointer;position: absolute;color: #3c91e1;font-weight: bold;text-decoration: none;">Vazgeç</a>
+            <img src="./assets/img/user.webp" class="turcomemberf" oncontextmenu="return false" draggable="false" ></img>
             <div class="turcomemberbg"></div>
             <h1 style="margin-left: 106px;font-weight: 400;">Bilgileri Düzenle</h1>
             <label style="color: #ff000099;margin-bottom: 10px;display: block;margin-top: -5px;"><h:messages></h:messages></label>
             <div class="form-element" style="display:none;">
-            <h:inputText value="#{user.id}" />
+                #{kullanicilarBean.entity.id = user.id}
+                #{kullanicilarBean.entity.kullaniciadi = user.kullaniciadi}
+                #{kullanicilarBean.entity.ad = user.ad}
+                #{kullanicilarBean.entity.soyad = user.soyad}
+                #{kullanicilarBean.entity.eposta = user.eposta}
+                #{kullanicilarBean.entity.sifre = user.sifre}
+            <h:inputText value="#{kullanicilarBean.entity.id}" />
             <label class="floating-label" for="id">ID</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{user.kullaniciadi}" />
+            <h:inputText value="#{kullanicilarBean.entity.kullaniciadi}" />
             <label class="floating-label" for="kullaniciadi">Kullanıcı adı</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{user.ad}" />
+            <h:inputText value="#{kullanicilarBean.entity.ad}" />
             <label class="floating-label" for="ad">Ad</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{user.soyad}" />
+            <h:inputText value="#{kullanicilarBean.entity.soyad}" />
             <label class="floating-label" for="soyad">Soyad</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{user.eposta}" />
+            <h:inputText value="#{kullanicilarBean.entity.eposta}" />
             <label class="floating-label" for="eposta">E-posta adresi</label>
             </div>
             <div class="form-element">
-            <h:inputSecret value="#{user.sifre}" />
+            <h:inputSecret value="#{kullanicilarBean.entity.sifre}" />
             <label class="floating-label" for="password">Şifre</label>
             </div>
-            <h:commandButton action="#{kullanicilarBean.update2(k,user.id)}" class="btn" style="margin-bottom: 12px;margin-top: 12px;" value="Güncelle" />
+            <h:commandButton action="#{sessionBean.login}" actionListener="#{kullanicilarBean.update2()}" class="btn" style="margin-bottom: 12px;margin-top: 12px;" value="Güncelle" />
         </h:form>
     </h:body>
 </html>

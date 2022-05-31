@@ -123,3 +123,14 @@ input:valid ~ .floating-label {
     -moz-animation: spin 1.5s linear infinite;
     animation: spin 1.5s linear infinite;
 }
+
+.turcomemberf{
+    background: lightgrey;
+    border-radius: 100%;
+    height: 100px;
+    margin-left: 170px;
+    user-select: none;
+    z-index: 2;
+    position: sticky;
+    margin-top: 20px;
+}

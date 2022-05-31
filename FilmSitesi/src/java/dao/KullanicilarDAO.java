@@ -33,7 +33,7 @@ public class KullanicilarDAO extends DBConnection {
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "insert into kullanicilar (kullaniciadi,ad,soyad,eposta,sifre,ugroup) values ('" + k.getKullaniciadi() + "','" + k.getAd() + "','" + k.getSoyad() + "','" + k.getEposta() + "','" + k.getSifre() + "','')";
+            String q = "insert into kullanicilar (kullaniciadi,ad,soyad,eposta,sifre,ugroup) values ('" + k.getKullaniciadi() + "','" + k.getAd() + "','" + k.getSoyad() + "','" + k.getEposta() + "','" + k.getSifre() + "',3)";
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -89,17 +89,18 @@ public class KullanicilarDAO extends DBConnection {
 
     }
     
-    public void updateKullanicilar2(Kullanicilar k, int id) {
+    public void updateKullanicilar2(Kullanicilar k) {
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "update kullanicilar set kullaniciadi ='" + k.getKullaniciadi() + "', ad='" + k.getAd() + "', soyad='" + k.getSoyad() + "', eposta='" + k.getEposta() + "', sifre='" + k.getSifre() + "', ugroup='" + k.getGroup().getId() + "'where id =" + id;
+            String q = "update kullanicilar set kullaniciadi ='" + k.getKullaniciadi() + "', ad='" + k.getAd() + "', soyad='" + k.getSoyad() + "', eposta='" + k.getEposta() + "', sifre='" + k.getSifre() + "' where id =" + k.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
     }
+
 
     public List<Kullanicilar> getKullanicilarList(int page, int pageSize) {
         List<Kullanicilar> KullanicilarList = new ArrayList<>();

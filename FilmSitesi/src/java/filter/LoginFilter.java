@@ -39,7 +39,7 @@ public class LoginFilter implements Filter {
         }
 
         if (user == null) {
-            if (url.contains("logout") || url.contains("private")) {
+            if (url.contains("logout") || url.contains("private") || url.contains("profile") || url.contains("admin/")) {
                 response.sendRedirect(request.getContextPath() + "/login.xhtml");
             } else {
                 fc.doFilter(sr, sr1);
@@ -48,7 +48,7 @@ public class LoginFilter implements Filter {
         } else {
 
             if (url.contains("register")) {
-                response.sendRedirect(request.getContextPath() + "/index.xhtml");
+                response.sendRedirect(request.getContextPath() + "/");
             } else if (url.contains("logout")) {
                 session.invalidate();
                 response.sendRedirect(request.getContextPath() + "/login.xhtml");

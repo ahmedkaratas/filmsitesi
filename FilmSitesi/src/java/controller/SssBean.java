@@ -22,26 +22,28 @@ public class SssBean implements Serializable {
     private Sss entity;
     private SssDAO dao;
     private List<Sss> list;
-    
-    private int page=1;
-    private int pageSize=10;
+
+    private int page = 1;
+    private int pageSize = 10;
     private int pageCount;
-    
-    public void next(){
-        if ( this.page == this.getPageCount())
+
+    public void next() {
+        if (this.page == this.getPageCount()) {
             this.page = 1;
-        else
+        } else {
             this.page++;
+        }
     }
-    
-    public void previous(){
-        if ( this.page == 1 )
+
+    public void previous() {
+        if (this.page == 1) {
             this.page = this.getPageCount();
-        else
+        } else {
             this.page--;
+        }
     }
-    
-     public int getPage() {
+
+    public int getPage() {
         return page;
     }
 
@@ -58,7 +60,7 @@ public class SssBean implements Serializable {
     }
 
     public int getPageCount() {
-        this.pageCount = (int) Math.ceil(this.getDao().count()/(double)pageSize);
+        this.pageCount = (int) Math.ceil(this.getDao().count() / (double) pageSize);
         return pageCount;
     }
 
@@ -82,6 +84,10 @@ public class SssBean implements Serializable {
 
     public void delete(Sss s) {
         this.getDao().deleteSss(s);
+    }
+
+    public void clear() {
+        this.entity = new Sss();
     }
 
     public Sss getEntity() {

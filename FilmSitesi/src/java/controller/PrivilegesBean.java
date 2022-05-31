@@ -15,10 +15,6 @@ public class PrivilegesBean implements Serializable {
     private Privileges entity;
     private PrivilegesDAO dao;
     private List<Privileges> list;
-    
-    public Privileges getPrivilege(SystemGroup sg, String module) {
-        return this.getDao().getGroupPrivileges(sg,module);
-    }
 
     private int page = 1;
     private int pageSize = 10;
@@ -63,6 +59,10 @@ public class PrivilegesBean implements Serializable {
 
     public void setPageCount(int pageCount) {
         this.pageCount = pageCount;
+    }
+
+    public Privileges getPrivilege(SystemGroup sg, String module) {
+        return this.getDao().getGroupPrivileges(sg, module);
     }
 
     public PrivilegesBean() {

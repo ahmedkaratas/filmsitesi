@@ -22,13 +22,14 @@
                     <div class="two fields">
                         <div class="field"><label>Soru</label><h:inputText value="#{sssBean.entity.soru}" a:placeholder="Bir soru giriniz.." /></div>
                         <div class="field"><label>Cevap</label><h:inputText value="#{sssBean.entity.cevap}" a:placeholder="Sorunun cevabını giriniz.." /></div>
-                    <h:commandButton rendered="#{sssBean.entity.soruid==0}" action="#{sssBean.create()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;"  value="Kaydet" /><br/>
-                    <h:commandButton rendered="#{sssBean.entity.soruid!=0}" action="#{sssBean.update()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;"  value="Değiştir" /><br/>
-                <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
+                        <h:commandButton rendered="#{sssBean.entity.soruid==0}" action="#{sssBean.create()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;"  value="Kaydet" /><br/>
+                        <h:commandButton rendered="#{sssBean.entity.soruid!=0}" action="#{sssBean.update()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;"  value="Değiştir" /><br/>
+                        <h:commandButton rendered="#{sssBean.entity.soruid!=0}" action="#{sssBean.clear()}" class="ui button" value="İPTAL" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
+                        <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
                     </div>
                 </h:form>
                 <h:form>
-                     <div>
+                    <div>
                         <h:commandButton action="#{sssBean.previous()}" value="" style="background: url(../assets/svg/left.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;"/>
                         <h:commandButton action="#{sssBean.next()}" value="" style="background: url(../assets/svg/right.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;margin-left: 20px;"/>
                         <pre>Sayfa #{sssBean.page} / #{sssBean.pageCount}</pre>
@@ -49,7 +50,7 @@
                                 #{s.cevap}
 
                         </h:column>
-                        
+
                         <h:column>
                             <f:facet name="header"> İşlem</f:facet>
                             <h:commandButton action="#{sssBean.delete(s)}" class="ui red button" value="SİL" style="padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px 7px 0px 0px;" />

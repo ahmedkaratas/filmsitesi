@@ -14,23 +14,25 @@ public class FotograflarBean implements Serializable {
     private Fotograflar entity;
     private FotograflarDAO dao;
     private List<Fotograflar> list;
-    
-    private int page=1;
-    private int pageSize=10;
+
+    private int page = 1;
+    private int pageSize = 10;
     private int pageCount;
-    
-    public void next(){
-        if ( this.page == this.getPageCount())
+
+    public void next() {
+        if (this.page == this.getPageCount()) {
             this.page = 1;
-        else
+        } else {
             this.page++;
+        }
     }
-    
-    public void previous(){
-        if ( this.page == 1 )
+
+    public void previous() {
+        if (this.page == 1) {
             this.page = this.getPageCount();
-        else
+        } else {
             this.page--;
+        }
     }
 
     public int getPage() {
@@ -50,14 +52,13 @@ public class FotograflarBean implements Serializable {
     }
 
     public int getPageCount() {
-        this.pageCount = (int) Math.ceil(this.getDao().count()/(double)pageSize);
+        this.pageCount = (int) Math.ceil(this.getDao().count() / (double) pageSize);
         return pageCount;
     }
 
     public void setPageCount(int pageCount) {
         this.pageCount = pageCount;
     }
-    
 
     public FotograflarBean() {
     }
@@ -70,11 +71,15 @@ public class FotograflarBean implements Serializable {
     public void update() {
         this.getDao().updateFotograflar(entity);
         this.entity = new Fotograflar();
-        
+
     }
 
     public void delete(Fotograflar k) {
         this.getDao().deleteFotograflar(k);
+    }
+
+    public void clear() {
+        this.entity = new Fotograflar();
     }
 
     public Fotograflar getEntity() {

@@ -1,6 +1,5 @@
 package controller;
 
-import Validator.ValidatorBean;
 import dao.KullanicilarDAO;
 import entity.Kullanicilar;
 import jakarta.inject.Named;
@@ -76,7 +75,7 @@ public class KullanicilarBean implements Serializable {
         this.entity = new Kullanicilar();
 
     }
-    
+
     public void update2() {
         this.getDao().updateKullanicilar2(entity);
         this.entity = new Kullanicilar();
@@ -96,6 +95,10 @@ public class KullanicilarBean implements Serializable {
 
     public void delete(Kullanicilar k) {
         this.getDao().deleteKullanicilar(k);
+    }
+
+    public void clear() {
+        this.entity = new Kullanicilar();
     }
 
     public Kullanicilar getEntity() {

@@ -22,13 +22,14 @@
                     <div class="two fields">
                         <div class="field"><label>Kullanıcı ID</label><h:inputText value="#{yorumlarBean.entity.kullaniciid}" a:placeholder="Kullanıcı ID" /></div>
                         <div class="field"><label>Film</label><h:selectOneMenu value="#{yorumlarBean.entity.filmid}" converter="filmConverter">
-                            <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
+                                <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
 
-                        </h:selectOneMenu></div>
+                            </h:selectOneMenu></div>
                         <div class="field"><label>Yorum</label><h:inputText value="#{yorumlarBean.entity.yorum}" a:placeholder="Yorum giriniz.."  /></div>
                         <h:commandButton rendered="#{yorumlarBean.entity.yorumid==0}" action="#{yorumlarBean.create()}" class="ui blue button" value="Kaydet" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" /><br/>
                         <h:commandButton rendered="#{yorumlarBean.entity.yorumid!=0}" action="#{yorumlarBean.update()}" class="ui blue button" value="Değiştir" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" /><br/>
-                     <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
+                        <h:commandButton rendered="#{yorumlarBean.entity.yorumid!=0}" action="#{yorumlarBean.clear()}" class="ui button" value="İPTAL" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
+                        <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
                     </div>
                 </h:form> 
                 <h:form>

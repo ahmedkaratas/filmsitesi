@@ -12,34 +12,35 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
-
 @Named(value = "yorumlarBean")
 @SessionScoped
 public class YorumlarBean implements Serializable {
-    
+
     private Yorumlar entity;
     private YorumlarDAO dao;
     private List<Yorumlar> list;
-    
-    private int page=1;
-    private int pageSize=10;
+
+    private int page = 1;
+    private int pageSize = 10;
     private int pageCount;
-    
-    public void next(){
-        if ( this.page == this.getPageCount())
+
+    public void next() {
+        if (this.page == this.getPageCount()) {
             this.page = 1;
-        else
+        } else {
             this.page++;
+        }
     }
-    
-    public void previous(){
-        if ( this.page == 1 )
+
+    public void previous() {
+        if (this.page == 1) {
             this.page = this.getPageCount();
-        else
+        } else {
             this.page--;
+        }
     }
-    
-     public int getPage() {
+
+    public int getPage() {
         return page;
     }
 
@@ -56,7 +57,7 @@ public class YorumlarBean implements Serializable {
     }
 
     public int getPageCount() {
-        this.pageCount = (int) Math.ceil(this.getDao().count()/(double)pageSize);
+        this.pageCount = (int) Math.ceil(this.getDao().count() / (double) pageSize);
         return pageCount;
     }
 
@@ -64,9 +65,9 @@ public class YorumlarBean implements Serializable {
         this.pageCount = pageCount;
     }
 
-   
     public YorumlarBean() {
     }
+
     public void create() {
         this.entity.setTarih(new Date(System.currentTimeMillis()));
         this.getDao().createYorumlar(entity);
@@ -76,11 +77,15 @@ public class YorumlarBean implements Serializable {
     public void update() {
         this.getDao().updateYorumlar(entity);
         this.entity = new Yorumlar();
-        
+
     }
 
     public void delete(Yorumlar y) {
         this.getDao().deleteYorumlar(y);
+    }
+
+    public void clear() {
+        this.entity = new Yorumlar();
     }
 
     public Yorumlar getEntity() {

@@ -68,13 +68,15 @@ public class GroupDAO extends DBConnection {
 
     }
 
-    public List<SystemGroup> getSystemGroupList() {
+    public List<SystemGroup> getSystemGroupList(int page, int pageSize) {
         List<SystemGroup> SystemGroupList = new ArrayList<>();
+        int start = (page-1)*pageSize;
 
         try {
 
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from systemgroup");
+            String q ="select * from systemgroup order by id asc limit '" + pageSize + "' offset '" + start + "'";
+            ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
                 SystemGroupList.add(new SystemGroup(rs.getInt("id"), rs.getString("gname"), rs.getDate("created"), rs.getDate("updated")));
 
@@ -86,6 +88,24 @@ public class GroupDAO extends DBConnection {
 
         return SystemGroupList;
 
+    }
+
+    public int count() {
+        int count = 0;
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select count(id) as group_count from systemgroup";
+            ResultSet rs = st.executeQuery(q);
+            rs.next();
+            count = rs.getInt("group_count");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return count;
     }
 
 }

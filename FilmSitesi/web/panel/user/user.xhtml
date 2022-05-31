@@ -20,64 +20,49 @@
                 </div>
                 <h:form class="ui form">
                     <div class="two fields">
-                        <div class="field"><label>Grup Adı</label>
-
-                            <h:selectOneMenu value="#{kullanicilarBean.entity.group}" converter="groupConverter">
-                                <f:selectItems value="#{systemgroupBean.list}"  var="u" itemLabel="#{u.gname}" itemValue="#{u}" />
-                            </h:selectOneMenu></div>
+                        
                         <div class="field" style="width: 100%;"><label> Kullanıcıadı</label><h:inputText value="#{kullanicilarBean.entity.kullaniciadi}" a:placeholder="Group oluşturmak için bir kategori adı giriniz" /></div>
                         <div class="field" style="width: 100%;"><label> Adı</label><h:inputText value="#{kullanicilarBean.entity.ad}" a:placeholder="Group oluşturmak için bir kategori adı giriniz" /></div>
                         <div class="field" style="width: 100%;"><label>Soyadı</label><h:inputText value="#{kullanicilarBean.entity.soyad}" a:placeholder="Group oluşturmak için bir kategori adı giriniz" /></div>
-                        <div class="field" style="width: 100%;"><label> E-posta</label><h:inputText value="#{kullanicilarBean.entity.eposta}" a:placeholder="Group oluşturmak için bir kategori adı giriniz" /></div>
+                        <div class="field" style="width: 100%;"><label> E-posta</label><h:inputText value="#{kullanicilarBean.entity.eposta}" a:placeholder="#{user.eposta}"/></div>
                         <div class="field" style="width: 100%;"><label>Şifre</label><h:inputText value="#{kullanicilarBean.entity.sifre}" a:placeholder="Group oluşturmak için bir kategori adı giriniz" /></div>
-                        <h:commandButton rendered="#{kullanicilarBean.entity.id==0}" action="#{kullanicilarBean.create1()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Kaydet" /><br/>
-                        <h:commandButton rendered="#{kullanicilarBean.entity.id!=0}" action="#{kullanicilarBean.update1()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Değiştir" /><br/>
+                        <h:commandButton rendered="#{kullanicilarBean.entity.id!=0}" action="#{kullanicilarBean.update()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Değiştir" /><br/>
                         <h:commandButton rendered="#{kullanicilarBean.entity.id!=0}" action="#{kullanicilarBean.clear()}" class="ui button" value="İPTAL" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
                         <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
                     </div>
                 </h:form>
-                <h:form>
+                <h:form rendered="#{user != null}">
 
                     <h:dataTable value="#{kullanicilarBean.list}" class="ui celled table" var="u">
+
                         <h:column>
                             <f:facet name="header">ID </f:facet>
-                                #{u.id}
-
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header"> Group </f:facet>
-                                #{u.group.gname}
+                                #{user.kullaniciadi}
 
                         </h:column>
                         <h:column>
                             <f:facet name="header">ID </f:facet>
-                                #{u.kullaniciadi}
+                                #{user.ad}
 
                         </h:column>
                         <h:column>
                             <f:facet name="header">ID </f:facet>
-                                #{u.ad}
-
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">ID </f:facet>
-                                #{u.soyad}
+                                #{user.soyad}
 
                         </h:column>
                         <h:column>
                             <f:facet name="header"> E-mail </f:facet>
-                                #{u.eposta}
+                                #{user.eposta}
 
                         </h:column>
                         <h:column>
                             <f:facet name="header"> Şifre </f:facet>
-                                #{u.sifre}
+                                #{user.sifre}
 
                         </h:column>
 
                         <h:column>
                             <f:facet name="header">İşlem</f:facet>
-                            <h:commandButton action="#{kullanicilarBean.delete(u)}" class="ui red button" value="SİL" style="padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px 7px 0px 0px;"  />
                             <h:commandButton action="#{kullanicilarBean.setEntity(u)}" class="ui button" value="GÜNCELLE" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
 
                         </h:column>

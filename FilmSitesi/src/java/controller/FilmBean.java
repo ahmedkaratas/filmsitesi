@@ -1,4 +1,3 @@
-
 package controller;
 
 import dao.FilmDAO;
@@ -6,7 +5,7 @@ import entity.Film;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.List; 
+import java.util.List;
 
 @Named(value = "filmBean")
 @SessionScoped
@@ -15,23 +14,25 @@ public class FilmBean implements Serializable {
     private Film entity;
     private FilmDAO dao;
     private List<Film> list;
-    
-    private int page=1;
-    private int pageSize=10;
+
+    private int page = 1;
+    private int pageSize = 10;
     private int pageCount;
-    
-    public void next(){
-        if ( this.page == this.getPageCount())
+
+    public void next() {
+        if (this.page == this.getPageCount()) {
             this.page = 1;
-        else
+        } else {
             this.page++;
+        }
     }
-    
-    public void previous(){
-        if ( this.page == 1 )
+
+    public void previous() {
+        if (this.page == 1) {
             this.page = this.getPageCount();
-        else
+        } else {
             this.page--;
+        }
     }
 
     public int getPage() {
@@ -51,14 +52,14 @@ public class FilmBean implements Serializable {
     }
 
     public int getPageCount() {
-        this.pageCount = (int) Math.ceil(this.getDao().count()/(double)pageSize);
+        this.pageCount = (int) Math.ceil(this.getDao().count() / (double) pageSize);
         return pageCount;
     }
 
     public void setPageCount(int pageCount) {
         this.pageCount = pageCount;
     }
-    
+
     public FilmBean() {
     }
 
@@ -77,7 +78,9 @@ public class FilmBean implements Serializable {
         this.getDao().deleteFilm(f);
     }
 
-    
+    public void clear() {
+        this.entity = new Film();
+    }
 
     public Film getEntity() {
         if (this.entity == null) {

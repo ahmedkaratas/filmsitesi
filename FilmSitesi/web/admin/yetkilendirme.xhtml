@@ -45,21 +45,7 @@
                             <h:selectBooleanCheckbox value="#{privilegesBean.entity.idelete}" />
 
                         </div>
-                        <div class="mb-3">
-                            <label>List</label>
-                            <h:selectBooleanCheckbox value="#{privilegesBean.entity.ilist}" />
 
-                        </div>
-                        <div class="mb-3">
-                            <label>Show</label>
-                            <h:selectBooleanCheckbox value="#{privilegesBean.entity.ishow}" />
-
-                        </div>
-                        <div class="mb-3">
-                            <label>Read</label>
-                            <h:selectBooleanCheckbox value="#{privilegesBean.entity.iread}" />
-
-                        </div>
 
                         <h:commandButton rendered="#{privilegesBean.entity.id==0}" action="#{privilegesBean.create()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Kaydet" /><br/>
                         <h:commandButton rendered="#{privilegesBean.entity.id!=0}" action="#{privilegesBean.update()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Değiştir" /><br/>
@@ -100,21 +86,7 @@
                                 #{p.idelete}
 
                         </h:column>
-                        <h:column>
-                            <f:facet name="header"> List </f:facet>
-                                #{p.ilist}
 
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header"> Show </f:facet>
-                                #{p.ishow}
-
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header"> Read </f:facet>
-                                #{p.iread}
-
-                        </h:column>
 
                         <h:column>
                             <f:facet name="header">İşlem</f:facet>

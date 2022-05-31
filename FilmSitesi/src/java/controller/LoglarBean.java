@@ -82,6 +82,10 @@ public class LoglarBean implements Serializable {
     public void delete(Loglar l) {
         this.getDao().deleteLoglar(l);
     }
+    
+    public void clear() {
+        this.entity = new Loglar();
+    }
 
     public Loglar getEntity() {
         if (this.entity == null) {

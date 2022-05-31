@@ -46,9 +46,10 @@ public class FilmDAO extends DBConnection {
         try {
 
             Statement st = this.getConnection().createStatement();
+            st.executeUpdate("delete from filmkategori where film_id="+f.getFilmid());
             String q = "delete from film  where filmid =" + f.getFilmid();
             st.executeUpdate(q);
-            st.executeUpdate("delete from filmkategori where film_id="+f.getFilmid());
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -65,7 +66,7 @@ public class FilmDAO extends DBConnection {
             st.executeUpdate("delete from filmkategori where film_id="+f.getFilmid());
             
             for ( Kategori cat : f.getCategories() ){
-                q = "insert into post_category (film_id, kategori_id) values ("+f.getFilmid()+","+cat.getId()+")";
+                q = "insert into filmkategori (film_id, kategori_id) values ("+f.getFilmid()+","+cat.getId()+")";
                 st.executeUpdate(q);
             }
             

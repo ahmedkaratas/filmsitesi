@@ -44,10 +44,10 @@
             <a href="./yorumlar.admin" target="yonetimekrani" class="item">
                 Yorumlar
             </a>
-            <a href="./yetkiler.admin" target="yonetimekrani" class="item">
+            <a data-value="#{privilegesBean.getPrivilege(user.group,'Kategori').icreate}" href="./yetkiler.admin" target="yonetimekrani" class="item" rendered="#{privilegesBean.getPrivilege(user.group,'Kategori').icreate}">
                 Yetkiler
             </a>
-            <a href="./yetkilendirme.admin" target="yonetimekrani" class="item">
+            <a data-value="#{privilegesBean.getPrivilege(user.group,'Kategori').icreate}" href="./yetkilendirme.admin" target="yonetimekrani" class="item" rendered="#{privilegesBean.getPrivilege(user.group,'Kategori').icreate}">
                 Yetkilendirme
             </a>
             <div class="right menu" style="visibility: hidden;">

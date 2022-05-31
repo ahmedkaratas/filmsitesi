@@ -21,7 +21,7 @@ public class DocumentBean implements Serializable {
     private DocumentDAO documentDao;
 
     private Part doc;
-    private final String uploadTo = "/Users/celal/upload/";
+    private final String uploadTo = "/Users/gaming_msi/Documents/NetBeansProjects/filmsitesi/FilmSitesi/web/assets/img";
 
     public void upload() {
         try {

@@ -7,8 +7,11 @@ function displayHello() {
 function turcoMenuAc() {
     if (document.getElementById("turcomenu").style.display == "none") {
         document.getElementById("turcomenu").style.display = "block";
+        document.getElementById("turcohello").style.display = "none";
+        
     } else {
         document.getElementById("turcomenu").style.display = "none";
+        document.getElementById("turcohello").style.display = "block";
     }
 }
 

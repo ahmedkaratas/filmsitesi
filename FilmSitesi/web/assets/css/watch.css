@@ -9,7 +9,23 @@ body {
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
 }
+.Navigation {
+    opacity: 0;
+    transition: opacity 0.6s;
+    -webkit-transition: opacity 0.6s;
+}
+.UserProfile {
+    opacity: 0;
+    transition: opacity 0.6s;
+    -webkit-transition: opacity 0.6s;
+}
+.Header:hover > .Navigation{
+     opacity:1;
+}
 
+.Header:hover > .UserProfile{
+     opacity:1;
+}
 h2, .TitleList .Title {
   font-size: 24px;
   font-weight: 600;

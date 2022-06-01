@@ -5,6 +5,7 @@
 package controller;
 
 import dao.YorumlarDAO;
+import entity.Kullanicilar;
 import entity.Yorumlar;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
@@ -19,10 +20,12 @@ public class YorumlarBean implements Serializable {
     private Yorumlar entity;
     private YorumlarDAO dao;
     private List<Yorumlar> list;
+    private List<Yorumlar> YorumList;
 
     private int page = 1;
     private int pageSize = 10;
     private int pageCount;
+    private List<Kullanicilar> KullaniciYorum;
 
     public void next() {
         if (this.page == this.getPageCount()) {
@@ -117,5 +120,23 @@ public class YorumlarBean implements Serializable {
 
     public void setList(List<Yorumlar> list) {
         this.list = list;
+    }
+    
+    public List<Yorumlar> getYorumList(int filmid) {
+        this.YorumList = this.getDao().getFilmYorumlarList(filmid);
+        return YorumList;
+    }
+
+    public void setYorumList(List<Yorumlar> YorumList) {
+        this.YorumList = YorumList;
+    }
+    
+    public List<Kullanicilar> getKullaniciYorum(int kid) {
+        this.KullaniciYorum = this.getDao().getKullaniciAdi(kid);
+        return KullaniciYorum;
+    }
+
+    public void setKullaniciYorum(List<Kullanicilar> KullaniciYorum) {
+        this.KullaniciYorum = KullaniciYorum;
     }
 }

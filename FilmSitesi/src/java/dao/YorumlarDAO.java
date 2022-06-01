@@ -1,6 +1,8 @@
 package dao;
 
 import entity.Film;
+import entity.Kullanicilar;
+import entity.SystemGroup;
 import entity.Yorumlar;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -25,6 +27,7 @@ public class YorumlarDAO extends DBConnection {
         }
 
     }
+    
 
     public void deleteYorumlar(Yorumlar y) {
         try {
@@ -71,6 +74,47 @@ public class YorumlarDAO extends DBConnection {
         }
 
         return YorumlarList;
+    }
+    
+    public List<Yorumlar> getFilmYorumlarList(int filmid) {
+        List<Yorumlar> YorumlarList = new ArrayList<>();
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select * from yorumlar where filmid=" + filmid;
+            ResultSet rs = st.executeQuery(q);
+            while (rs.next()) {
+                Film f = this.getFilmDao().findByID(rs.getInt("filmid"));
+                YorumlarList.add(new Yorumlar(rs.getInt("yorumid"),rs.getInt("kullaniciid"),f, rs.getString("yorum"),  rs.getDate("tarih")));
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return YorumlarList;
+    }
+    
+    public List<Kullanicilar> getKullaniciAdi(int kid) {
+        List<Kullanicilar> KullanicilarList = new ArrayList<>();
+
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            String q = "select * from kullanicilar where id="+ kid;
+            ResultSet rs = st.executeQuery(q);
+            while (rs.next()) {
+                KullanicilarList.add(new Kullanicilar(rs.getInt("id"), rs.getString("kullaniciadi"), rs.getString("ad"), rs.getString("soyad"), rs.getString("eposta"), rs.getString("sifre")));
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return KullanicilarList;
     }
     
     public int count() {

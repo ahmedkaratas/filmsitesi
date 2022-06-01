@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html" lang="tr">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" lang="tr"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <meta charset="UTF-8"></meta>
         <title>Turcoflix</title>
@@ -87,35 +88,30 @@
                     <div class="comments">
                         <h2>Yorumlar</h2>
                         <div data-value="#{user != null}" class="comments-form">
-                            <form>
-                                <ul><li>
-                                        <input name="username" type="text" placeholder="Name" required="" value=""></input></li>
-                                    <li><textarea name="comment" placeholder="Comment" required=""></textarea></li>
-                                    <li><input type="submit" value="Yorum Yaz"></input></li>
+                            <h:form>
+                                <ul><li style="display:none;"> #{yorumlarBean.entity.kullaniciid = user.id}
+                                        <h:inputText value="#{yorumlarBean.entity.kullaniciid}" a:placeholder="Kullanıcı ID" />
+                                        <h:selectOneMenu value="#{yorumlarBean.entity.filmid}" converter="filmConverter">
+                                            <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
+
+                            </h:selectOneMenu></li>
+                                    <li><h:inputTextarea value="#{yorumlarBean.entity.yorum}" a:placeholder="Yorum giriniz.." required=""/></li>
+                                    <li><h:commandButton action="#{yorumlarBean.create()}" actionListener="./watch.xhtml?i"  value="Yorum Yaz"/></li>
                                 </ul>
-                            </form>
+                            </h:form>
                         </div>
-                        <div class="comments-list">
-                            <div class="comment">
-                                <h4>Ahmed Karataş</h4>
-                                <p class="timestamp">05/31/22, 06:33 PM</p>
-                                <p>harika</p>
-                            </div>
-                            <div class="comment">
-                                <h4>Celal Binici</h4>
-                                <p class="timestamp">05/31/22, 06:33 PM</p>
-                                <p>güzel</p>
-                            </div>
-                            <div class="comment">
-                                <h4>Celal Binici</h4>
-                                <p class="timestamp">05/31/22, 06:12 AM</p>
-                                <p>Kötü</p>
-                            </div>
-                            <div class="comment">
-                                <h4>Eren Can Ar</h4>
-                                <p class="timestamp">05/27/22, 06:56 PM</p>
-                                <p>süpermiş</p>
-                            </div>
+                        <div class="comments-list" id="comments">
+                            <h:dataTable value="#{yorumlarBean.getYorumList(param['i'])}" class="ui celled table" var="y">
+                                <h:column>
+                                    <div class="comment">
+                                        <ui:repeat value="#{yorumlarBean.getKullaniciYorum(y.kullaniciid)}" var="k">
+                                            <h4>#{k.kullaniciadi}</h4>
+                                        </ui:repeat>
+                                        <p class="timestamp">#{y.tarih}</p>
+                                        <p>#{y.yorum}</p>
+                                    </div>
+                                </h:column>
+                            </h:dataTable>
                         </div>
                     </div>
                 </div>
@@ -163,16 +159,24 @@
             </div>
         </div>
         <script>
+            
+            $("li select").val("#{param['i']}").change();
+            
             var galeri = $("#galeri");
             var contentss = galeri.find("td, th").contents().detach();
             galeri.find("table").remove();
             galeri.append(contentss);
-            
-            
+
+
             var hero = $("#hero");
-var contentsss = hero.find("td, th").contents().detach();
-hero.find("table").remove();
-hero.append(contentsss);
+            var contentsss = hero.find("td, th").contents().detach();
+            hero.find("table").remove();
+            hero.append(contentsss);
+
+            var comments = $("#comments");
+            var contentssss = comments.find("td, th").contents().detach();
+            comments.find("table").remove();
+            comments.append(contentssss);
         </script>
         <script type="text/javascript" src="./assets/js/mini.js"></script>
 

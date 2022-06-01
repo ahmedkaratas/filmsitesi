@@ -6,13 +6,13 @@
     <h:head>
         <meta charset="utf-8"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-        <title>User | Admin Paneli</title>
+        <title>Yetkilendirme | Admin Paneli</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"/>
         <script src="../assets/js/semantic-ui-react.min.js"></script>
         <link rel="stylesheet" href="../assets/css/admincp.css"/>
     </h:head>
 
-    <h:body rendered="#{privilegesBean.getPrivilege(user.group,'Kategori').icreate}">
+    <h:body>
         <div class="newsletter-subscribe">
             <div class="container">
                 <div class="intro">
@@ -54,6 +54,11 @@
                     </div>
                 </h:form>
                 <h:form>
+                    <div>
+                        <h:commandButton action="#{privilegesBean.previous()}" value="" style="background: url(../assets/svg/left.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;"/>
+                        <h:commandButton action="#{privilegesBean.next()}" value="" style="background: url(../assets/svg/right.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;margin-left: 20px;"/>
+                        <pre>Sayfa #{privilegesBean.page} / #{privilegesBean.pageCount}</pre>
+                    </div>
 
                     <h:dataTable value="#{privilegesBean.list}" class="ui celled table" var="p">
                         <h:column>

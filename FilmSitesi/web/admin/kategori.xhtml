@@ -28,7 +28,7 @@
                         <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
                     </div>
                 </h:form>
-                <h:form rendered="#{privilegesBean.getPrivilege(user.group,'Kategori').icreate or privilegesBean.getPrivilege(user.group,'Kategori').iupdate or privilegesBean.getPrivilege(user.group,'Kategori').idelete}">
+                <h:form >
                     <div>
                         <h:commandButton action="#{kategoriBean.previous()}" value="" style="background: url(../assets/svg/left.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;"/>
                         <h:commandButton action="#{kategoriBean.next()}" value="" style="background: url(../assets/svg/right.svg);background-repeat: no-repeat;background-position: center;height: 20px;width: 20px;border: 0;margin-left: 20px;"/>
@@ -48,8 +48,8 @@
 
                         <h:column>
                             <f:facet name="header">İşlem</f:facet>
-                            <h:commandButton rendered="#{kategoriBean.entity.id!=0 or privilegesBean.getPrivilege(user.group,'Kategori').idelete}" action="#{kategoriBean.delete(k)}" class="ui red button" value="SİL" style="padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px 7px 0px 0px;"  />
-                            <h:commandButton rendered="#{kategoriBean.entity.id!=0 or privilegesBean.getPrivilege(user.group,'Kategori').iupdate}" action="#{kategoriBean.setEntity(k)}" class="ui button" value="GÜNCELLE" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
+                            <h:commandButton rendered="#{privilegesBean.getPrivilege(user.group,'Kategori').idelete}" action="#{kategoriBean.delete(k)}" class="ui red button" value="SİL" style="padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px 7px 0px 0px;"  />
+                            <h:commandButton rendered="#{privilegesBean.getPrivilege(user.group,'Kategori').iupdate}" action="#{kategoriBean.setEntity(k)}" class="ui button" value="GÜNCELLE" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
 
                         </h:column>
 

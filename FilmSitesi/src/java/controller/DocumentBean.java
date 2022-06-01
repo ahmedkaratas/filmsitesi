@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.util.List;
 
-@Named
+@Named(value = "documentBean")
 @SessionScoped
 public class DocumentBean implements Serializable {
 
@@ -21,8 +21,7 @@ public class DocumentBean implements Serializable {
     private DocumentDAO documentDao;
 
     private Part doc;
-    private Part doc2;
-    private final String uploadTo = "C:\\Users\\gaming_msi\\Documents\\NetBeansProjects\\filmsitesi\\FilmSitesi\\web\\assets\\img\\";
+    private final String uploadTo = "C:\\Users\\Eren Can\\Documents\\NetBeansProjeler\\filmsitesi\\FilmSitesi\\web\\assets\\img\\";
 
     public void upload() {
         try {
@@ -53,6 +52,12 @@ public class DocumentBean implements Serializable {
         }
         return document;
     }
+    
+    public void clear() {
+        this.document = new  Document();
+    }
+    
+    
 
     public DocumentDAO getDocumentDao() {
         if (this.documentDao == null) {

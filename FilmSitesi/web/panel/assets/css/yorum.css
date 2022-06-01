@@ -1,0 +1,118 @@
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
+  font-family: 'Montserrat', sans-serif!important;
+}
+
+textarea:-ms-input-placeholder, input:-ms-input-placeholder {
+  font-family: 'Montserrat', sans-serif!important;
+}
+
+textarea:-moz-placeholder, input:-moz-placeholder {
+  font-family: 'Montserrat', sans-serif!important;
+}
+
+textarea::-moz-placeholder, input::-moz-placeholder {
+  font-family: 'Montserrat', sans-serif!important;
+}
+
+#yorum {
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 100px 0 30px 0;
+}
+
+.comments {
+    width: 50%;
+    max-width: 80%;
+    min-width: 300px;
+    background: #221f1f;
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+.comments h2 {
+    font-size: 2.3em;
+    margin-bottom: 10px;
+    margin-top: -70px;
+}
+
+.comments-form {
+    border-bottom: 1px solid #2d2929;
+}
+.comments-form ul {
+    list-style: none;
+}
+.comments-form ul li {
+    margin-bottom: 15px;
+}
+.comments-form ul li input[type=submit] {
+    border: 0;
+    border-radius: 7px;
+    padding: 7px 16px;
+    background: #e50914;
+    color: #fff;
+    font-family: 'Montserrat';
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+.comments-form ul li input[type=text], .comments-form ul li textarea {
+    padding: 10px;
+    border: 0!important;
+    font-family:'Montserrat';
+    color:white;
+    border-radius: 10px;
+    background: #2d2929!important;
+    outline: none!important;
+}
+.comments-form ul li input[type=text]::-moz-placeholder, .comments-form ul li textarea::-moz-placeholder {
+    font-family: "Rubik", sans-serif;
+}
+.comments-form ul li input[type=text]:-ms-input-placeholder, .comments-form ul li textarea:-ms-input-placeholder {
+    font-family: "Rubik", sans-serif;
+}
+.comments-form ul li input[type=text]::placeholder, .comments-form ul li textarea::placeholder {
+    font-family: "Rubik", sans-serif;
+}
+.comments-form ul li input[type=text]:focus, .comments-form ul li textarea:focus {
+    background: #fff;
+}
+.comments-form ul li textarea {
+    width: 80%;
+    height: 80px;
+    resize: none;
+    color:white;
+    font-family:'Montserrat';
+}
+
+.comments-list {
+    margin-top: 20px;
+}
+
+.comment {
+    position: relative;
+    padding: 10px 20px;
+    background: #2d2929;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+.comment .timestamp {
+    color: #777;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.comment h4, .comment p {
+    margin: 10px;
+}
+
+footer {
+    float: right;
+    color: #777;
+    font-size: 0.8em;
+    margin-top: 15px;
+}

@@ -18,21 +18,26 @@
                 <div class="intro">
 
                 </div>
-                <h:form class="ui form">
+                <h:form rendered="#{privilegesBean.getPrivilege(user.group,'Kullanicilar').icreate or privilegesBean.getPrivilege(user.group,'Kullanicilar').iupdate or privilegesBean.getPrivilege(user.group,'Kullanicilar').idelete}" class="ui form">
                     <div class="two fields">
+                        <div class="field"><label></label>
+                            <h:selectOneMenu rendered="#{privilegesBean.getPrivilege(user.group,'Kullanicilar').icreate}" value="#{kullanicilarBean.entity.group}" converter="groupConverter">
+                                <f:selectItems value="#{systemgroupBean.list}" var="g" itemValue="#{g}" itemLabel="#{g.gname}"></f:selectItems>
+                            </h:selectOneMenu></div>
                         <div class="field"><label>Kullanıcı Adı</label><h:inputText id="ka" value="#{kullanicilarBean.entity.kullaniciadi}" a:placeholder="Kullanıcı adı giriniz"/>
-                         </div>
+                        </div>
                         <div class="field"><label>Ad</label><h:inputText id="ad" value="#{kullanicilarBean.entity.ad}" a:placeholder="Ad giriniz"/>
                         </div>
                         <div class="field"><label>Soyad</label><h:inputText id="sd" value="#{kullanicilarBean.entity.soyad}" a:placeholder="Soyad giriniz"/>
-                         </div>
+                        </div>
                         <div class="field"><label>E-Posta</label><h:inputText id="ep" value="#{kullanicilarBean.entity.eposta}" a:placeholder="E-posta adresi giriniz"/>
-                         </div>
+                        </div>
                         <div class="field"><label>Şifre</label><h:inputText id="pw" value="#{kullanicilarBean.entity.sifre}" a:placeholder="Bir şifre giriniz"/>
                         </div>
-                        <h:commandButton rendered="#{kullanicilarBean.entity.id==0}" action="#{kullanicilarBean.create()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Kaydet" /><br/>
-                        <h:commandButton rendered="#{kullanicilarBean.entity.id!=0}" action="#{kullanicilarBean.update()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Değiştir" /><br/>
-                    <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
+                        <h:commandButton rendered="#{kullanicilarBean.entity.id==0 and privilegesBean.getPrivilege(user.group,'Kullanicilar').icreate}" action="#{kullanicilarBean.create()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Kaydet" /><br/>
+                        <h:commandButton rendered="#{kullanicilarBean.entity.id!=0 and privilegesBean.getPrivilege(user.group,'Kullanicilar').iupdate}" action="#{kullanicilarBean.update()}" class="ui blue button" style="background: #e50914;height: 36px;margin-top: 24px;border-radius: 3px;" value="Değiştir" /><br/>
+                        <h:commandButton rendered="#{kullanicilarBean.entity.id!=0}" action="#{kullanicilarBean.clear()}" class="ui button" value="İPTAL" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
+                        <svg viewBox="0 0 6 12" xmlns="http://www.w3.org/2000/svg" style="position: absolute;right: 10px;margin-top: 36px;height: 12px;"><path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z" fill="white" fill-rule="evenodd"></path></svg>
                     </div>
                 </h:form>
                 <h:form>
@@ -74,8 +79,8 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">İşlem</f:facet>
-                            <h:commandButton action="#{kullanicilarBean.delete(k)}" class="ui red button" value="SİL" style="padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px 7px 0px 0px;" />
-                            <h:commandButton action="#{kullanicilarBean.setEntity(k)}" class="ui button" value="GÜNCELLE" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
+                            <h:commandButton rendered="#{privilegesBean.getPrivilege(user.group,'Kullanicilar').idelete}" action="#{kullanicilarBean.delete(k)}" class="ui red button" value="SİL" style="padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px 7px 0px 0px;" />
+                            <h:commandButton rendered="#{privilegesBean.getPrivilege(user.group,'Kullanicilar').iupdate}" action="#{kullanicilarBean.setEntity(k)}" class="ui button" value="GÜNCELLE" style="color: black;padding: 8px;font-size: 10px;font-weight: bolder!important;margin: 0px;" />
 
                         </h:column>
 

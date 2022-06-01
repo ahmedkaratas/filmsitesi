@@ -74,8 +74,8 @@
                                 <img src="./assets/img/#{k.linki}" alt=""></img>
                                 <div class="transparent-box">
                                     <div class="caption">
-                                        <p>Library</p>
-                                        <p class="opacity-low">Architect Design</p>
+                                        <p>Oyuncu</p>
+                                        <p class="opacity-low">Fotoğraflar</p>
                                     </div>
                                 </div> 
                             </div>
@@ -95,8 +95,8 @@
                                             <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
 
                                         </h:selectOneMenu></li>
-                                    <li><h:inputTextarea value="#{yorumlarBean.entity.yorum}" a:placeholder="Yorum giriniz.." required=""/></li>
-                                    <li><h:commandButton action="#{yorumlarBean.create()}" actionListener="./watch.xhtml?i"  value="Yorum Yaz">
+                                    <li><h:inputTextarea value="#{yorumlarBean.entity.yorum}" id="entyorum" a:placeholder="Yorum giriniz.." required=""/></li>
+                                    <li><h:commandButton onclick="yorumYazdir(document.getElementById('yorumform:entyorum').value);" action="#{yorumlarBean.create()}" actionListener="./watch.xhtml?i"  value="Yorum Yaz" >
                                             <f:ajax execute="yorumform" render="yorumform yorumtable"/>
                                         </h:commandButton>
                                     </li>
@@ -104,6 +104,11 @@
                             </h:form>
                         </div>
                         <div class="comments-list" id="comments">
+                            <div class="comment" id="yeniyorum" style="background: #e50914;display: none;">
+                                            <h4 id="yeniyorumkullanici"></h4>
+                                        <p id="yeniyorumtarih" class="timestamp" style="color: white;"></p>
+                                        <p id="yeniyorumtext"></p>
+                                    </div>
                             <h:dataTable id="yorumtable" value="#{yorumlarBean.getYorumList(param['i'])}" class="ui celled table" var="y">
                                 <h:column>
                                     <div class="comment">
@@ -162,6 +167,14 @@
             </div>
         </div>
         <script>
+            
+            function yorumYazdir(entyorum){
+               
+               document.getElementById('yeniyorumkullanici').innerHTML += "#{user.kullaniciadi}";
+               document.getElementById('yeniyorumtarih').innerHTML += "şimdi";
+               document.getElementById('yeniyorumtext').innerHTML += entyorum;
+               document.getElementById("yeniyorum").style.display = "block";
+            }
 
             $("li select").val("#{param['i']}").change();
 

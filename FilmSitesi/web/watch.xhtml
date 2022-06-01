@@ -88,20 +88,23 @@
                     <div class="comments">
                         <h2>Yorumlar</h2>
                         <div data-value="#{user != null}" class="comments-form">
-                            <h:form>
+                            <h:form id="yorumform">
                                 <ul><li style="display:none;"> #{yorumlarBean.entity.kullaniciid = user.id}
                                         <h:inputText value="#{yorumlarBean.entity.kullaniciid}" a:placeholder="Kullanıcı ID" />
                                         <h:selectOneMenu value="#{yorumlarBean.entity.filmid}" converter="filmConverter">
                                             <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
 
-                            </h:selectOneMenu></li>
+                                        </h:selectOneMenu></li>
                                     <li><h:inputTextarea value="#{yorumlarBean.entity.yorum}" a:placeholder="Yorum giriniz.." required=""/></li>
-                                    <li><h:commandButton action="#{yorumlarBean.create()}" actionListener="./watch.xhtml?i"  value="Yorum Yaz"/></li>
+                                    <li><h:commandButton action="#{yorumlarBean.create()}" actionListener="./watch.xhtml?i"  value="Yorum Yaz">
+                                            <f:ajax execute="yorumform" render="yorumform yorumtable"/>
+                                        </h:commandButton>
+                                    </li>
                                 </ul>
                             </h:form>
                         </div>
                         <div class="comments-list" id="comments">
-                            <h:dataTable value="#{yorumlarBean.getYorumList(param['i'])}" class="ui celled table" var="y">
+                            <h:dataTable id="yorumtable" value="#{yorumlarBean.getYorumList(param['i'])}" class="ui celled table" var="y">
                                 <h:column>
                                     <div class="comment">
                                         <ui:repeat value="#{yorumlarBean.getKullaniciYorum(y.kullaniciid)}" var="k">
@@ -159,9 +162,9 @@
             </div>
         </div>
         <script>
-            
+
             $("li select").val("#{param['i']}").change();
-            
+
             var galeri = $("#galeri");
             var contentss = galeri.find("td, th").contents().detach();
             galeri.find("table").remove();

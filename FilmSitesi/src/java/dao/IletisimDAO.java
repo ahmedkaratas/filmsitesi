@@ -46,7 +46,7 @@ public class IletisimDAO extends DBConnection {
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "update iletisim set ad='" + i.getAd() + "', soyad='" + i.getSoyad() + "', eposta='" + i.getEposta() + "', baslik='" + i.getBaslik() + "' where id =" + i.getId();
+            String q = "update iletisim set ad='" + i.getAd() + "', soyad='" + i.getSoyad() + "', eposta='" + i.getEposta() + "', baslik='" + i.getBaslik() + "', mesaj='" + i.getMesaj() + "' where id =" + i.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());

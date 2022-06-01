@@ -26,7 +26,7 @@ Film sitesinde kullanıcılar üye olabilecek, üyeliğine giriş yapıp filmi i
 - [x] Update(U)
 - [x] Delete(D)
 - [x] Minimum 1 adet Filter kullanılması
-- [ ] Ajax isteklerinin tamamlanması
+- [x] Ajax isteklerinin tamamlanması
 - [x] Xhtml Validator’lerini yazılması
 - [x] Java Bean Validator’lerini yazılması
 - [x] Minimum 1 adet Dosya işleminin yapılması

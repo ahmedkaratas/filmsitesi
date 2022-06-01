@@ -17,12 +17,12 @@
                 <img src="./assets/img/mainlogo.svg" style="display: flex;position: sticky;top: 40%;width: 75%;left: 5%;"></img>
             </div>
             <div class="right-col">
-                <a onclick="history.back()" role="button" style="position: absolute;color: #0078ff;font-family: 'Montserrat';cursor: pointer;">
+                <a onclick="javascript:location.href = './'" role="button" style="position: absolute;color: #0078ff;font-family: 'Montserrat';cursor: pointer;">
                     <span class="sli   icon-arrow-left" style="vertical-align: -10%;"></span>
                     <img src="./assets/img/iletisimleft.svg" style="cursor: pointer;height: 15px;vertical-align: -2px;margin-right: 3px;"></img>Geri Dön</a>
                 <h1 style="margin-top:50px;">BİZE ULAŞIN</h1>
                 <p>Bir sorun mu yaşıyorsunuz? En iyi şekilde destek alabilmek için bize detayları iletin. Ekibimiz mesajınızı inceleyecektir ve tarafınıza dönüş yapacaktır.</p>
-
+                <p id="basariliMesaj" style="color: green;display: block;margin-top: 30px;font-weight: bold;"></p>
                 <h:form id="contact-form" >
                     <div><label for="name" style="max-width: 50%;">Ad</label>
                         <h:inputText value="#{iletisimBean.entity.ad}" a:placeholder="Adınızı giriniz" required="" style="max-width: 50%;float: left;display: block;"/>
@@ -38,11 +38,17 @@
 
                     <label for="message" style="width: 100%;">Mesaj</label>
                     <h:inputTextarea value="#{iletisimBean.entity.mesaj}" rows="6" a:placeholder="Mesajınızı yazınız" id="message" required="" style="width: 100%;"/>
-                    <h:commandButton action="#{iletisimBean.create()}" class="button" value="GÖNDER" />
+                    <h:commandButton onclick="basariliMesaj();" action="#{iletisimBean.create()}" class="button" value="GÖNDER" ><f:ajax execute="contact-form" render="contact-form"/></h:commandButton>
 
                 </h:form>
             </div>
         </div>
+        <script>
+            function basariliMesaj(){
+               document.getElementById('basariliMesaj').innerHTML = "Mesajınız başarıyla iletildi.";
+               document.getElementById("basariliMesaj").style.display = "block";
+            }
+        </script>
     </h:body>
 
 </html>

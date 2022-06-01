@@ -66,7 +66,7 @@
                     </h:dataTable>
 
                 </div>
-                <p class="heading">Fotoğraflar</p>
+                <p class="heading" style="font-weight:600;">Fotoğraflar</p>
                 <div class="gallery-image" id="galeri">
                     <h:dataTable value="#{fotograflarBean.getFotograflarList(param['i'])}" var="k">
                         <h:column>
@@ -86,8 +86,9 @@
                 </div>
                 <div id="yorum">
                     <div class="comments">
-                        <h2>Yorumlar</h2>
-                        <div data-value="#{user != null}" class="comments-form">
+                        <h2 data-value="#{user == null}">Yorumlar</h2>
+                        <h2 data-value="#{user != null}" id="biryorumyazin">Bir yorum yazın</h2>
+                        <div data-value="#{user != null}" class="comments-form" id="yorumalani">
                             <h:form id="yorumform">
                                 <ul><li style="display:none;"> #{yorumlarBean.entity.kullaniciid = user.id}
                                         <h:inputText value="#{yorumlarBean.entity.kullaniciid}" a:placeholder="Kullanıcı ID" />
@@ -174,6 +175,9 @@
                document.getElementById('yeniyorumtarih').innerHTML += "şimdi";
                document.getElementById('yeniyorumtext').innerHTML += entyorum;
                document.getElementById("yeniyorum").style.display = "block";
+               document.getElementById("yorumalani").style.display = "none";
+               document.getElementById("biryorumyazin").style.display = "none";
+               document.getElementById("yorum").style.margin = "30px 0px 30px 0px";
             }
 
             $("li select").val("#{param['i']}").change();

@@ -36,7 +36,6 @@ textarea::-moz-placeholder, input::-moz-placeholder {
     border-radius: 10px;
 }
 .comments h2 {
-    font-size: 2.3em;
     margin-bottom: 10px;
     margin-top: -70px;
 }
@@ -59,6 +58,7 @@ textarea::-moz-placeholder, input::-moz-placeholder {
     font-family: 'Montserrat';
     font-size: 0.9em;
     margin-bottom: 20px;
+    cursor:pointer;
 }
 .comments-form ul li input[type=text], .comments-form ul li textarea {
     padding: 10px;

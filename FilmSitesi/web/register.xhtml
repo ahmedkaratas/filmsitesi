@@ -14,39 +14,58 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     </h:head>
     <h:body>
         <a href="./"><img src="./assets/img/girislogo.svg" class="logo"></img></a>
-        
-        <h:form rendered="#{user == null}" class="container" prependId="false">
+
+        <h:form rendered="#{user == null}" id="kayitol" class="container" prependId="false">
             <h1>Kayıt Ol</h1>
-            <label style="color: #ff000099;margin-bottom: 10px;display: block;margin-top: -5px;"><h:messages></h:messages></label>
+            <label id="gelenmesaj" style="color: #ff000099;margin-bottom: 10px;display: block;margin-top: -5px;"><h:messages></h:messages></label>
+            <label id="basariliMesaj" style="color: #08ff0099;margin-bottom: 10px;display: block;margin-top: -5px;"></label>
             <div class="form-element">
-            <h:inputText value="#{kullanicilarBean.entity.kullaniciadi}" id="kullaniciadi" />
-            <label class="floating-label" for="kullaniciadi">Kullanıcı adı</label>
+                <h:inputText value="#{kullanicilarBean.entity.kullaniciadi}" id="kullaniciadi" required="true" />
+                <label class="floating-label" for="kullaniciadi">Kullanıcı adı</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{kullanicilarBean.entity.ad}" id="ad" />
-            <label class="floating-label" for="ad">Ad</label>
+                <h:inputText value="#{kullanicilarBean.entity.ad}" id="ad" required="true" />
+                <label class="floating-label" for="ad">Ad</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{kullanicilarBean.entity.soyad}" id="soyad" />
-            <label class="floating-label" for="soyad">Soyad</label>
+                <h:inputText value="#{kullanicilarBean.entity.soyad}" id="soyad" required="true" />
+                <label class="floating-label" for="soyad">Soyad</label>
             </div>
             <div class="form-element">
-            <h:inputText value="#{kullanicilarBean.entity.eposta}" id="eposta" />
-            <label class="floating-label" for="eposta">E-posta adresi</label>
+                <h:inputText value="#{kullanicilarBean.entity.eposta}" id="eposta" required="true" />
+                <label class="floating-label" for="eposta">E-posta adresi</label>
             </div>
             <div class="form-element">
-            <h:inputSecret value="#{kullanicilarBean.entity.sifre}" id="password" required="true" />
-            <label class="floating-label" for="password">Şifre</label>
+                <h:inputSecret value="#{kullanicilarBean.entity.sifre}" id="password" required="true" />
+                <label class="floating-label" for="password">Şifre</label>
             </div>
-            <h:commandButton action="#{kullanicilarBean.create()}" class="btn" value="Ücretsiz Hesap Oluştur" />
+            <h:commandButton action="#{kullanicilarBean.create()}" onclick="yonlendir();" class="btn" value="Ücretsiz Hesap Oluştur" ><f:ajax execute="kayitol" render="kayitol"/></h:commandButton>
             <div style="color: grey;margin-top: 35px;margin-bottom: 20px;">Bir hesabınız mı var? <a href="./login.xhtml" style="color: white;text-decoration: none;">Giriş yapın</a></div>
         </h:form>
-        
+
         <h:panelGroup rendered="#{user != null}" layout="block">
-        <meta http-equiv="refresh" content="0; url=./"/> 
-        <!--    Username: #{user.eposta}<br/>
-            Password: #{user.sifre} -->
+            <meta http-equiv="refresh" content="0; url=./"/> 
         </h:panelGroup>
-        <script>document.getElementById("kullaniciadi").required = true;document.getElementById("ad").required = true;document.getElementById("soyad").required = true;document.getElementById("eposta").required = true;document.getElementById("password").required = true;</script>
+        <script>function yonlendir() {
+                setTimeout(function () {
+                    var elementbir = document.getElementById("gelenmesaj").textContent;
+                    if (elementbir == "") {
+                        document.getElementById('basariliMesaj').innerHTML = "Hesabınız başarıyla oluşturuldu.";
+                    }
+                    ;
+                }, 100);
+                setTimeout(function () {
+                    var element = document.getElementById("gelenmesaj").textContent;
+                    if (element == "") {
+                        window.location.href = './login.xhtml'
+                    }
+                    ;
+                }, 1500);
+            }
+            document.getElementById("kullaniciadi").required = true;
+            document.getElementById("ad").required = true;
+            document.getElementById("soyad").required = true;
+            document.getElementById("eposta").required = true;
+            document.getElementById("password").required = true;</script>
     </h:body>
 </html>

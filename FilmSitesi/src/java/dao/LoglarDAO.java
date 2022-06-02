@@ -10,10 +10,21 @@ import util.DBConnection;
 
 public class LoglarDAO extends DBConnection {
     
-    public void createLoglar(String hareket, String ip, String tarih) {
+    public void createLog(String hareket, String ip, String tarih) {
         try {
             Statement st = this.getConnection().createStatement();
             String q = "insert into loglar (hareket,ip,tarih) values ('" + hareket + "','" + ip + "','" + tarih + "')";
+            st.executeUpdate(q);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+    
+    public void createLoglar(Loglar l) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            String q = "insert into loglar (hareket,ip,tarih) values ('" + l.getHareket() + "','" + l.getIp() + "','" + l.getTarih() + "')";
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());

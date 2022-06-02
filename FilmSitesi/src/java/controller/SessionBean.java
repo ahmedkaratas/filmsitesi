@@ -37,7 +37,7 @@ public class SessionBean implements Serializable {
         Kullanicilar user = this.getUdao().getUser(this.eposta, this.sifre);
         if (user != null) {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", user);
-            LoglarDAO.createLoglar(this.eposta + " hesabı oturum açarak sisteme giriş yaptı.","127.0.0.1",tarih.toString());
+            LoglarDAO.createLog(this.eposta + " hesabı oturum açarak sisteme giriş yaptı.","127.0.0.1",tarih.toString());
             
         } else {
             

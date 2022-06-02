@@ -23,6 +23,8 @@ public class LoglarBean implements Serializable {
     private int page=1;
     private int pageSize=10;
     private int pageCount;
+    
+    Date tarih = new Date(System.currentTimeMillis());
 
     public void next(){
         if ( this.page == this.getPageCount())
@@ -67,8 +69,9 @@ public class LoglarBean implements Serializable {
 
     }
 
-    public void create(String hareket, String ip, String tarih) {
-        this.getDao().createLoglar(hareket,ip,tarih);
+    public void create() {
+        this.entity.setTarih(tarih.toString());
+        this.getDao().createLoglar(entity);
         this.entity = new Loglar();
     }
 

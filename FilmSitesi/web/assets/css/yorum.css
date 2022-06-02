@@ -99,6 +99,7 @@ textarea::-moz-placeholder, input::-moz-placeholder {
     background: #2d2929;
     border-radius: 10px;
     margin-bottom: 15px;
+    min-height: 90px;
 }
 .comment .timestamp {
     color: #777;

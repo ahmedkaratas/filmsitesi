@@ -138,6 +138,7 @@
                                                     <h:column>
                                                         <div class="comment">
                                                             <ui:repeat value="#{yorumlarBean.getKullaniciYorum(y.kullaniciid)}" var="k">
+                                                                <img src="./assets/img/user.webp" data-reactid=".0.0.3.0.1.0" style="background: lightgrey;border-radius: 100%;height: 57px;margin: 10px;border: 2px solid #e50914;float: left;"></img>
                                                                 <h4>#{k.kullaniciadi}</h4>
                                                             </ui:repeat>
                                                             <p class="timestamp">#{y.tarih}</p>

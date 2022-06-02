@@ -5,14 +5,12 @@ import java.sql.Date;
 public class Loglar {
 
     private int id;
-    private String kullaniciadi;
     private String hareket;
     private String ip;
-    private Date tarih;
+    private String tarih;
 
-    public Loglar(int id, String kullaniciadi, String hareket, String ip, Date tarih) {
+    public Loglar(int id, String hareket, String ip, String tarih) {
         this.id = id;
-        this.kullaniciadi = kullaniciadi;
         this.hareket = hareket;
         this.ip = ip;
         this.tarih = tarih;
@@ -31,14 +29,6 @@ public class Loglar {
         this.id = id;
     }
 
-    public String getKullaniciadi() {
-        return kullaniciadi;
-    }
-
-    public void setKullaniciadi(String kullaniciadi) {
-        this.kullaniciadi = kullaniciadi;
-    }
-
     public String getHareket() {
         return hareket;
     }
@@ -55,20 +45,17 @@ public class Loglar {
         this.ip = ip;
     }
 
-    public Date getTarih() {
+    public String getTarih() {
         return tarih;
     }
 
-    public void setTarih(Date tarih) {
+    public void setTarih(String tarih) {
         this.tarih = tarih;
     }
 
     @Override
     public String toString() {
-        return "Loglar{" + "id=" + id + ", kullaniciadi=" + kullaniciadi + ", hareket=" + hareket + ", ip=" + ip + ", tarih=" + tarih + '}';
+        return "Loglar{" + "id=" + id + ", hareket=" + hareket + ", ip=" + ip + ", tarih=" + tarih + '}';
     }
-
-    
-
 
 }

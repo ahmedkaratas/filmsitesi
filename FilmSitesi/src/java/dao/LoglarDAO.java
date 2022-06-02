@@ -9,12 +9,11 @@ import java.util.List;
 import util.DBConnection;
 
 public class LoglarDAO extends DBConnection {
-
-    public void createLoglar(Loglar l) {
+    
+    public void createLoglar(String hareket, String ip, String tarih) {
         try {
-
             Statement st = this.getConnection().createStatement();
-            String q = "insert into loglar (kullaniciadi,hareket,ip,tarih) values ('" + l.getKullaniciadi() + "','" + l.getHareket() + "','" + l.getIp() + "','" + l.getTarih() + "')";
+            String q = "insert into loglar (hareket,ip,tarih) values ('" + hareket + "','" + ip + "','" + tarih + "')";
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -38,7 +37,7 @@ public class LoglarDAO extends DBConnection {
         try {
 
             Statement st = this.getConnection().createStatement();
-            String q = "update loglar set kullaniciadi ='" + l.getKullaniciadi() + "', hareket='" + l.getHareket() + "', ip='" + l.getIp() + "', tarih='" + l.getTarih() + "'where id =" + l.getId();
+            String q = "update loglar set hareket='" + l.getHareket() + "', ip='" + l.getIp() + "', tarih='" + l.getTarih() + "'where id =" + l.getId();
             st.executeUpdate(q);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -57,7 +56,7 @@ public class LoglarDAO extends DBConnection {
             String q = "select * from loglar order by id asc limit '" + pageSize + "' offset '" + start + "'";
             ResultSet rs = st.executeQuery(q);
             while (rs.next()) {
-                LoglarList.add(new Loglar(rs.getInt("id"), rs.getString("kullaniciadi"), rs.getString("hareket"), rs.getString("ip"), rs.getDate("tarih")));
+                LoglarList.add(new Loglar(rs.getInt("id"), rs.getString("hareket"), rs.getString("ip"), rs.getString("tarih")));
 
             }
 

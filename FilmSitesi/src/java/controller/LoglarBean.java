@@ -67,9 +67,8 @@ public class LoglarBean implements Serializable {
 
     }
 
-    public void create() {
-        this.entity.setTarih(new Date(System.currentTimeMillis()));
-        this.getDao().createLoglar(entity);
+    public void create(String hareket, String ip, String tarih) {
+        this.getDao().createLoglar(hareket,ip,tarih);
         this.entity = new Loglar();
     }
 

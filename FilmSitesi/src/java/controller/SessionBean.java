@@ -5,12 +5,14 @@
 package controller;
 
 import dao.KullanicilarDAO;
+import dao.LoglarDAO;
 import entity.Kullanicilar;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  *
@@ -24,14 +26,18 @@ public class SessionBean implements Serializable {
     private KullanicilarDAO udao;
     private String eposta;
     private String sifre;
+    LoglarDAO LoglarDAO = new LoglarDAO();
+    
+    Date tarih = new Date(System.currentTimeMillis());
 
     public SessionBean() {
     }
 
-    public void  login() {
+    public void  login(){
         Kullanicilar user = this.getUdao().getUser(this.eposta, this.sifre);
         if (user != null) {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", user);
+            LoglarDAO.createLoglar(this.eposta + " hesabı oturum açarak sisteme giriş yaptı.","127.0.0.1",tarih.toString());
             
         } else {
             

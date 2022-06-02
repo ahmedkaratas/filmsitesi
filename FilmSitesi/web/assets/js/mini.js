@@ -4,6 +4,31 @@ function displayHello() {
     document.getElementById("container").style.display = "none";
 }
 
+// Watch için
+const tabLink = document.querySelectorAll(".tab-menu-link");
+const tabContent = document.querySelectorAll(".tab-bar-content");
+
+tabLink.forEach((item) => {
+  item.addEventListener("click", activeTab);
+});
+
+function activeTab(item) {
+  const btnTarget = item.currentTarget;
+  const content = btnTarget.dataset.content;
+
+  tabContent.forEach((item) => {
+    item.classList.remove("is-active");
+  });
+
+  tabLink.forEach((item) => {
+    item.classList.remove("is-active");
+  });
+
+  document.querySelector("#" + content).classList.add("is-active");
+  btnTarget.classList.add("is-active");
+}
+
+
 function turcoMenuAc() {
     if (document.getElementById("turcomenu").style.display == "none") {
         document.getElementById("turcomenu").style.display = "block";

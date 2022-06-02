@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"/>
         <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico"/>
         <link rel="stylesheet" href="./assets/css/watch.css"/>
+        <link rel="stylesheet" href="./assets/css/watchextras.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"/>
         <link rel="stylesheet" href="./assets/css/yorum.css"/>
         <link rel="stylesheet" href="./assets/css/galeri.css"/>
@@ -55,8 +56,6 @@
                             <a href="./register.xhtml" class="Button" data-primary="true" data-reactid=".0.1.0.3.0" style="margin-left: 15px;">Kayıt Ol</a>
                         </div>
                     </div>
-
-
                 </div>
                 <div id="hero" class="Hero" data-reactid=".0.1">
                     <h:dataTable value="#{filmBean.getTekFilm(param['i'])}" var="f">
@@ -64,66 +63,96 @@
                             <iframe data-value="#{f.filmlinki != null}" width="560" height="315" src="#{f.filmlinki}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="width: 100%;height: 1000px;"></iframe>
                         </h:column>
                     </h:dataTable>
-
                 </div>
-                <p class="heading" style="font-weight:600;">Fotoğraflar</p>
-                <div class="gallery-image" id="galeri">
-                    <h:dataTable value="#{fotograflarBean.getFotograflarList(param['i'])}" var="k">
-                        <h:column>
-                            <div class="img-box">
-                                <img src="./assets/img/#{k.linki}" alt=""></img>
-                                <div class="transparent-box">
-                                    <div class="caption">
-                                        <p>Oyuncu</p>
-                                        <p class="opacity-low">Fotoğraflar</p>
-                                    </div>
-                                </div> 
+                <main class="main">
+                    <div class="container">
+                        <div class="tab">
+                            <div class="tab-menu">
+                                <button class="tab-menu-link  is-active" data-content="item-1">
+                                    <span data-title="item-1">Film Detayları</span>
+                                </button>
+                                <button class="tab-menu-link" data-content="item-2">
+                                    <span data-title="item-2">Fotoğraflar</span>
+                                </button>
+                                <button class="tab-menu-link" data-content="item-3">
+                                    <span data-title="item-3">Yorumlar</span>
+                                </button>
                             </div>
-                        </h:column>
-
-                    </h:dataTable>
-
-                </div>
-                <div id="yorum">
-                    <div class="comments">
-                        <h2 data-value="#{user == null}">Yorumlar</h2>
-                        <h2 data-value="#{user != null}" id="biryorumyazin">Bir yorum yazın</h2>
-                        <div data-value="#{user != null}" class="comments-form" id="yorumalani">
-                            <h:form id="yorumform">
-                                <ul><li style="display:none;"> #{yorumlarBean.entity.kullaniciid = user.id}
-                                        <h:inputText value="#{yorumlarBean.entity.kullaniciid}" a:placeholder="Kullanıcı ID" />
-                                        <h:selectOneMenu value="#{yorumlarBean.entity.filmid}" converter="filmConverter">
-                                            <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
-
-                                        </h:selectOneMenu></li>
-                                    <li><h:inputTextarea value="#{yorumlarBean.entity.yorum}" id="entyorum" a:placeholder="Yorum giriniz.." required=""/></li>
-                                    <li><h:commandButton onclick="yorumYazdir(document.getElementById('yorumform:entyorum').value);" action="#{yorumlarBean.create()}" actionListener="./watch.xhtml?i"  value="Yorum Yaz" >
-                                            <f:ajax execute="yorumform" render="yorumform yorumtable"/>
-                                        </h:commandButton>
-                                    </li>
-                                </ul>
-                            </h:form>
-                        </div>
-                        <div class="comments-list" id="comments">
-                            <div class="comment" id="yeniyorum" style="background: #e50914;display: none;">
-                                            <h4 id="yeniyorumkullanici"></h4>
-                                        <p id="yeniyorumtarih" class="timestamp" style="color: white;"></p>
-                                        <p id="yeniyorumtext"></p>
+                            <div class="tab-bar">
+                                <div class="tab-bar-content is-active" id="item-1">
+                                    <div class="texts">
+                                        <h:dataTable value="#{filmBean.getTekFilm(param['i'])}" var="f">
+                                            <h:column>
+                                                <h2 class="title" style="margin-bottom: 0px;">#{f.ad}</h2>
+                                                <p class="paragraph" style="margin-bottom: 0.5rem;">#{f.aciklama}</p>
+                                                <div><b>Kategori:</b> <ui:repeat value="#{f.categories}" var="k"> #{k.adi}</ui:repeat></div>
+                                                <div><b>Türü:</b> #{f.tur}</div>
+                                                <div><b>Vizyon:</b> #{f.vizyon}</div>
+                                                <div><b>Süre:</b> #{f.sure}</div>
+                                                <div><b>Yapım Ülkesi:</b> #{f.ulke}</div>
+                                                <div><b>IMDb Puanı:</b> #{f.puan}</div>
+                                                <div><b>Yaş Sınırı:</b> #{f.yassiniri}</div>
+                                            </h:column>
+                                        </h:dataTable>
                                     </div>
-                            <h:dataTable id="yorumtable" value="#{yorumlarBean.getYorumList(param['i'])}" class="ui celled table" var="y">
-                                <h:column>
-                                    <div class="comment">
-                                        <ui:repeat value="#{yorumlarBean.getKullaniciYorum(y.kullaniciid)}" var="k">
-                                            <h4>#{k.kullaniciadi}</h4>
-                                        </ui:repeat>
-                                        <p class="timestamp">#{y.tarih}</p>
-                                        <p>#{y.yorum}</p>
+                                </div>
+                                <div class="tab-bar-content" id="item-2">
+                                    <div class="gallery-image" id="galeri">
+                                        <h:dataTable value="#{fotograflarBean.getFotograflarList(param['i'])}" var="k">
+                                            <h:column>
+                                                <div class="img-box">
+                                                    <img src="./assets/img/#{k.linki}" alt=""></img>
+                                                </div>
+                                            </h:column>
+                                        </h:dataTable>
                                     </div>
-                                </h:column>
-                            </h:dataTable>
+                                </div>
+                                <div class="tab-bar-content" id="item-3">
+                                    <div id="yorum">
+                                        <div class="comments">
+                                            <h2 data-value="#{user == null}"></h2>
+                                            <h2 data-value="#{user != null}" id="biryorumyazin">Bir yorum yazın</h2>
+                                            <div data-value="#{user != null}" class="comments-form" id="yorumalani">
+                                                <h:form id="yorumform">
+                                                    <ul><li style="display:none;"> #{yorumlarBean.entity.kullaniciid = user.id}
+                                                            <h:inputText value="#{yorumlarBean.entity.kullaniciid}" a:placeholder="Kullanıcı ID" />
+                                                            <h:selectOneMenu value="#{yorumlarBean.entity.filmid}" converter="filmConverter">
+                                                                <f:selectItems value="#{filmBean.list}" var="f" itemValue="#{f}" itemLabel="#{f.ad}"></f:selectItems>
+
+                                                            </h:selectOneMenu></li>
+                                                        <li><h:inputTextarea value="#{yorumlarBean.entity.yorum}" id="entyorum" a:placeholder="Yorum giriniz.." required=""/></li>
+                                                        <li><h:commandButton onclick="yorumYazdir(document.getElementById('yorumform:entyorum').value);" action="#{yorumlarBean.create()}" actionListener="./watch.xhtml?i"  value="Yorum Yaz" >
+                                                                <f:ajax execute="yorumform" render="yorumform yorumtable"/>
+                                                            </h:commandButton>
+                                                        </li>
+                                                    </ul>
+                                                </h:form>
+                                            </div>
+                                            <div class="comments-list" id="comments" style="color:white;">
+                                                <div class="comment" id="yeniyorum" style="background: #e50914;display: none;">
+                                                    <h4 id="yeniyorumkullanici"></h4>
+                                                    <p id="yeniyorumtarih" class="timestamp" style="color: white;"></p>
+                                                    <p id="yeniyorumtext"></p>
+                                                </div>
+                                                <h:dataTable id="yorumtable" value="#{yorumlarBean.getYorumList(param['i'])}" class="ui celled table" var="y">
+                                                    <h:column>
+                                                        <div class="comment">
+                                                            <ui:repeat value="#{yorumlarBean.getKullaniciYorum(y.kullaniciid)}" var="k">
+                                                                <h4>#{k.kullaniciadi}</h4>
+                                                            </ui:repeat>
+                                                            <p class="timestamp">#{y.tarih}</p>
+                                                            <p>#{y.yorum}</p>
+                                                        </div>
+                                                    </h:column>
+                                                </h:dataTable>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </main>
                 <div class="footer">
                     <div class="row" style="position: sticky;bottom: 0;">
                         <ul>
@@ -168,16 +197,16 @@
             </div>
         </div>
         <script>
-            
-            function yorumYazdir(entyorum){
-               
-               document.getElementById('yeniyorumkullanici').innerHTML += "#{user.kullaniciadi}";
-               document.getElementById('yeniyorumtarih').innerHTML += "şimdi";
-               document.getElementById('yeniyorumtext').innerHTML += entyorum;
-               document.getElementById("yeniyorum").style.display = "block";
-               document.getElementById("yorumalani").style.display = "none";
-               document.getElementById("biryorumyazin").style.display = "none";
-               document.getElementById("yorum").style.margin = "30px 0px 30px 0px";
+
+            function yorumYazdir(entyorum) {
+
+                document.getElementById('yeniyorumkullanici').innerHTML += "#{user.kullaniciadi}";
+                document.getElementById('yeniyorumtarih').innerHTML += "şimdi";
+                document.getElementById('yeniyorumtext').innerHTML += entyorum;
+                document.getElementById("yeniyorum").style.display = "block";
+                document.getElementById("yorumalani").style.display = "none";
+                document.getElementById("biryorumyazin").style.display = "none";
+                document.getElementById("yorum").style.margin = "30px 0px 30px 0px";
             }
 
             $("li select").val("#{param['i']}").change();

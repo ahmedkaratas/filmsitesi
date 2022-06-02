@@ -203,9 +203,6 @@
                             </ul>
                         </nav>
                     </div>
-                    <form id="search" class="Search" data-reactid=".0.0.2">
-                        <input type="search" placeholder="Search for a title..." data-reactid=".0.0.2.0"></input>
-                    </form>
                     <div class="UserProfile" data-reactid=".0.0.3">
                         <div data-value="#{user != null}" id="turcohello" class="Navigation" data-reactid=".0.0.1" style="float: left;margin-top: 3px;margin-right: -10px;">
                             <nav data-reactid=".0.0.1.0">
@@ -228,30 +225,6 @@
                             <a href="./login.xhtml" class="Button" data-primary="false" data-reactid=".0.1.0.3.1" style="">Giriş Yap</a>
                             <a href="./register.xhtml" class="Button" data-primary="true" data-reactid=".0.1.0.3.0" style="margin-left: 15px;">Kayıt Ol</a>
                         </div>
-                        <div class="UserProfile-menu" data-reactid=".0.0.3.1">
-                            <div class="UserProfileSwitch" data-reactid=".0.0.3.1.0">
-                                <ul data-reactid=".0.0.3.1.0.0">
-                                    <li data-reactid=".0.0.3.1.0.0.0">
-                                        <div class="UserProfile-image" data-reactid=".0.0.3.1.0.0.0.0">
-                                            <img src="./assets/img/user.webp" data-reactid=".0.0.3.0.1.0" style="background: lightgrey;"></img>
-                                        </div>
-                                        <div class="UserProfile-name" data-reactid=".0.0.3.1.0.0.0.1">Alexander</div>
-                                    </li>
-                                    <li data-reactid=".0.0.3.1.0.0.1">
-                                        <div class="UserProfile-image" data-reactid=".0.0.3.1.0.0.1.0">
-                                        </div>
-                                        <div class="UserProfile-name" data-reactid=".0.0.3.1.0.0.1.1">Mattias</div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="UserNavigation" data-reactid=".0.0.3.1.1">
-                                <ul data-reactid=".0.0.3.1.1.0">
-                                    <li data-reactid=".0.0.3.1.1.0.0">Your Account</li>
-                                    <li data-reactid=".0.0.3.1.1.0.1">Help Center</li>
-                                    <li data-reactid=".0.0.3.1.1.0.2">Sign out of Netflix</li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div id="hero" class="Hero" style="background-image:url(https://wallpaperaccess.com/full/1097130.jpg);" data-reactid=".0.1">
@@ -259,14 +232,14 @@
                         <img class="logo" src="http://www.returndates.com/backgrounds/narcos.logo.png" alt="" data-reactid=".0.1.0.0"></img>
                         <h2 data-reactid=".0.1.0.1">Sezon 2 şimdi yayında</h2>
                         <p data-reactid=".0.1.0.2">Bu gangster dizisinde, Kolombiya'nın şiddet dolu ve güçlü uyuşturucu kartellerinin gerçek hikayesini izleyeceksiniz. Uyuşturucu baronu Pablo Escobar</p>
-                        <div class="button-wrapper" data-reactid=".0.1.0.3"><a href="#" class="Button" data-primary="true" data-reactid=".0.1.0.3.0">Şimdi izle</a><a href="#" class="Button" data-primary="false" data-reactid=".0.1.0.3.1">+ Listeye Ekle</a></div>
+                        <div class="button-wrapper" data-reactid=".0.1.0.3"><a href="#" class="Button" data-primary="true" data-reactid=".0.1.0.3.0">Şimdi izle</a></div>
                     </div>
                     <div class="overlay" data-reactid=".0.1.1"></div>
                 </div>
                 <div class="TitleList" data-loaded="true" data-reactid=".0.2">
                     <div class="Title" id="Title" data-reactid=".0.2.0">
                         <h1 data-reactid=".0.2.0.0">Tüm zamanların en iyileri</h1>
-                            <div id="wrapper">
+                        <div id="wrapper">
                             <h:dataTable value="#{filmBean.listFull}" var="f">
                                 <h:column>
                                     <div class="Item" style="background-image:url(#{f.gorsel});" data-reactid=".0.2.0.1.$52814" onclick="javascript:location.href = './watch.xhtml?i=#{f.filmid}'">
@@ -282,7 +255,7 @@
                                 </h:column>
 
                             </h:dataTable>
-                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="footer">

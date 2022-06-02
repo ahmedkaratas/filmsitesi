@@ -24,11 +24,11 @@ textarea::-moz-placeholder, input::-moz-placeholder {
     font-family: "Montserrat", sans-serif;
     display: flex;
     justify-content: center;
-    margin: 100px 0 30px 0;
+    margin: 60px 0 30px 0;
 }
 
 .comments {
-    width: 50%;
+    width: 80%;
     max-width: 80%;
     min-width: 300px;
     background: #221f1f;
